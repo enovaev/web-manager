@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a9aa4381-be00-42ed-80e5-b3c79414aba3" name="Default Changelist" comment="create App">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-    </list>
+    <list default="true" id="a9aa4381-be00-42ed-80e5-b3c79414aba3" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,8 +44,16 @@
       <option name="presentableId" value="Default" />
       <updated>1574600813287</updated>
       <workItem from="1574600814452" duration="712000" />
-      <workItem from="1574678496853" duration="836000" />
+      <workItem from="1574678496853" duration="1132000" />
     </task>
+    <task id="LOCAL-00001" summary="add esLinter">
+      <created>1574679527310</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1574679527310</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -70,6 +74,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="create App" />
-    <option name="LAST_COMMIT_MESSAGE" value="create App" />
+    <MESSAGE value="add esLinter" />
+    <option name="LAST_COMMIT_MESSAGE" value="add esLinter" />
   </component>
 </project>
