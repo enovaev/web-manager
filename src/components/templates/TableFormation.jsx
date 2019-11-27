@@ -3,12 +3,6 @@ import React from 'react';
 import styled from 'styled-components';
 import MainTable from '../organisms/MainTable';
 
-const Container = styled.div`
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-`;
-
 function TableFormation() {
   return (
     <Container>
@@ -16,4 +10,11 @@ function TableFormation() {
     </Container>
   );
 }
+
+const Container = styled.div`
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+`;
+
 export default TableFormation;
