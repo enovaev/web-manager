@@ -12,6 +12,7 @@ class CustomInput extends Component {
   }
 
   inputFunc(e) {
+    console.log(e.target.value);
     this.setState({ inputData: e.target.value });
   }
 
