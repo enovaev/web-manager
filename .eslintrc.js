@@ -27,5 +27,14 @@ module.exports = {
     "prettier"
   ],
   rules: {
+    'import/resolver': "off"
   },
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        paths: ['./src']
+      },
+    },
+  }
 };

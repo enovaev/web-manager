@@ -1,15 +1,15 @@
 [
   {
     "key": 12,
-    "name": "Gilen",
-    "id": 123,
     "price": 1500,
     "sale": "3%",
     "selected": true
   },
   {
     "key": 16,
-    "name": "Bosh",
+    "Part": {
+      "input": "fhg"
+       },
     "id": 34,
     "price": 1000,
     "sale": "3%",

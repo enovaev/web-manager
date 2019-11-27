@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
 import CheckBox from '../molecules/CheckBox';
+import CustomInput from '../molecules/CustomInput';
 import HeaderConfig from '../../config/HeaderMainTable.json';
 import SimData from '../../config/ImitateData.json';
 
@@ -27,7 +29,7 @@ class MainTable extends Component {
           <tr>
             { HeaderConfig.map((item) => (
               <th key={item.key} className={name}>
-                {item.label}
+                {item.key}
                 {item.checkbox && <CheckBox value={item.key} header />}
               </th>
             )) }
@@ -42,7 +44,8 @@ class MainTable extends Component {
             <tr key={item.key}>
               { HeaderConfig.map((el) => (
                 <td key={el.key}>
-                  {item[el.key]}
+                  {!_.isObject(item[el.key]) && item[el.key]}
+                  {_.isObject(item[el.key]) && item[el.key].input && <CustomInput />}
                   {el.checkbox && <CheckBox selected={item.selected} value={item.key} />}
                 </td>
               )) }
@@ -50,7 +53,7 @@ class MainTable extends Component {
           ))}
           {isShow && (
             <tr>
-              <td>123</td>
+              <td><CustomInput /></td>
               <td>reg</td>
             </tr>
           )}

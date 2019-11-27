@@ -1,25 +1,31 @@
 [
   {
+    "key": "№"
+  },
+  {
     "key": "check",
     "checkbox": true
   },
   {
-    "key": "name",
-    "label": "Name"
+    "key": "Part",
+    "inputSelect": true
   },
   {
-    "key": "id",
-    "label": "ID"
+    "key": "Option"
   },
   {
-    "key": "price",
-    "label": "qweqwe"
+    "key": "Name of position"
   },
   {
-    "key": "sale",
-    "label": "qweqew"
+    "key": "ExW Price"
   },
   {
-    "key": "delete"
+    "key": "Quantity"
+  },
+  {
+    "key": "Our price"
+  },
+  {
+    "key": "Price for Customer"
   }
 ]
