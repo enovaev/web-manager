@@ -11,7 +11,8 @@
     "inputSelect": true
   },
   {
-    "key": "Option"
+    "key": "Option",
+    "input": true
   },
   {
     "key": "Name of position"

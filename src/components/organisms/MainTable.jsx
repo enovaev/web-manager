@@ -46,6 +46,7 @@ class MainTable extends Component {
                 <td key={el.key}>
                   {!_.isObject(item[el.key]) && item[el.key]}
                   {_.isObject(item[el.key]) && item[el.key].input && <CustomInput />}
+                  {el.input && <CustomInput />}
                   {el.checkbox && <CheckBox selected={item.selected} value={item.key} />}
                 </td>
               )) }
