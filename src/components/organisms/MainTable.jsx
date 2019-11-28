@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
+import moment from 'moment';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import CheckBox from '../molecules/CheckBox';
-import CustomInput from '../molecules/CustomInput';
+// import CustomInput from '../molecules/CustomInput';
 import HeaderConfig from '../../config/HeaderMainTable.json';
 import '../style/ani.css';
 // import SimData from '../../config/ImitateData.json';
@@ -29,12 +30,20 @@ class MainTable extends Component {
     };
 
     this.clickBtn = this.clickBtn.bind(this);
+    this.deleteEntity = this.deleteEntity.bind(this);
   }
 
   clickBtn() {
     const { simData } = this.state;
-    const objdata = [{ key: new Date(), selected: false }];
+    const objdata = [{ key: moment().format('x'), selected: false }];
     this.setState({ simData: simData.concat(objdata) });
+  }
+
+  deleteEntity(e) {
+    const { simData } = this.state;
+    const newData = simData.filter((el, i) => (i !== +e.target.value) && el);
+    console.log(newData);
+    this.setState({ simData: newData });
   }
 
   render() {
@@ -57,18 +66,21 @@ class MainTable extends Component {
         </thead>
         <tbody>
           <TransitionGroup component={null}>
-            { simData.map((item) => (
+            { simData.map((item, index) => (
               <CSSTransition
                 key={item.key}
-                timeout={100}
+                timeout={250}
                 classNames="item"
               >
                 <tr>
                   { HeaderConfig.map((el) => (
                     <td key={el.key}>
                       {!_.isObject(item[el.key]) && item[el.key]}
-                      {_.isObject(item[el.key]) && item[el.key].input && <CustomInput />}
-                      {el.input && <CustomInput />}
+                      {/* {_.isObject(item[el.key]) && item[el.key].input && <CustomInput />} */}
+                      {/* {el.input && <CustomInput />} */}
+                      {el.delete
+                      // eslint-disable-next-line react/button-has-type
+                        && <button value={index} onClick={this.deleteEntity}>Delete</button>}
                       {el.checkbox && <CheckBox selected={item.selected} value={item.key} />}
                     </td>
                   )) }

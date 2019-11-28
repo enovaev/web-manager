@@ -36,5 +36,9 @@
   {
     "key": "priceCust",
     "label": "Price for Customer"
+  },
+  {
+    "key": "delete",
+    "delete": true
   }
 ]
