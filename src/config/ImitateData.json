@@ -1,8 +1,14 @@
 [
   {
     "key": 12,
-    "price": 1500,
-    "sale": "3%",
+    "number": 1,
+    "part": "",
+    "option": 1500,
+    "posName": "wgregw",
+    "exw": "20,5",
+    "quantity": 1,
+    "priceOur": 1000,
+    "priceCust": 1500,
     "selected": true
   },
   {

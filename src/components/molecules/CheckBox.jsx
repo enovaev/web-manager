@@ -26,12 +26,11 @@ class CheckBox extends Component {
 
   render() {
     const { checked } = this.state;
-    const { value, header, selected } = this.props;
+    const { header, selected } = this.props;
     return (
       <Checkbox
         checked={header ? checked : selected}
         onChange={this.handleChange}
-        value={value}
         color="primary"
         indeterminate={header}
       />

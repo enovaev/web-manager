@@ -1,36 +1,52 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import CheckBox from '../molecules/CheckBox';
 import CustomInput from '../molecules/CustomInput';
 import HeaderConfig from '../../config/HeaderMainTable.json';
-import SimData from '../../config/ImitateData.json';
+import '../style/ani.css';
+// import SimData from '../../config/ImitateData.json';
 
 class MainTable extends Component {
   constructor(props) {
     super(props);
     this.state = {
       name: 'tor',
-      isShow: true,
+      simData: [
+        {
+          key: 12,
+          number: 1,
+          part: '',
+          option: 1500,
+          posName: 'wgregw',
+          exw: 20.5,
+          quantity: 1,
+          priceOur: 1000,
+          priceCust: 1500,
+          selected: true,
+        },
+      ],
     };
 
     this.clickBtn = this.clickBtn.bind(this);
   }
 
   clickBtn() {
-    const { isShow } = this.state;
-    this.setState({ isShow: !isShow });
+    const { simData } = this.state;
+    const objdata = [{ key: new Date(), selected: false }];
+    this.setState({ simData: simData.concat(objdata) });
   }
 
   render() {
-    const { name, isShow } = this.state;
+    const { name, simData } = this.state;
     return (
       <table>
         <thead>
           <tr>
             { HeaderConfig.map((item) => (
               <th key={item.key} className={name}>
-                {item.key}
-                {item.checkbox && <CheckBox value={item.key} header />}
+                {item.label}
+                {item.checkbox && <CheckBox header />}
               </th>
             )) }
             <th>
@@ -40,24 +56,26 @@ class MainTable extends Component {
           </tr>
         </thead>
         <tbody>
-          { SimData.map((item) => (
-            <tr key={item.key}>
-              { HeaderConfig.map((el) => (
-                <td key={el.key}>
-                  {!_.isObject(item[el.key]) && item[el.key]}
-                  {_.isObject(item[el.key]) && item[el.key].input && <CustomInput />}
-                  {el.input && <CustomInput />}
-                  {el.checkbox && <CheckBox selected={item.selected} value={item.key} />}
-                </td>
-              )) }
-            </tr>
-          ))}
-          {isShow && (
-            <tr>
-              <td><CustomInput /></td>
-              <td>reg</td>
-            </tr>
-          )}
+          <TransitionGroup component={null}>
+            { simData.map((item) => (
+              <CSSTransition
+                key={item.key}
+                timeout={100}
+                classNames="item"
+              >
+                <tr>
+                  { HeaderConfig.map((el) => (
+                    <td key={el.key}>
+                      {!_.isObject(item[el.key]) && item[el.key]}
+                      {_.isObject(item[el.key]) && item[el.key].input && <CustomInput />}
+                      {el.input && <CustomInput />}
+                      {el.checkbox && <CheckBox selected={item.selected} value={item.key} />}
+                    </td>
+                  )) }
+                </tr>
+              </CSSTransition>
+            ))}
+          </TransitionGroup>
         </tbody>
       </table>
     );

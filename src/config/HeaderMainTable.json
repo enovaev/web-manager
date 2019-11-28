@@ -1,32 +1,40 @@
 [
   {
-    "key": "№"
-  },
-  {
     "key": "check",
     "checkbox": true
   },
   {
-    "key": "Part",
+    "key": "number",
+    "label": "№"
+  },
+  {
+    "key": "part",
+    "label": "Partname",
     "inputSelect": true
   },
   {
-    "key": "Option",
+    "key": "option",
+    "label": "Option",
     "input": true
   },
   {
-    "key": "Name of position"
+    "key": "posName",
+    "label": "Name of position"
   },
   {
-    "key": "ExW Price"
+    "key": "exw",
+    "label": "ExW Price"
   },
   {
-    "key": "Quantity"
+    "key": "quantity",
+    "label": "Quantity"
   },
   {
-    "key": "Our price"
+    "key": "priceOur",
+    "label": "Our price"
   },
   {
-    "key": "Price for Customer"
+    "key": "priceCust",
+    "label": "Price for Customer"
   }
 ]

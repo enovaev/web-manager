@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import TextField from '@material-ui/core/TextField';
+import Input from '@material-ui/core/Input';
+import styled from 'styled-components';
+
 
 class CustomInput extends Component {
   constructor(props) {
@@ -19,19 +21,21 @@ class CustomInput extends Component {
   render() {
     const { inputData } = this.state;
     return (
-      <TextField
-        id="standard-number"
-        label="Number"
-        type="number"
-        value={inputData}
-        onChange={this.inputFunc}
-        InputLabelProps={{
-          shrink: true,
-        }}
-        margin="normal"
-      />
+      <Conteiner>
+        <Input
+          id="outlined-basic"
+          type="number"
+          value={inputData}
+          onChange={this.inputFunc}
+          margin="normal"
+        />
+      </Conteiner>
     );
   }
 }
+
+const Conteiner = styled.div`
+  width: 20px;
+`;
 
 export default CustomInput;
