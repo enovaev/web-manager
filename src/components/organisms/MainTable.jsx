@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 // Utils
 import moment from 'moment';
+import styled from 'styled-components';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 // Components
 import CheckBox from '../molecules/CheckBox';
 import CustomInput from '../molecules/CustomInput';
+import CustomSelect from '../molecules/CustomSelect';
 // Configs
 import HeaderConfig from '../../config/HeaderMainTable.json';
 // Styles
@@ -75,22 +77,16 @@ class MainTable extends Component {
                 <tr>
                   { HeaderConfig.map((el) => (
                     <td key={el.key}>
-                      {el.checkbox && <CheckBox selected={item.selected} />}
-                      {el.number && index + 1}
-                      {el.input
-                        && (
-                        <CustomInput
-                          entityName={el.key}
-                          inputType={el.input}
-                          select={el.select}
-                        />
-                        )}
-                      {/* {_.isObject(item[el.key]) && item[el.key].input && <CustomInput />} */}
-                      {/* {el.input && <CustomInput />} */}
-                      {el.delete
-                      // eslint-disable-next-line react/button-has-type
-                        && <button value={index} onClick={this.deleteEntity}>Delete</button>}
-
+                      <Container>
+                        {el.checkbox && <CheckBox selected={item.selected} />}
+                        {el.number && index + 1}
+                        {el.input && <CustomInput cellName={el.key} />}
+                        {el.select && <CustomSelect cellName={el.key} />}
+                        {/* {_.isObject(item[el.key]) && item[el.key].input && <CustomInput />} */}
+                        {el.delete
+                        // eslint-disable-next-line react/button-has-type
+                          && <button value={index} onClick={this.deleteEntity}>Delete</button>}
+                      </Container>
                     </td>
                   )) }
                 </tr>
@@ -103,4 +99,7 @@ class MainTable extends Component {
   }
 }
 
+const Container = styled.div`
+  display: flex;
+`;
 export default MainTable;

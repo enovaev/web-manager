@@ -1,65 +1,51 @@
 import React, { Component } from 'react';
 // Utils
+import { InputNumber, Input } from 'antd';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { InputNumber, Select } from 'antd';
-// Configs
-import currencyConfig from '../../config/selectCurrency.json';
-import quantityConfig from '../../config/selectQuantity.json';
 
 
-const { Option } = Select;
 const styling = (value) => ({ width: value });
-const renderOptionSelect = (data) => data.map(
-  (item) => <Option value={item.value}>{item.name}</Option>,
-);
 
 class CustomInput extends Component {
   constructor(props) {
     super(props);
     this.state = {
       inputData: null,
-      selectData: 'rub',
     };
 
     this.inputFunc = this.inputFunc.bind(this);
-    this.selectFunc = this.selectFunc.bind(this);
+    this.inputNumberFunc = this.inputNumberFunc.bind(this);
   }
 
-  inputFunc(value) {
+  inputNumberFunc(value) {
     this.setState({ inputData: value });
   }
 
-  selectFunc(value) {
-    this.setState({ selectData: value });
+  inputFunc(e) {
+    this.setState({ inputData: e.target.value });
   }
 
   render() {
-    const { inputData, selectData } = this.state;
-    const { select, inputType, entityName } = this.props;
+    const { inputData } = this.state;
+    const { cellName } = this.props;
     return (
       <Container>
-        {inputType === 'inputNumber'
+        {(cellName === 'exw' || cellName === 'quantity' || cellName === 'option')
          && (
-         <InputNumber
-           style={
-             (entityName === 'exw' && styling(200))
-             || (entityName === 'quantity' && styling(60))
-           }
-           value={inputData}
-           onChange={this.inputFunc}
-         />
+           <InputNumber
+             style={
+               (cellName === 'exw' && styling(200))
+               || (cellName === 'quantity' && styling(60))
+               || (cellName === 'option' && styling(60))
+             }
+             value={inputData}
+             onChange={this.inputNumberFunc}
+           />
          )}
-        {select
+        {(cellName === 'part' || cellName === 'posName')
           && (
-          <Select
-            onChange={this.selectFunc}
-            value={selectData}
-            style={{ width: 68 }}
-          >
-            {select === 'currency' && renderOptionSelect(currencyConfig)}
-            {select === 'quantity' && renderOptionSelect(quantityConfig)}
-          </Select>
+            <Input value={inputData} onChange={this.inputFunc} />
           )}
       </Container>
     );
@@ -67,14 +53,7 @@ class CustomInput extends Component {
 }
 
 CustomInput.propTypes = {
-  entityName: PropTypes.string.isRequired,
-  select: PropTypes.string,
-  inputType: PropTypes.string,
-};
-
-CustomInput.defaultProps = {
-  select: null,
-  inputType: null,
+  cellName: PropTypes.string.isRequired,
 };
 
 const Container = styled.div`

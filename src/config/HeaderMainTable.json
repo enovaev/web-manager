@@ -11,7 +11,7 @@
   {
     "key": "part",
     "label": "Partname",
-    "inputNumber": true
+    "input": true
   },
   {
     "key": "option",
@@ -20,7 +20,8 @@
   },
   {
     "key": "posName",
-    "label": "Name of position"
+    "label": "Name of position",
+    "input": true
   },
   {
     "key": "exw",

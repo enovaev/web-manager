@@ -5,12 +5,12 @@
     "option": 1500,
     "posName": "wgregw",
     "exw": {
-      "inputNumber": "",
-      "currency": ""
+      "input": "",
+      "select": ""
     },
     "quantity": {
-      "inputNumber": "",
-      "quantity": ""
+      "input": "",
+      "select": ""
     },
     "priceOur": 1000,
     "priceCust": 1500,
