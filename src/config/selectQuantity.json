@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Шт.",
+    "value": "piece"
+  },
+  {
+    "name": "Упк.",
+    "value": "pack"
+  },
+  {
+    "name": "Ком.",
+    "value": "set"
+  }
+]

@@ -137,10 +137,15 @@
     "presets": [
       "react-app"
     ],
-    "plugins": [["import", {
-      "libraryName": "antd",
-      "style": "css"
-    }]]
+    "plugins": [
+      [
+        "import",
+        {
+          "libraryName": "antd",
+          "style": "css"
+        }
+      ]
+    ]
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",

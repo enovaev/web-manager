@@ -5,8 +5,8 @@
   },
   {
     "key": "number",
-    "number": true,
-    "label": "№"
+    "label": "№",
+    "number": true
   },
   {
     "key": "part",
@@ -24,11 +24,15 @@
   },
   {
     "key": "exw",
-    "label": "ExW Price"
+    "label": "ExW Price",
+    "input": "inputNumber",
+    "select": "currency"
   },
   {
     "key": "quantity",
-    "label": "Quantity"
+    "label": "Quantity",
+    "input": "inputNumber",
+    "select": "quantity"
   },
   {
     "key": "priceOur",

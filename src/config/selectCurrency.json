@@ -1,0 +1,26 @@
+[
+  {
+    "name": "RUB",
+    "value": "rub"
+  },
+  {
+    "name": "USD",
+    "value": "usd"
+  },
+  {
+    "name": "EUR",
+    "value": "eur"
+  },
+  {
+    "name": "GBP",
+    "value": "gbp"
+  },
+  {
+    "name": "CHF",
+    "value": "chf"
+  },
+  {
+    "name": "BYN",
+    "value": "byn"
+  }
+]

@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
-import _ from 'lodash';
+// Utils
 import moment from 'moment';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
+// Components
 import CheckBox from '../molecules/CheckBox';
 import CustomInput from '../molecules/CustomInput';
+// Configs
 import HeaderConfig from '../../config/HeaderMainTable.json';
+// Styles
 import '../style/ani.css';
-// import SimData from '../../config/ImitateData.json';
-// const moments = moment;
+
 class MainTable extends Component {
   constructor(props) {
     super(props);
@@ -75,8 +77,14 @@ class MainTable extends Component {
                     <td key={el.key}>
                       {el.checkbox && <CheckBox selected={item.selected} />}
                       {el.number && index + 1}
-                      {el.inputNumber && <CustomInput number />}
-                      {!_.isObject(item[el.key]) && item[el.key]}
+                      {el.input
+                        && (
+                        <CustomInput
+                          entityName={el.key}
+                          inputType={el.input}
+                          select={el.select}
+                        />
+                        )}
                       {/* {_.isObject(item[el.key]) && item[el.key].input && <CustomInput />} */}
                       {/* {el.input && <CustomInput />} */}
                       {el.delete

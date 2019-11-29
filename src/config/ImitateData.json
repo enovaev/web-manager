@@ -4,8 +4,14 @@
     "part": "",
     "option": 1500,
     "posName": "wgregw",
-    "exw": "20,5",
-    "quantity": 1,
+    "exw": {
+      "inputNumber": "",
+      "currency": ""
+    },
+    "quantity": {
+      "inputNumber": "",
+      "quantity": ""
+    },
     "priceOur": 1000,
     "priceCust": 1500,
     "selected": true

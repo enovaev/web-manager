@@ -27,7 +27,7 @@ module.exports = {
     "prettier"
   ],
   rules: {
-    'import/resolver': "off"
+    'import/resolver': "off",
   },
   settings: {
     'import/resolver': {
