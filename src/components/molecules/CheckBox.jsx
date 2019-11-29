@@ -1,7 +1,7 @@
-/* eslint-disable */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Checkbox from '@material-ui/core/Checkbox';
+import { Checkbox } from 'antd';
+import styled from 'styled-components';
 
 class CheckBox extends Component {
   constructor(props) {
@@ -28,21 +28,17 @@ class CheckBox extends Component {
     const { checked } = this.state;
     const { header, selected } = this.props;
     return (
-      <Checkbox
-        checked={header ? checked : selected}
-        onChange={this.handleChange}
-        color="primary"
-        indeterminate={header}
-      />
+      <Container>
+        <Checkbox
+          checked={header ? checked : selected}
+          onChange={this.handleChange}
+        />
+      </Container>
     );
   }
 }
 
 CheckBox.propTypes = {
-  value: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-  ]).isRequired,
   header: PropTypes.bool,
   selected: PropTypes.bool,
 };
@@ -52,4 +48,7 @@ CheckBox.defaultProps = {
   selected: false,
 };
 
+const Container = styled.div`
+  margin: 8px;
+`;
 export default CheckBox;

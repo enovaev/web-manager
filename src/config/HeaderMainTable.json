@@ -5,12 +5,13 @@
   },
   {
     "key": "number",
+    "number": true,
     "label": "№"
   },
   {
     "key": "part",
     "label": "Partname",
-    "inputSelect": true
+    "inputNumber": true
   },
   {
     "key": "option",

@@ -1,41 +1,40 @@
 import React, { Component } from 'react';
-import Input from '@material-ui/core/Input';
+import { InputNumber } from 'antd';
 import styled from 'styled-components';
 
+const styling = {
+  width: 100,
+};
 
 class CustomInput extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      inputData: true,
+      inputData: null,
     };
 
     this.inputFunc = this.inputFunc.bind(this);
   }
 
-  inputFunc(e) {
-    console.log(e.target.value);
-    this.setState({ inputData: e.target.value });
+  inputFunc(value) {
+    this.setState({ inputData: value });
   }
 
   render() {
     const { inputData } = this.state;
     return (
-      <Conteiner>
-        <Input
-          id="outlined-basic"
-          type="number"
+      <Container>
+        <InputNumber
+          style={styling}
           value={inputData}
           onChange={this.inputFunc}
-          margin="normal"
         />
-      </Conteiner>
+      </Container>
     );
   }
 }
 
-const Conteiner = styled.div`
-  width: 20px;
+const Container = styled.div`
 `;
 
 export default CustomInput;

@@ -3,11 +3,11 @@ import _ from 'lodash';
 import moment from 'moment';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import CheckBox from '../molecules/CheckBox';
-// import CustomInput from '../molecules/CustomInput';
+import CustomInput from '../molecules/CustomInput';
 import HeaderConfig from '../../config/HeaderMainTable.json';
 import '../style/ani.css';
 // import SimData from '../../config/ImitateData.json';
-
+// const moments = moment;
 class MainTable extends Component {
   constructor(props) {
     super(props);
@@ -16,7 +16,6 @@ class MainTable extends Component {
       simData: [
         {
           key: 12,
-          number: 1,
           part: '',
           option: 1500,
           posName: 'wgregw',
@@ -42,7 +41,6 @@ class MainTable extends Component {
   deleteEntity(e) {
     const { simData } = this.state;
     const newData = simData.filter((el, i) => (i !== +e.target.value) && el);
-    console.log(newData);
     this.setState({ simData: newData });
   }
 
@@ -75,13 +73,16 @@ class MainTable extends Component {
                 <tr>
                   { HeaderConfig.map((el) => (
                     <td key={el.key}>
+                      {el.checkbox && <CheckBox selected={item.selected} />}
+                      {el.number && index + 1}
+                      {el.inputNumber && <CustomInput number />}
                       {!_.isObject(item[el.key]) && item[el.key]}
                       {/* {_.isObject(item[el.key]) && item[el.key].input && <CustomInput />} */}
                       {/* {el.input && <CustomInput />} */}
                       {el.delete
                       // eslint-disable-next-line react/button-has-type
                         && <button value={index} onClick={this.deleteEntity}>Delete</button>}
-                      {el.checkbox && <CheckBox selected={item.selected} value={item.key} />}
+
                     </td>
                   )) }
                 </tr>
