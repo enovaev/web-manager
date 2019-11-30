@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 // Components
 import CheckBox from '../molecules/CheckBox';
+import CustomText from '../molecules/CustomText';
 import CustomInput from '../molecules/CustomInput';
 import CustomSelect from '../molecules/CustomSelect';
 // Configs
@@ -55,10 +56,12 @@ class MainTable extends Component {
         <thead>
           <tr>
             { HeaderConfig.map((item) => (
-              <th key={item.key} className={name}>
-                {item.label}
-                {item.checkbox && <CheckBox header />}
-              </th>
+              <Th key={item.key} className={name}>
+                <Container>
+                  {item.label && <Text>{item.label}</Text>}
+                  {item.checkbox && <CheckBox header />}
+                </Container>
+              </Th>
             )) }
             <th>
               {/* eslint-disable-next-line react/button-has-type */}
@@ -76,18 +79,18 @@ class MainTable extends Component {
               >
                 <tr>
                   { HeaderConfig.map((el) => (
-                    <td key={el.key}>
+                    <Td key={el.key}>
                       <Container>
                         {el.checkbox && <CheckBox selected={item.selected} />}
                         {el.number && index + 1}
-                        {el.input && <CustomInput cellName={el.key} />}
+                        {el.input && <CustomInput width={el.width} cellName={el.key} />}
+                        {el.text && <CustomText />}
                         {el.select && <CustomSelect cellName={el.key} />}
-                        {/* {_.isObject(item[el.key]) && item[el.key].input && <CustomInput />} */}
                         {el.delete
                         // eslint-disable-next-line react/button-has-type
                           && <button value={index} onClick={this.deleteEntity}>Delete</button>}
                       </Container>
-                    </td>
+                    </Td>
                   )) }
                 </tr>
               </CSSTransition>
@@ -101,5 +104,24 @@ class MainTable extends Component {
 
 const Container = styled.div`
   display: flex;
+  margin: 3px 10px;
+  justify-content: center;
 `;
+const Text = styled.p`
+  margin: 0 5px;
+`;
+const Th = styled.th`
+    border-left: 1px solid black;
+  &:first-child{
+    border-left: none;
+  }
+  border-bottom: 3px solid black;
+`;
+const Td = styled.td`
+  border-left: 1px solid #D9D9D9;
+  &:first-child{
+    border-left: none;
+  }
+`;
+
 export default MainTable;

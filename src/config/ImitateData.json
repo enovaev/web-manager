@@ -1,9 +1,15 @@
 [
   {
     "key": 12,
-    "part": "",
-    "option": 1500,
-    "posName": "wgregw",
+    "part": {
+      "input": ""
+    },
+    "option": {
+      "input": ""
+    },
+    "posName": {
+    "input": ""
+    },
     "exw": {
       "input": "",
       "select": ""

@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 // Utils
-import { InputNumber, Input } from 'antd';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-
+import { InputNumber, Input } from 'antd';
 
 const styling = (value) => ({ width: value });
 
@@ -23,29 +22,35 @@ class CustomInput extends Component {
   }
 
   inputFunc(e) {
-    this.setState({ inputData: e.target.value });
+    const { cellName } = this.props;
+
+    if (cellName === 'exw' || cellName === 'option') {
+      this.setState({ inputData: e.target.value.replace(/[^\d]/g, '') });
+    } else {
+      this.setState({ inputData: e.target.value });
+    }
   }
 
   render() {
     const { inputData } = this.state;
-    const { cellName } = this.props;
+    const { cellName, width } = this.props;
     return (
       <Container>
-        {(cellName === 'exw' || cellName === 'quantity' || cellName === 'option')
-         && (
-           <InputNumber
-             style={
-               (cellName === 'exw' && styling(200))
-               || (cellName === 'quantity' && styling(60))
-               || (cellName === 'option' && styling(60))
-             }
-             value={inputData}
-             onChange={this.inputNumberFunc}
-           />
-         )}
-        {(cellName === 'part' || cellName === 'posName')
-          && (
-            <Input value={inputData} onChange={this.inputFunc} />
+        {(cellName === 'quantity')
+          ? (
+            <InputNumber
+              style={styling(width)}
+              value={inputData}
+              min={1}
+              onChange={this.inputNumberFunc}
+            />
+          )
+          : (
+            <Input
+              style={styling(width)}
+              value={inputData}
+              onChange={this.inputFunc}
+            />
           )}
       </Container>
     );
@@ -54,6 +59,7 @@ class CustomInput extends Component {
 
 CustomInput.propTypes = {
   cellName: PropTypes.string.isRequired,
+  width: PropTypes.number.isRequired,
 };
 
 const Container = styled.div`

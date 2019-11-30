@@ -11,37 +11,46 @@
   {
     "key": "part",
     "label": "Partname",
-    "input": true
+    "input": true,
+    "width": 100
   },
   {
     "key": "option",
     "label": "Option",
-    "input": true
+    "input": true,
+    "width": 60
   },
   {
     "key": "posName",
     "label": "Name of position",
-    "input": true
+    "input": true,
+    "width": 300
   },
   {
     "key": "exw",
     "label": "ExW Price",
-    "input": "inputNumber",
-    "select": "currency"
+    "input": true,
+    "width": 90,
+    "select": true
   },
   {
     "key": "quantity",
     "label": "Quantity",
-    "input": "inputNumber",
-    "select": "quantity"
+    "input": true,
+    "width": 60,
+    "select": true
   },
   {
     "key": "priceOur",
-    "label": "Our price"
+    "label": "Our price",
+    "text": true,
+    "select": true
   },
   {
     "key": "priceCust",
-    "label": "Price for Customer"
+    "label": "Price for Customer",
+    "text": true,
+    "select": true
   },
   {
     "key": "delete",

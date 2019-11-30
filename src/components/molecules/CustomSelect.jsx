@@ -9,7 +9,7 @@ import quantityConfig from '../../config/selectQuantity.json';
 
 const { Option } = Select;
 const renderOptionSelect = (data) => data.map(
-  (item) => <Option value={item.value}>{item.name}</Option>,
+  (item) => <Option key={item.value} value={item.value}>{item.name}</Option>,
 );
 class CustomSelect extends Component {
   constructor(props) {
@@ -35,8 +35,9 @@ class CustomSelect extends Component {
         value={selectData}
         style={{ width: 68 }}
       >
-        {cellName === 'exw' && renderOptionSelect(currencyConfig)}
-        {cellName === 'quantity' && renderOptionSelect(quantityConfig)}
+        {cellName === 'quantity'
+          ? renderOptionSelect(quantityConfig)
+          : renderOptionSelect(currencyConfig)}
       </Select>
     );
   }
