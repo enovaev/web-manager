@@ -43,6 +43,7 @@
   {
     "key": "priceOur",
     "label": "Our price",
+    "footer": true,
     "text": true,
     "select": true
   },
@@ -50,6 +51,7 @@
     "key": "priceCust",
     "label": "Price for Customer",
     "text": true,
+    "footer": true,
     "select": true
   },
   {

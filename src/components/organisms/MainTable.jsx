@@ -77,9 +77,9 @@ class MainTable extends Component {
                 timeout={250}
                 classNames="item"
               >
-                <tr>
+                <BodyRow>
                   { HeaderConfig.map((el) => (
-                    <Td key={el.key}>
+                    <Tb key={el.key}>
                       <Container>
                         {el.checkbox && <CheckBox selected={item.selected} />}
                         {el.number && index + 1}
@@ -90,13 +90,31 @@ class MainTable extends Component {
                         // eslint-disable-next-line react/button-has-type
                           && <button value={index} onClick={this.deleteEntity}>Delete</button>}
                       </Container>
-                    </Td>
+                    </Tb>
                   )) }
-                </tr>
+                </BodyRow>
               </CSSTransition>
             ))}
           </TransitionGroup>
         </tbody>
+        <tfoot>
+          <tr>
+            { HeaderConfig.map((el) => (
+              <Tf key={el.key}>
+                <Container>
+                  {el.footer
+                  && (
+                    <div>
+                      <Text>Сумма:</Text>
+                      <CustomText />
+                      <CustomSelect />
+                    </div>
+                  )}
+                </Container>
+              </Tf>
+            )) }
+          </tr>
+        </tfoot>
       </table>
     );
   }
@@ -111,16 +129,27 @@ const Text = styled.p`
   margin: 0 5px;
 `;
 const Th = styled.th`
-    border-left: 1px solid black;
-  &:first-child{
+  border-left: 1px solid black;
+  &:first-child {
     border-left: none;
   }
   border-bottom: 3px solid black;
 `;
-const Td = styled.td`
+const BodyRow = styled.tr`
+  &:hover {
+    background-color: #E6F7FF;
+  }
+`;
+const Tb = styled.td`
   border-left: 1px solid #D9D9D9;
   &:first-child{
     border-left: none;
+  }
+`;
+const Tf = styled.td`
+  border-top: 3px solid black;
+  &:nth-last-child(2) {
+    border-left: 1px solid #D9D9D9;
   }
 `;
 
