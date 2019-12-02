@@ -22,21 +22,23 @@ class CustomInput extends Component {
   }
 
   inputFunc(e) {
-    const { cellName } = this.props;
+    const { inputType, actionInput, actionIndex } = this.props;
 
-    if (cellName === 'exw' || cellName === 'option') {
+    if (inputType === 'number') {
       this.setState({ inputData: e.target.value.replace(/[^\d]/g, '') });
     } else {
       this.setState({ inputData: e.target.value });
     }
+
+    actionInput(e.target.value, actionIndex);
   }
 
   render() {
     const { inputData } = this.state;
-    const { cellName, width } = this.props;
+    const { inputType, width } = this.props;
     return (
       <Container>
-        {(cellName === 'quantity')
+        {(inputType === 'number*')
           ? (
             <InputNumber
               style={styling(width)}
@@ -58,8 +60,10 @@ class CustomInput extends Component {
 }
 
 CustomInput.propTypes = {
-  cellName: PropTypes.string.isRequired,
+  inputType: PropTypes.string.isRequired,
   width: PropTypes.number.isRequired,
+  actionInput: PropTypes.func.isRequired,
+  actionIndex: PropTypes.number.isRequired,
 };
 
 const Container = styled.div`

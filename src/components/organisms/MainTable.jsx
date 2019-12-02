@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // Utils
 import moment from 'moment';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 // Components
@@ -52,6 +53,7 @@ class MainTable extends Component {
   render() {
     // eslint-disable-next-line no-unused-vars
     const { name, simData } = this.state;
+    const { actionInput } = this.props;
     return (
       <table>
         <thead>
@@ -66,7 +68,7 @@ class MainTable extends Component {
             )) }
             <th>
               {/* eslint-disable-next-line react/button-has-type */}
-              <button onClick={this.clickBtn}> Click</button>
+              <button onClick={this.clickBtn}>Click</button>
             </th>
           </tr>
         </thead>
@@ -84,7 +86,8 @@ class MainTable extends Component {
                       <Container>
                         {el.checkbox && <CheckBox selected={item.selected} />}
                         {el.number && index + 1}
-                        {el.input && <CustomInput width={el.width} cellName={el.key} />}
+                        {/* eslint-disable-next-line max-len */}
+                        {el.input && <CustomInput width={el.width} inputType={el.input} actionIndex={index} actionInput={actionInput} />}
                         {el.text && <CustomText />}
                         {el.select && <CustomSelect cellName={el.key} />}
                         {el.delete
@@ -120,6 +123,12 @@ class MainTable extends Component {
     );
   }
 }
+
+MainTable.propTypes = {
+  actionInput: PropTypes.func.isRequired,
+  // actionIndex: PropTypes.number.isRequired,
+};
+
 
 const Container = styled.div`
   display: flex;

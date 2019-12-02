@@ -11,32 +11,32 @@
   {
     "key": "part",
     "label": "Partname",
-    "input": true,
+    "input": "string",
     "width": 100
   },
   {
     "key": "option",
     "label": "Option",
-    "input": true,
+    "input": "number",
     "width": 60
   },
   {
     "key": "posName",
     "label": "Name of position",
-    "input": true,
+    "input": "string",
     "width": 300
   },
   {
     "key": "exw",
     "label": "ExW Price",
-    "input": true,
+    "input": "number",
     "width": 90,
     "select": true
   },
   {
     "key": "quantity",
     "label": "Quantity",
-    "input": true,
+    "input": "number*",
     "width": 60,
     "select": true
   },
