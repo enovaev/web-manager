@@ -1,11 +1,11 @@
 import React from 'react';
-import TableContainer from './containers/TableContainer';
+import TableFormation from './components/templates/TableFormation';
 import './App.css';
 
 function App() {
   return (
     <div>
-      <TableContainer />
+      <TableFormation />
     </div>
   );
 }

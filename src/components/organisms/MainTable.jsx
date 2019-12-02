@@ -50,13 +50,14 @@ class MainTable extends Component {
   }
 
   render() {
+    // eslint-disable-next-line no-unused-vars
     const { name, simData } = this.state;
     return (
       <table>
         <thead>
           <tr>
             { HeaderConfig.map((item) => (
-              <Th key={item.key} className={name}>
+              <Th key={item.key}>
                 <Container>
                   {item.label && <Text>{item.label}</Text>}
                   {item.checkbox && <CheckBox header />}
@@ -107,7 +108,7 @@ class MainTable extends Component {
                     <div>
                       <Text>Сумма:</Text>
                       <CustomText />
-                      <CustomSelect />
+                      <CustomSelect cellName={el.key} />
                     </div>
                   )}
                 </Container>

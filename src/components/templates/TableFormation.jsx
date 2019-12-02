@@ -1,12 +1,13 @@
 import React from 'react';
-// import FooterTable from '../organisms/FooterTable';
 import styled from 'styled-components';
-import MainTable from '../organisms/MainTable';
+import MainTableContainer from '../../containers/MainTableContainer';
+import EditTableContainer from '../../containers/EditTableContainer';
 
 function TableFormation() {
   return (
     <Container>
-      <MainTable />
+      <MainTableContainer />
+      <EditTableContainer />
     </Container>
   );
 }

@@ -1,0 +1,26 @@
+[
+  {
+    "key": "delivery",
+    "label": "Расходы на доставку"
+  },
+  {
+    "key": "cusHouse",
+    "label": "Таможенные расходы"
+  },
+  {
+    "key": "nds",
+    "label": "НДС"
+  },
+  {
+    "key": "convert",
+    "label": "Конвертация"
+  },
+  {
+    "key": "another",
+    "label": "Другие расходы"
+  },
+  {
+    "key": "discount",
+    "label": "Дисконт поставщика"
+  }
+]
