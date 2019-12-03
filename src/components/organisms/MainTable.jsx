@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 // Utils
-import moment from 'moment';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
@@ -34,26 +33,34 @@ class MainTable extends Component {
       ],
     };
 
-    this.clickBtn = this.clickBtn.bind(this);
-    this.deleteEntity = this.deleteEntity.bind(this);
+    // this.deleteEntity = this.deleteEntity.bind(this);
   }
 
-  clickBtn() {
-    const { simData } = this.state;
-    const objdata = [{ key: moment().format('x'), selected: false }];
-    this.setState({ simData: simData.concat(objdata) });
-  }
+  // clickBtn() {
+  //   const { simData } = this.state;
+  //   const objdata = [{ key: moment().format('x'), selected: false }];
+  //   this.setState({ simData: simData.concat(objdata) });
+  // }
 
-  deleteEntity(e) {
-    const { simData } = this.state;
-    const newData = simData.filter((el, i) => (i !== +e.target.value) && el);
-    this.setState({ simData: newData });
-  }
+  // deleteEntity(e) {
+  //   const { simData } = this.state;
+  //   const newData = simData.filter((el, i) => (i !== +e.target.value) && el);
+  //   this.setState({ simData: newData });
+  // }
 
   render() {
     // eslint-disable-next-line no-unused-vars
     const { name, simData } = this.state;
-    const { actionInput } = this.props;
+    // eslint-disable-next-line react/prop-types
+    const {
+      actionInput,
+      // eslint-disable-next-line react/prop-types
+      addEntity,
+      // eslint-disable-next-line react/prop-types
+      entityData,
+      // eslint-disable-next-line react/prop-types
+      deleteEntity,
+    } = this.props;
     return (
       <table>
         <thead>
@@ -68,13 +75,14 @@ class MainTable extends Component {
             )) }
             <th>
               {/* eslint-disable-next-line react/button-has-type */}
-              <button onClick={this.clickBtn}>Click</button>
+              <button onClick={addEntity}>Click</button>
             </th>
           </tr>
         </thead>
         <tbody>
           <TransitionGroup component={null}>
-            { simData.map((item, index) => (
+            {/* eslint-disable-next-line react/prop-types */}
+            { entityData.map((item, index) => (
               <CSSTransition
                 key={item.key}
                 timeout={250}
@@ -92,7 +100,7 @@ class MainTable extends Component {
                         {el.select && <CustomSelect cellName={el.key} />}
                         {el.delete
                         // eslint-disable-next-line react/button-has-type
-                          && <button value={index} onClick={this.deleteEntity}>Delete</button>}
+                          && <button value={index} onClick={deleteEntity}>Delete</button>}
                       </Container>
                     </Tb>
                   )) }

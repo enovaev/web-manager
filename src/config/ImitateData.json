@@ -1,35 +1,23 @@
-[
-  {
-    "key": 12,
-    "part": {
-      "input": ""
-    },
-    "option": {
-      "input": ""
-    },
-    "posName": {
+{
+  "key": 12,
+  "part": {
     "input": ""
-    },
-    "exw": {
-      "input": "",
-      "select": ""
-    },
-    "quantity": {
-      "input": "",
-      "select": ""
-    },
-    "priceOur": 1000,
-    "priceCust": 1500,
-    "selected": true
   },
-  {
-    "key": 16,
-    "Part": {
-      "input": "fhg"
-       },
-    "id": 34,
-    "price": 1000,
-    "sale": "3%",
-    "selected": false
-  }
-]
+  "option": {
+    "input": ""
+  },
+  "posName": {
+  "input": ""
+  },
+  "exw": {
+    "input": "",
+    "select": ""
+  },
+  "quantity": {
+    "input": "",
+    "select": ""
+  },
+  "priceOur": 1000,
+  "priceCust": 1500,
+  "selected": true
+}
