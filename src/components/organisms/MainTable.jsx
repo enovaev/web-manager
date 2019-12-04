@@ -85,7 +85,7 @@ class MainTable extends Component {
             { entityData.map((item, index) => (
               <CSSTransition
                 key={item.key}
-                timeout={250}
+                timeout={300}
                 classNames="item"
               >
                 <BodyRow>

@@ -1,4 +1,3 @@
-import moment from 'moment';
 
 const initialState = [
   {
@@ -18,10 +17,10 @@ const initialState = [
 export function MainTableReducer(state = initialState, action) {
   switch (action.type) {
     case 'ADD_ENTITY':
-      return [...state, { ...state[0], key: moment().format('x') }];
+      return [...state, action.payload];
 
     case 'DELETE_ENTITY':
-      return [...state.filter((el, i) => (i !== +action.payload) && el)];
+      return action.payload;
     default:
       return state;
   }
