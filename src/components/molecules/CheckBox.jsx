@@ -30,11 +30,10 @@ class CheckBox extends Component {
   render() {
     const { checked } = this.state;
     // eslint-disable-next-line
-    const { header, value, rowIndex, action } = this.props;
+    const { header, value, action } = this.props;
     return (
       <Container>
         <Checkbox
-          index={rowIndex}
           checked={header ? checked : value}
           onChange={action}
         />

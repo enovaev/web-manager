@@ -12,6 +12,7 @@ import CustomSelect from '../molecules/CustomSelect';
 import HeaderConfig from '../../config/HeaderMainTable.json';
 // Styles
 import '../style/ani.css';
+/* eslint-disable */
 
 class MainTable extends Component {
   constructor(props) {
@@ -99,7 +100,7 @@ class MainTable extends Component {
                         <CheckBox
                           value={item.selected}
                           rowIndex={index}
-                          action={actionCheckbox}
+                          action={() => actionCheckbox(index)}
                         />
                         )}
                         {el.number && index + 1}

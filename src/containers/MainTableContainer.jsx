@@ -4,10 +4,10 @@ import { connect } from 'react-redux';
 import MainTable from '../components/organisms/MainTable';
 // eslint-disable-next-line import/named
 import { addEntity, deleteEntity, actionCheckbox } from '../state/actions/MainTableAction';
-
-const actCheck = (e) => {
-  console.log(e);
-};
+/* eslint-disable */
+// const actCheck = (e) => {
+//   console.log(e);
+// };
 class MainTableContainer extends Component {
   constructor(props) {
     super(props);
@@ -39,11 +39,11 @@ class MainTableContainer extends Component {
     } = this.props;
     return (
       <MainTable
+        actionCheckbox={checkbox}
         entityData={entityData}
         actionInput={this.inputAct}
         addEntity={addEntityAction}
         deleteEntity={deleteEntityAction}
-        actionCheckbox={actCheck}
       />
     );
   }
