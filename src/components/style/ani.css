@@ -1,19 +1,20 @@
 .item-enter {
     opacity: 0;
-    transform: translateY(-80%);
+    transform: translate3d(0, -20px, 0);
+    will-change: transform;
 }
 .item-enter-active {
     opacity: 1;
-    transform: translateY(0);
-    transition: all 300ms ease-in-out;
+    transform: translate3d(0, 0, 0);
+    transition: transform 200ms ease-in-out, opacity 200ms ease-in-out;
 }
 .item-exit {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
 }
 .item-exit-active {
     opacity: 0;
-    transition: all 300ms ease-in-out;
-    transform: translateY(-80%);
+    transition: transform 200ms ease-in-out, opacity 200ms ease-in-out;
+    transform: translate3d(0, -20px, 0);
     height: 0px;
 }

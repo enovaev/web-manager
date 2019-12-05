@@ -4,7 +4,6 @@ import { Checkbox } from 'antd';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-
 class CheckBox extends Component {
   constructor(props) {
     super(props);
@@ -12,28 +11,32 @@ class CheckBox extends Component {
       checked: false,
     };
 
-    this.handleChange = this.handleChange.bind(this);
+    // this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(e) {
-    const { checked } = this.state;
-    const { header } = this.props;
-    this.setState({ checked: !checked });
-    if (header) {
-      console.log(header);
-    } else {
-      console.log(e.target.value);
-    }
-  }
+  // handleChange() {
+  //   const { checked } = this.state;
+  //   // eslint-disable-next-line no-unused-vars,react/prop-types
+  //   const { header, actionCheckbox, actionIndex } = this.props;
+  //   this.setState({ checked: !checked });
+  //   if (header) {
+  //     console.log(header);
+  //   } else {
+  //     actionCheckbox(actionIndex);
+  //   }
+  // }
+  // eslint-disable-next-line class-methods-use-this
 
   render() {
     const { checked } = this.state;
-    const { header, selected } = this.props;
+    // eslint-disable-next-line
+    const { header, value, rowIndex, action } = this.props;
     return (
       <Container>
         <Checkbox
-          checked={header ? checked : selected}
-          onChange={this.handleChange}
+          index={rowIndex}
+          checked={header ? checked : value}
+          onChange={action}
         />
       </Container>
     );
@@ -42,12 +45,14 @@ class CheckBox extends Component {
 
 CheckBox.propTypes = {
   header: PropTypes.bool,
-  selected: PropTypes.bool,
+  value: PropTypes.bool,
+  // actionCheckbox: PropTypes.func.isRequired,
+  // actionIndex: PropTypes.number.isRequired,
 };
 
 CheckBox.defaultProps = {
   header: false,
-  selected: false,
+  value: false,
 };
 
 const Container = styled.div`

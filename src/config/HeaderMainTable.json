@@ -36,7 +36,7 @@
   {
     "key": "quantity",
     "label": "Quantity",
-    "input": "number*",
+    "input": "number",
     "width": 60,
     "select": true
   },

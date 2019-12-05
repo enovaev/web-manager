@@ -60,6 +60,8 @@ class MainTable extends Component {
       entityData,
       // eslint-disable-next-line react/prop-types
       deleteEntity,
+      // eslint-disable-next-line react/prop-types
+      actionCheckbox,
     } = this.props;
     return (
       <table>
@@ -69,7 +71,7 @@ class MainTable extends Component {
               <Th key={item.key}>
                 <Container>
                   {item.label && <Text>{item.label}</Text>}
-                  {item.checkbox && <CheckBox header />}
+                  {/* {item.checkbox && <CheckBox header />} */}
                 </Container>
               </Th>
             )) }
@@ -85,14 +87,21 @@ class MainTable extends Component {
             { entityData.map((item, index) => (
               <CSSTransition
                 key={item.key}
-                timeout={300}
+                timeout={200}
                 classNames="item"
               >
                 <BodyRow>
                   { HeaderConfig.map((el) => (
                     <Tb key={el.key}>
                       <Container>
-                        {el.checkbox && <CheckBox selected={item.selected} />}
+                        {el.checkbox
+                        && (
+                        <CheckBox
+                          value={item.selected}
+                          rowIndex={index}
+                          action={actionCheckbox}
+                        />
+                        )}
                         {el.number && index + 1}
                         {/* eslint-disable-next-line max-len */}
                         {el.input && <CustomInput width={el.width} inputType={el.input} actionIndex={index} actionInput={actionInput} />}
@@ -134,7 +143,8 @@ class MainTable extends Component {
 
 MainTable.propTypes = {
   actionInput: PropTypes.func.isRequired,
-  // actionIndex: PropTypes.number.isRequired,
+  addEntity: PropTypes.number.isRequired,
+  // actionCheckbox: PropTypes.func.isRequired,
 };
 
 
