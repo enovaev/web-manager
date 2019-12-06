@@ -11,13 +11,19 @@
   },
   "exw": {
     "input": "",
-    "select": ""
+    "select": "rub"
   },
   "quantity": {
     "input": "",
-    "select": ""
+    "select": "piece"
   },
-  "priceOur": 1000,
-  "priceCust": 1500,
+  "priceOur": {
+    "input": "",
+    "select": "rub"
+  },
+  "priceCust": {
+    "input": "",
+    "select": "rub"
+  },
   "selected": false
 }

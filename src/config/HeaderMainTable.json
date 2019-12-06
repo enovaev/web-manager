@@ -31,28 +31,28 @@
     "label": "ExW Price",
     "input": "number",
     "width": 90,
-    "select": true
+    "select": "curr"
   },
   {
     "key": "quantity",
     "label": "Quantity",
     "input": "number",
     "width": 60,
-    "select": true
+    "select": "quan"
   },
   {
     "key": "priceOur",
     "label": "Our price",
     "footer": true,
     "text": true,
-    "select": true
+    "select": "curr"
   },
   {
     "key": "priceCust",
     "label": "Price for Customer",
     "text": true,
     "footer": true,
-    "select": true
+    "select": "curr"
   },
   {
     "key": "delete",

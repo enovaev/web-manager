@@ -54,6 +54,7 @@ class MainTable extends Component {
     // eslint-disable-next-line react/prop-types
     const {
       actionInput,
+      actionSelect,
       addEntity,
       entityData,
       deleteEntity,
@@ -107,7 +108,14 @@ class MainTable extends Component {
                         {/* eslint-disable-next-line max-len */}
                         {el.input && <CustomInput width={el.width} inputType={el.input} actionIndex={index} actionInput={actionInput} />}
                         {el.text && <CustomText />}
-                        {el.select && <CustomSelect cellName={el.key} />}
+                        {el.select
+                        && (
+                          <CustomSelect
+                            elementType={el.select}
+                            value={item[el.key].select}
+                            action={(value) => actionSelect(value, index, el.key)}
+                          />
+                        )}
                         {el.delete
                         // eslint-disable-next-line react/button-has-type
                           && <button value={index} onClick={deleteEntity}>Delete</button>}
@@ -129,7 +137,7 @@ class MainTable extends Component {
                     <div>
                       <Text>Сумма:</Text>
                       <CustomText />
-                      <CustomSelect cellName={el.key} />
+                      {/* <CustomSelect cellName={el.key} /> */}
                     </div>
                   )}
                 </Container>
@@ -143,8 +151,9 @@ class MainTable extends Component {
 }
 
 MainTable.propTypes = {
-  entityData: PropTypes.arrayOf.isRequired,
+  entityData: PropTypes.arrayOf(PropTypes.any).isRequired,
   actionInput: PropTypes.func,
+  actionSelect: PropTypes.func,
   addEntity: PropTypes.func,
   deleteEntity: PropTypes.func,
   actionCheckbox: PropTypes.func,
@@ -152,6 +161,7 @@ MainTable.propTypes = {
 MainTable.defaultProps = {
   actionInput: () => {},
   addEntity: () => {},
+  actionSelect: () => {},
   actionCheckbox: () => {},
   deleteEntity: () => {},
 };

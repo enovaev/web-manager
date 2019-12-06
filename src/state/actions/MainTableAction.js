@@ -1,4 +1,10 @@
-import { ADD_ENTITY, DELETE_ENTITY, ACTION_CHECKBOX } from '../constants';
+// eslint-disable-next-line import/named
+import {
+  ADD_ENTITY,
+  DELETE_ENTITY,
+  ACTION_CHECKBOX,
+  ACTION_SELECT,
+} from '../constants';
 import empty from '../../config/ImitateData.json';
 
 export const addEntity = () => (dispatch) => {
@@ -29,4 +35,13 @@ export const actionCheckbox = (value) => (dispatch, getState) => {
       payload: getState().entityData.map((el) => ({ ...el, selected: value })),
     });
   }
+};
+
+export const actionSelect = (value, index, name) => (dispatch, getState) => {
+  dispatch({
+    type: ACTION_SELECT,
+    payload: getState().entityData.map((el, i) => ((index === i)
+      ? { ...el, [name]: { ...el[name], select: value } }
+      : el)),
+  });
 };

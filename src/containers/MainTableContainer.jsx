@@ -5,7 +5,12 @@ import PropTypes from 'prop-types';
 // Components
 import MainTable from '../components/organisms/MainTable';
 // Store
-import { addEntity, deleteEntity, actionCheckbox } from '../state/actions/MainTableAction';
+import {
+  addEntity,
+  deleteEntity,
+  actionCheckbox,
+  actionSelect,
+} from '../state/actions/MainTableAction';
 
 class MainTableContainer extends Component {
   constructor(props) {
@@ -30,12 +35,14 @@ class MainTableContainer extends Component {
       addAction,
       deleteAction,
       checkbox,
+      select,
     } = this.props;
     return (
       <MainTable
         actionCheckbox={checkbox}
         entityData={entityData}
         actionInput={this.inputAct}
+        actionSelect={select}
         addEntity={addAction}
         deleteEntity={deleteAction}
       />
@@ -44,24 +51,27 @@ class MainTableContainer extends Component {
 }
 
 MainTableContainer.propTypes = {
-  entityData: PropTypes.arrayOf.isRequired,
+  entityData: PropTypes.arrayOf(PropTypes.any).isRequired,
   addAction: PropTypes.func,
   deleteAction: PropTypes.func,
   checkbox: PropTypes.func,
+  select: PropTypes.func,
 };
 MainTableContainer.defaultProps = {
   addAction: () => {},
   deleteAction: () => {},
   checkbox: () => {},
+  select: () => {},
 };
 
 const mapStateToProps = (store) => ({
   entityData: store.entityData,
 });
 const mapDispatchToProps = (dispatch) => ({
-  addEntity: () => dispatch(addEntity()),
-  deleteEntity: (e) => dispatch(deleteEntity(e)),
+  addAction: () => dispatch(addEntity()),
+  deleteAction: (e) => dispatch(deleteEntity(e)),
   checkbox: (index) => dispatch(actionCheckbox(index)),
+  select: (value, index, name) => dispatch(actionSelect(value, index, name)),
 });
 
 export default connect(
