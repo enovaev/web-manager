@@ -2,3 +2,4 @@ export const ADD_ENTITY = 'ADD_ENTITY';
 export const DELETE_ENTITY = 'DELETE_ENTITY';
 export const ACTION_CHECKBOX = 'ACTION_CHECKBOX';
 export const ACTION_SELECT = 'ACTION_SELECT';
+export const ACTION_INPUT = 'ACTION_INPUT';

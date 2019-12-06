@@ -10,23 +10,16 @@ import {
   deleteEntity,
   actionCheckbox,
   actionSelect,
+  actionInput,
 } from '../state/actions/MainTableAction';
 
 class MainTableContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      // eslint-disable-next-line react/no-unused-state
       naming: '',
     };
-
-    this.inputAct = this.inputAct.bind(this);
-  }
-
-  // eslint-disable-next-line no-unused-vars
-  inputAct(e, i) {
-    // eslint-disable-next-line no-unused-vars
-    const { naming } = this.state;
-    // this.setState({ naming: e });
   }
 
   render() {
@@ -36,12 +29,13 @@ class MainTableContainer extends Component {
       deleteAction,
       checkbox,
       select,
+      input,
     } = this.props;
     return (
       <MainTable
         actionCheckbox={checkbox}
         entityData={entityData}
-        actionInput={this.inputAct}
+        actionInput={input}
         actionSelect={select}
         addEntity={addAction}
         deleteEntity={deleteAction}
@@ -56,12 +50,14 @@ MainTableContainer.propTypes = {
   deleteAction: PropTypes.func,
   checkbox: PropTypes.func,
   select: PropTypes.func,
+  input: PropTypes.func,
 };
 MainTableContainer.defaultProps = {
   addAction: () => {},
   deleteAction: () => {},
   checkbox: () => {},
   select: () => {},
+  input: () => {},
 };
 
 const mapStateToProps = (store) => ({
@@ -72,6 +68,8 @@ const mapDispatchToProps = (dispatch) => ({
   deleteAction: (e) => dispatch(deleteEntity(e)),
   checkbox: (index) => dispatch(actionCheckbox(index)),
   select: (value, index, name) => dispatch(actionSelect(value, index, name)),
+  input: (value, index, name) => dispatch(actionInput(value, index, name)),
+
 });
 
 export default connect(

@@ -3,6 +3,7 @@ import {
   DELETE_ENTITY,
   ACTION_CHECKBOX,
   ACTION_SELECT,
+  ACTION_INPUT,
 } from '../constants';
 import empty from '../../config/ImitateData.json';
 
@@ -21,6 +22,9 @@ export function MainTableReducer(state = initialState, action) {
       return action.payload;
 
     case ACTION_SELECT:
+      return action.payload;
+
+    case ACTION_INPUT:
       return action.payload;
 
     default:

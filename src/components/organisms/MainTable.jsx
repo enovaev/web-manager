@@ -105,8 +105,15 @@ class MainTable extends Component {
                         />
                         )}
                         {el.number && index + 1}
-                        {/* eslint-disable-next-line max-len */}
-                        {el.input && <CustomInput width={el.width} inputType={el.input} actionIndex={index} actionInput={actionInput} />}
+                        {el.input
+                        && (
+                        <CustomInput
+                          width={el.width}
+                          elementType={el.input}
+                          value={item[el.key].input}
+                          action={(value) => actionInput(value, index, el.key)}
+                        />
+                        )}
                         {el.text && <CustomText />}
                         {el.select
                         && (

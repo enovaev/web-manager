@@ -4,6 +4,7 @@ import {
   DELETE_ENTITY,
   ACTION_CHECKBOX,
   ACTION_SELECT,
+  ACTION_INPUT,
 } from '../constants';
 import empty from '../../config/ImitateData.json';
 
@@ -42,6 +43,15 @@ export const actionSelect = (value, index, name) => (dispatch, getState) => {
     type: ACTION_SELECT,
     payload: getState().entityData.map((el, i) => ((index === i)
       ? { ...el, [name]: { ...el[name], select: value } }
+      : el)),
+  });
+};
+
+export const actionInput = (value, index, name) => (dispatch, getState) => {
+  dispatch({
+    type: ACTION_INPUT,
+    payload: getState().entityData.map((el, i) => ((index === i)
+      ? { ...el, [name]: { ...el[name], input: value } }
       : el)),
   });
 };
