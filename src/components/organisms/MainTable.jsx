@@ -12,7 +12,6 @@ import CustomSelect from '../molecules/CustomSelect';
 import HeaderConfig from '../../config/HeaderMainTable.json';
 // Styles
 import '../style/ani.css';
-/* eslint-disable */
 
 class MainTable extends Component {
   constructor(props) {
@@ -55,13 +54,9 @@ class MainTable extends Component {
     // eslint-disable-next-line react/prop-types
     const {
       actionInput,
-      // eslint-disable-next-line react/prop-types
       addEntity,
-      // eslint-disable-next-line react/prop-types
       entityData,
-      // eslint-disable-next-line react/prop-types
       deleteEntity,
-      // eslint-disable-next-line react/prop-types
       actionCheckbox,
     } = this.props;
     return (
@@ -72,7 +67,13 @@ class MainTable extends Component {
               <Th key={item.key}>
                 <Container>
                   {item.label && <Text>{item.label}</Text>}
-                  {/* {item.checkbox && <CheckBox header />} */}
+                  {item.checkbox
+                  && (
+                    <CheckBox
+                      header
+                      action={(checked) => actionCheckbox(checked)}
+                    />
+                  )}
                 </Container>
               </Th>
             )) }
@@ -99,7 +100,6 @@ class MainTable extends Component {
                         && (
                         <CheckBox
                           value={item.selected}
-                          rowIndex={index}
                           action={() => actionCheckbox(index)}
                         />
                         )}
@@ -143,11 +143,18 @@ class MainTable extends Component {
 }
 
 MainTable.propTypes = {
-  actionInput: PropTypes.func.isRequired,
-  addEntity: PropTypes.number.isRequired,
-  // actionCheckbox: PropTypes.func.isRequired,
+  entityData: PropTypes.arrayOf.isRequired,
+  actionInput: PropTypes.func,
+  addEntity: PropTypes.func,
+  deleteEntity: PropTypes.func,
+  actionCheckbox: PropTypes.func,
 };
-
+MainTable.defaultProps = {
+  actionInput: () => {},
+  addEntity: () => {},
+  actionCheckbox: () => {},
+  deleteEntity: () => {},
+};
 
 const Container = styled.div`
   display: flex;

@@ -1,9 +1,10 @@
 import { ADD_ENTITY, DELETE_ENTITY, ACTION_CHECKBOX } from '../constants';
+import empty from '../../config/ImitateData.json';
 
 export const addEntity = () => (dispatch) => {
   dispatch({
     type: ADD_ENTITY,
-    payload: { key: Math.random(), selected: true },
+    payload: { ...empty, key: Math.random() },
   });
 };
 
@@ -14,17 +15,18 @@ export const deleteEntity = (index) => (dispatch, getState) => {
   });
 };
 
-export const actionCheckbox = (index) => (dispatch, getState) => {
-  console.log(index);
-  dispatch({
-    type: ACTION_CHECKBOX,
-    payload: getState().entityData.map((el, i) => {
-      if (i === index) {
-        // eslint-disable-next-line no-param-reassign
-        el.selected = !el.selected;
-        return el;
-      }
-      return el;
-    }),
-  });
+export const actionCheckbox = (value) => (dispatch, getState) => {
+  if (typeof (value) === 'number') {
+    dispatch({
+      type: ACTION_CHECKBOX,
+      payload: getState().entityData.map((el, i) => ((i === value)
+        ? { ...el, selected: !el.selected }
+        : el)),
+    });
+  } else {
+    dispatch({
+      type: ACTION_CHECKBOX,
+      payload: getState().entityData.map((el) => ({ ...el, selected: value })),
+    });
+  }
 };

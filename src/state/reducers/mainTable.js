@@ -1,18 +1,7 @@
 import { ADD_ENTITY, DELETE_ENTITY, ACTION_CHECKBOX } from '../constants';
+import empty from '../../config/ImitateData.json';
 
-const initialState = [
-  {
-    key: 12,
-    part: '',
-    option: 1500,
-    posName: 'wgregw',
-    exw: 20.5,
-    quantity: 1,
-    priceOur: 1000,
-    priceCust: 1500,
-    selected: true,
-  },
-];
+const initialState = [empty];
 
 // eslint-disable-next-line import/prefer-default-export
 export function MainTableReducer(state = initialState, action) {

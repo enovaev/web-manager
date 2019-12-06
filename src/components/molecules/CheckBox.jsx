@@ -11,31 +11,29 @@ class CheckBox extends Component {
       checked: false,
     };
 
-    // this.handleChange = this.handleChange.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  // handleChange() {
-  //   const { checked } = this.state;
-  //   // eslint-disable-next-line no-unused-vars,react/prop-types
-  //   const { header, actionCheckbox, actionIndex } = this.props;
-  //   this.setState({ checked: !checked });
-  //   if (header) {
-  //     console.log(header);
-  //   } else {
-  //     actionCheckbox(actionIndex);
-  //   }
-  // }
-  // eslint-disable-next-line class-methods-use-this
+  handleChange() {
+    const { checked } = this.state;
+    const { header, action } = this.props;
+
+    if (header) {
+      action(!checked);
+      this.setState({ checked: !checked });
+    } else {
+      action();
+    }
+  }
 
   render() {
     const { checked } = this.state;
-    // eslint-disable-next-line
-    const { header, value, action } = this.props;
+    const { header, value } = this.props;
     return (
       <Container>
         <Checkbox
           checked={header ? checked : value}
-          onChange={action}
+          onChange={this.handleChange}
         />
       </Container>
     );
@@ -45,8 +43,7 @@ class CheckBox extends Component {
 CheckBox.propTypes = {
   header: PropTypes.bool,
   value: PropTypes.bool,
-  // actionCheckbox: PropTypes.func.isRequired,
-  // actionIndex: PropTypes.number.isRequired,
+  action: PropTypes.func.isRequired,
 };
 
 CheckBox.defaultProps = {
