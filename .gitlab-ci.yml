@@ -12,6 +12,8 @@ production:
   type: deploy
   stage: production
   image: node:latest
+  before_script:
+    -npm install
   script:
     - dpl --provider=heroku --app=$HEROKU_APP_PRODUCTION --api-key=$HEROKU_API_KEY
   only:
