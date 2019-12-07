@@ -1,6 +1,21 @@
 image: node:10.15.3-alpine
 
-stages: [production]
+stages:
+  - build
+  - production
+
+build:
+  stage: build
+  artifacts:
+    paths:
+      - dist/
+  script:
+    - npm install
+    - npm run build
+  tags:
+    - docker
+  only:
+    - master
 
 production:
   stage: production
