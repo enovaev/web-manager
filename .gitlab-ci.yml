@@ -8,7 +8,7 @@ build:
   stage: build
   artifacts:
     paths:
-      - dist/
+      - build/
   script:
     - npm install
     - npm run build
@@ -24,7 +24,7 @@ production:
     - apt-get update -qy
     - apt-get install -y ruby-dev
     - gem install dpl
-    - cd dist
+    - cd build
     - dpl --provider=heroku --app=$HEROKU_APP_PRODUCTION --api-key=$HEROKU_API_KEY
   only:
     - master
