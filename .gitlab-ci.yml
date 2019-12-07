@@ -1,18 +1,22 @@
-image: node:latest
+image: node:10.15.3-alpine
 
-before_script:
-  - apt-get update -qy
-  - apt-get install -y ruby-dev
-  - gem install dpl
+cache:
+  key: "alpine"
+  path:
+    - node_madules/
 
 stages:
-  - production
+  -production
 
 production:
+  type: deploy
   stage: production
-  image: node:latest
-  before_script: [npm install]
+  image: ruby:latest
   script:
+    - apt-get update -qy
+    - apt-get install -y ruby-dev
+    - gem install dpl
+    - cd dist
     - dpl --provider=heroku --app=$HEROKU_APP_PRODUCTION --api-key=$HEROKU_API_KEY
   only:
     - master
