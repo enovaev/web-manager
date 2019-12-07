@@ -17,6 +17,9 @@ CustomText.propTypes = {
   value: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
-  ]).isRequired,
+  ]),
+};
+CustomText.defaultProps = {
+  value: 'not data',
 };
 export default CustomText;
