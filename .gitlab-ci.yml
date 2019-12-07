@@ -6,12 +6,8 @@ stages:
 
 build:
   stage: build
-  artifacts:
-    paths:
-      - build/
   script:
     - npm install
-    - npm run build
   tags:
     - docker
   only:
@@ -24,7 +20,6 @@ production:
     - apt-get update -qy
     - apt-get install -y ruby-dev
     - gem install dpl
-    - cd build
     - dpl --provider=heroku --app=$HEROKU_APP_PRODUCTION --api-key=$HEROKU_API_KEY
   only:
     - master
