@@ -1,10 +1,5 @@
 image: node:10.15.3-alpine
 
-cache:
-  key: "alpine"
-  path:
-    - node_madules/
-
 stages:
   -production
 
