@@ -1,24 +1,22 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Input } from 'antd';
+import PropTypes from 'prop-types';
 
-class CustomText extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      textData: '512222',
-    };
-  }
 
-  render() {
-    const { textData } = this.state;
-    return (
-      <Input
-        value={textData}
-        onChange={null}
-        style={{ borderColor: Number(textData) ? '#44C144' : '#F66871', width: 90 }}
-      />
-    );
-  }
+function CustomText(props) {
+  const { value } = props;
+  return (
+    <Input
+      value={value}
+      onChange={null}
+      style={{ borderColor: Number(value) ? '#44C144' : '#F66871', width: 90 }}
+    />
+  );
 }
-
+CustomText.propTypes = {
+  value: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+  ]).isRequired,
+};
 export default CustomText;

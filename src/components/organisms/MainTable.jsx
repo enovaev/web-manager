@@ -11,7 +11,7 @@ import CustomSelect from '../molecules/CustomSelect';
 // Configs
 import HeaderConfig from '../../config/HeaderMainTable.json';
 // Styles
-import '../style/ani.css';
+import '../style/animation.css';
 
 class MainTable extends Component {
   constructor(props) {
@@ -86,7 +86,6 @@ class MainTable extends Component {
         </thead>
         <tbody>
           <TransitionGroup component={null}>
-            {/* eslint-disable-next-line react/prop-types */}
             { entityData.map((item, index) => (
               <CSSTransition
                 key={item.key}
@@ -114,7 +113,7 @@ class MainTable extends Component {
                           action={(value) => actionInput(value, index, el.key)}
                         />
                         )}
-                        {el.text && <CustomText />}
+                        {el.text && <CustomText value={item[el.key].text} />}
                         {el.select
                         && (
                           <CustomSelect

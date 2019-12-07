@@ -18,11 +18,11 @@
     "select": "piece"
   },
   "priceOur": {
-    "input": "",
+    "text": "not data",
     "select": "rub"
   },
   "priceCust": {
-    "input": "",
+    "text": 20500,
     "select": "rub"
   },
   "selected": false

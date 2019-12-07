@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/named
 import {
   ADD_ENTITY,
   DELETE_ENTITY,
