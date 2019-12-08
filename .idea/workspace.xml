@@ -2,50 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a3641c35-2697-48af-920b-8f4de84ded3a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.huskyrc.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.lintstagedrc.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/molecules/CheckBox.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/molecules/CustomInput.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/molecules/CustomSelect.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/molecules/CustomText.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/setupTests.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.eslintignore" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.eslintrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitlab-ci.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/development.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/architect/Architect.xmind" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/env.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/jest/cssTransform.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/jest/fileTransform.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/modules.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/paths.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/pnpTs.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/webpack.config.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/webpackDevServer.config.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/build.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/start.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/test.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/molecules/CheckBox.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/molecules/CustomInput.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/molecules/CustomSelect.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/molecules/CustomText.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/organisms/EditTable.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/organisms/EditTable.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/organisms/MainTable.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/organisms/MainTable.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/templates/TableFormation.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/templates/TableFormation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/EditTableContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/EditTableContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/MainTableContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/MainTableContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/serviceWorker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/serviceWorker.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -131,6 +90,8 @@
       <workItem from="1575818616051" duration="1534000" />
       <workItem from="1575820159231" duration="3942000" />
       <workItem from="1575824853642" duration="1144000" />
+      <workItem from="1575827223264" duration="2000" />
+      <workItem from="1575827374512" duration="5000" />
     </task>
     <task id="LOCAL-00001" summary="copy project test">
       <created>1575818725686</created>
