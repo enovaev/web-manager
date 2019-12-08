@@ -17,7 +17,6 @@ class MainTableContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // eslint-disable-next-line react/no-unused-state
       naming: '',
     };
   }

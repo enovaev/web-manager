@@ -1,18 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a9aa4381-be00-42ed-80e5-b3c79414aba3" name="Default Changelist" comment="create table structure">
-      <change afterPath="$PROJECT_DIR$/src/components/molecules/CheckBox.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/config/ImitateData.json" afterDir="false" />
+    <list default="true" id="a3641c35-2697-48af-920b-8f4de84ded3a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.huskyrc.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.lintstagedrc.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/molecules/CheckBox.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/molecules/CustomInput.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/molecules/CustomSelect.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/molecules/CustomText.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/setupTests.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.eslintignore" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.eslintrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitlab-ci.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/development.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/architect/Architect.xmind" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/env.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/jest/cssTransform.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/jest/fileTransform.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/modules.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/paths.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/pnpTs.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/webpack.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/webpackDevServer.config.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/organisms/MainTable.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/organisms/MainTable.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/templates/TableFormation.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/templates/TableFormation.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/HeaderMainTable.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/HeaderMainTable.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/build.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/start.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/molecules/CheckBox.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/molecules/CustomInput.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/molecules/CustomSelect.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/molecules/CustomText.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/organisms/EditTable.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/organisms/EditTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/organisms/MainTable.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/organisms/MainTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/templates/TableFormation.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/templates/TableFormation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/EditTableContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/EditTableContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/MainTableContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/MainTableContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/serviceWorker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/serviceWorker.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,31 +59,21 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="JsFlowSettings">
-    <service-enabled>true</service-enabled>
-    <exe-path />
-    <other-services-enabled>true</other-services-enabled>
-    <auto-save>true</auto-save>
-  </component>
-  <component name="ProjectId" id="1U40yONPaeQGYGWewkNrrRuslGP" />
+  <component name="ProjectId" id="1Uhka4kPm0ZKFGEepz0AXVs4Z3N" />
   <component name="PropertiesComponent">
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="E:/Projects/pkk6" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="prettierjs.PrettierConfiguration.Package" value="C:\proj\development\node_modules\prettier" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
-    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2019.2.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+    <property name="prettierjs.PrettierConfiguration.Package" value="C:\Users\egorn\Desktop\Sales-manager\copy\node_modules\prettier" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\proj\development\src\components\molecules" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\proj\development" />
+      <recent name="C:\Users\egorn\Desktop\Sales-manager\testing" />
+      <recent name="C:\Users\egorn\Desktop\Sales-manager\copy" />
+      <recent name="C:\Users\egorn\Desktop\Sales-manager\copy\src" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -65,7 +88,17 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="npm.start">
+    <configuration name="lint" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="lint" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -79,6 +112,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="npm.start" />
+        <item itemvalue="npm.lint" />
       </list>
     </recent_temporary>
   </component>
@@ -87,45 +121,60 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="a9aa4381-be00-42ed-80e5-b3c79414aba3" name="Default Changelist" comment="" />
-      <created>1574600813287</created>
+      <changelist id="a3641c35-2697-48af-920b-8f4de84ded3a" name="Default Changelist" comment="" />
+      <created>1575816274213</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1574600813287</updated>
-      <workItem from="1574600814452" duration="712000" />
-      <workItem from="1574678496853" duration="2810000" />
-      <workItem from="1574683554764" duration="8517000" />
-      <workItem from="1574696863347" duration="21400000" />
+      <updated>1575816274213</updated>
+      <workItem from="1575816275386" duration="801000" />
+      <workItem from="1575817087453" duration="1164000" />
+      <workItem from="1575818616051" duration="1534000" />
+      <workItem from="1575820159231" duration="3942000" />
+      <workItem from="1575824853642" duration="1144000" />
     </task>
-    <task id="LOCAL-00001" summary="add esLinter">
-      <created>1574679527310</created>
+    <task id="LOCAL-00001" summary="copy project test">
+      <created>1575818725686</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1574679527310</updated>
+      <updated>1575818725687</updated>
     </task>
-    <task id="LOCAL-00002" summary="add esLinter v2">
-      <created>1574679702776</created>
+    <task id="LOCAL-00002" summary="test">
+      <created>1575819265457</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1574679702776</updated>
+      <updated>1575819265457</updated>
     </task>
-    <task id="LOCAL-00003" summary="install redux and clean proj(working start app)">
-      <created>1574684708231</created>
+    <task id="LOCAL-00003" summary="test">
+      <created>1575825141969</created>
       <option name="number" value="00003" />
       <option name="presentableId" value="LOCAL-00003" />
       <option name="project" value="LOCAL" />
-      <updated>1574684708231</updated>
+      <updated>1575825141969</updated>
     </task>
-    <task id="LOCAL-00004" summary="add styled comp, create atomic js with component Table">
-      <created>1574696787836</created>
+    <task id="LOCAL-00004" summary="error">
+      <created>1575825526796</created>
       <option name="number" value="00004" />
       <option name="presentableId" value="LOCAL-00004" />
       <option name="project" value="LOCAL" />
-      <updated>1574696787836</updated>
+      <updated>1575825526796</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="error2">
+      <created>1575825719205</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1575825719205</updated>
+    </task>
+    <task id="LOCAL-00006" summary="error3">
+      <created>1575825830145</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1575825830145</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -145,11 +194,11 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="create App" />
-    <MESSAGE value="add esLinter" />
-    <MESSAGE value="add esLinter v2" />
-    <MESSAGE value="install redux and clean proj(working start app)" />
-    <MESSAGE value="add styled comp, create atomic js with component Table" />
-    <option name="LAST_COMMIT_MESSAGE" value="add styled comp, create atomic js with component Table" />
+    <MESSAGE value="copy project test" />
+    <MESSAGE value="test" />
+    <MESSAGE value="error" />
+    <MESSAGE value="error2" />
+    <MESSAGE value="error3" />
+    <option name="LAST_COMMIT_MESSAGE" value="error3" />
   </component>
 </project>

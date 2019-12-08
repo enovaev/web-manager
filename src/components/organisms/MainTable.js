@@ -68,8 +68,7 @@ class MainTable extends Component {
               <Th key={item.key}>
                 <Container>
                   {item.label && <Text>{item.label}</Text>}
-                  {item.checkbox
-                  && (
+                  {item.checkbox && (
                     <CheckBox
                       header
                       action={(checked) => actionCheckbox(checked)}
