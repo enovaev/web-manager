@@ -61,7 +61,7 @@ class MainTable extends Component {
       actionCheckbox,
     } = this.props;
     return (
-      <table>
+      <Table>
         <thead>
           <tr>
             { HeaderConfig.map((item) => (
@@ -150,7 +150,7 @@ class MainTable extends Component {
             )) }
           </tr>
         </tfoot>
-      </table>
+      </Table>
     );
   }
 }
@@ -171,6 +171,9 @@ MainTable.defaultProps = {
   deleteEntity: () => {},
 };
 
+const Table = styled.table`
+  border-collapse: collapse;
+`;
 const Container = styled.div`
   display: flex;
   margin: 3px 10px;
@@ -180,6 +183,7 @@ const Text = styled.p`
   margin: 0 5px;
 `;
 const Th = styled.th`
+  border: none;
   border-left: 1px solid black;
   &:first-child {
     border-left: none;
@@ -187,17 +191,20 @@ const Th = styled.th`
   border-bottom: 3px solid black;
 `;
 const BodyRow = styled.tr`
+  border: none;
   &:hover {
     background-color: #E6F7FF;
   }
 `;
 const Tb = styled.td`
+  border: none;
   border-left: 1px solid #D9D9D9;
   &:first-child{
     border-left: none;
   }
 `;
 const Tf = styled.td`
+  border: none;
   border-top: 3px solid black;
   &:nth-last-child(2) {
     border-left: 1px solid #D9D9D9;

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // Utils
 import { Checkbox } from 'antd';
 import PropTypes from 'prop-types';
+import 'antd/es/checkbox/style/index.css';
 import styled from 'styled-components';
 
 class CheckBox extends Component {

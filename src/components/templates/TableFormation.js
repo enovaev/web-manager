@@ -16,6 +16,7 @@ const Container = styled.div`
   margin-top: 50px;
   display: flex;
   justify-content: center;
+  box-sizing: border-box;
 `;
 
 export default TableFormation;

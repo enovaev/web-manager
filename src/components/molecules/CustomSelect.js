@@ -1,6 +1,7 @@
 import React from 'react';
 // Utils
 import { Select } from 'antd';
+import 'antd/es/select/style/index.css';
 import PropTypes from 'prop-types';
 // Configs
 import currencyConfig from '../../config/selectCurrency.json';
