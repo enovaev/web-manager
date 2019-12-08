@@ -20,6 +20,6 @@ CustomText.propTypes = {
   ]),
 };
 CustomText.defaultProps = {
-  value: 'not data',
+  value: 'not datas',
 };
 export default CustomText;
