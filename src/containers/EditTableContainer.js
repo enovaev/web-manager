@@ -1,9 +1,10 @@
+// eslint-disable-next-line no-unused-vars
 import React from 'react';
-import EditTable from '../components/organisms/EditTable';
+// import MainTable from '../components/organisms/MainTable';
 
 function EditTableContainer() {
   return (
-    <EditTable />
+    {/* <MainTable /> */}
   );
 }
 export default EditTableContainer;

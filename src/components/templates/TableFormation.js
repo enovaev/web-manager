@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import MainTableContainer from '../../containers/MainTableContainer';
-import EditTableContainer from '../../containers/EditTableContainer';
+// import EditTableContainer from '../../containers/EditTableContainer';
 
 function TableFormation() {
   return (
     <Container>
       <MainTableContainer />
-      <EditTableContainer />
+      {/* <EditTableContainer /> */}
     </Container>
   );
 }

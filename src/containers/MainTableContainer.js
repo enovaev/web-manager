@@ -12,6 +12,8 @@ import {
   actionSelect,
   actionInput,
 } from '../state/actions/MainTableAction';
+// Configs
+import HeaderConfig from '../config/HeaderMainTable.json';
 
 class MainTableContainer extends Component {
   constructor(props) {
@@ -33,6 +35,7 @@ class MainTableContainer extends Component {
     } = this.props;
     return (
       <MainTable
+        headerConfig={HeaderConfig}
         actionCheckbox={checkbox}
         entityData={entityData}
         actionInput={input}
