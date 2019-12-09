@@ -6,21 +6,23 @@ import styled from 'styled-components';
 import 'antd/es/slider/style/index.css';
 // Components
 import CustomInput from './CustomInput';
-// import CustomSelect from './CustomSelect';
+import CustomSelect from './CustomSelect';
 
 function CustomSlider(props) {
-  const { valuePerc, actionPerc } = props;
+  const { valuePerc, actionPerc, elementType } = props;
   return (
     <Container>
-      {/* <InputDiv> */}
-      {/*  <CustomInput */}
-      {/*    elementType="number" */}
-      {/*    value={null} */}
-      {/*    action={null} */}
-      {/*    width={120} */}
-      {/*  /> */}
-      {/*  <CustomSelect elementType="curr" value={null} action={null} /> */}
-      {/* </InputDiv> */}
+      {elementType === 'double' && (
+        <InputDiv>
+          <CustomInput
+            elementType="number"
+            value={0}
+            action={() => {}}
+            width={120}
+          />
+          <CustomSelect elementType="curr" value="rub" action={() => {}} />
+        </InputDiv>
+      )}
       <CustomInput
         elementType="number"
         value={valuePerc}
@@ -38,6 +40,7 @@ function CustomSlider(props) {
   );
 }
 CustomSlider.propTypes = {
+  elementType: PropTypes.string.isRequired,
   valuePerc: PropTypes.number.isRequired,
   actionPerc: PropTypes.func.isRequired,
 };
@@ -51,7 +54,7 @@ align-items: center;
 const SliderDiv = styled.div`
 width: 200px;
 `;
-// const InputDiv = styled.div`
-// margin: 10px 0;
-// `;
+const InputDiv = styled.div`
+margin: 10px 0;
+`;
 export default CustomSlider;

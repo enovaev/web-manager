@@ -83,6 +83,7 @@ function MainTable(props) {
                       )}
                       {el.slider && (
                         <CustomSlider
+                          elementType={el.slider}
                           actionPerc={(value) => actionSlider(value, el.key)}
                           valuePerc={item[el.key].percent}
                         />

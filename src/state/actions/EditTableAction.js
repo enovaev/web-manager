@@ -5,6 +5,9 @@ import { ACTION_SLIDER } from '../constants';
 export const actionSlider = (value, name) => (dispatch, getState) => {
   dispatch({
     type: ACTION_SLIDER,
-    payload: { ...getState().editData, [name]: value },
+    payload: {
+      ...getState().editData,
+      [name]: { ...getState().editData[name], percent: Number(value) },
+    },
   });
 };

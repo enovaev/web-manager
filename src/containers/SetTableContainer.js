@@ -5,29 +5,28 @@ import PropTypes from 'prop-types';
 // Components
 import MainTable from '../components/organisms/MainTable';
 // Store
-import { actionSlider } from '../state/actions/EditTableAction';
-// Configs
-import HeaderConfig from '../config/HeaderEditTable.json';
+import { actionSlider } from '../state/actions/SetTableAction';
+import HeaderConfig from '../config/HeaderSetTable.json';
 
 // eslint-disable-next-line react/prefer-stateless-function
-class EditTableContainer extends Component {
+class SetTableContainer extends Component {
   render() {
-    const { editData, slider } = this.props;
+    const { setData, slider } = this.props;
     return (
       <MainTable
-        entityData={[editData]}
+        entityData={[setData]}
         headerConfig={HeaderConfig}
         actionSlider={slider}
       />
     );
   }
 }
-EditTableContainer.propTypes = {
-  editData: PropTypes.objectOf(PropTypes.any).isRequired,
+SetTableContainer.propTypes = {
+  setData: PropTypes.objectOf(PropTypes.any).isRequired,
   slider: PropTypes.func.isRequired,
 };
 const mapStateToProps = (store) => ({
-  editData: store.editData,
+  setData: store.setData,
 });
 const mapDispatchToProps = (dispatch) => ({
   slider: (value, name) => dispatch(actionSlider(value, name)),
@@ -35,4 +34,4 @@ const mapDispatchToProps = (dispatch) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(EditTableContainer);
+)(SetTableContainer);

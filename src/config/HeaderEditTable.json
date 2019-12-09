@@ -12,7 +12,7 @@
   {
     "key": "nds",
     "label": "НДС",
-    "slider": "double"
+    "slider": "single"
   },
   {
     "key": "convert",

@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import MainTableContainer from '../../containers/MainTableContainer';
 import EditTableContainer from '../../containers/EditTableContainer';
+import SetTableContainer from '../../containers/SetTableContainer';
 
 function TableFormation() {
   return (
@@ -9,6 +10,9 @@ function TableFormation() {
       <MainTableContainer />
       <Setting>
         <EditTableContainer />
+      </Setting>
+      <Setting>
+        <SetTableContainer />
       </Setting>
     </Container>
   );

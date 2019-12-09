@@ -26,7 +26,10 @@ function CustomInput(props) {
 
 CustomInput.propTypes = {
   elementType: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]).isRequired,
   action: PropTypes.func.isRequired,
   width: PropTypes.number.isRequired,
 };

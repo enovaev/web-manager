@@ -1,0 +1,17 @@
+[
+  {
+    "key": "extra",
+    "label": "Наценка",
+    "slider": "double"
+  },
+  {
+    "key": "sale",
+    "label": "Скидка",
+    "slider": "double"
+  },
+  {
+    "key": "delta",
+    "label": "Дельта",
+    "slider": "double"
+  }
+]
