@@ -7,6 +7,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import CheckBox from '../molecules/CheckBox';
 import CustomText from '../molecules/CustomText';
 import CustomInput from '../molecules/CustomInput';
+import CustomSlider from '../molecules/CustomSlider';
 import CustomSelect from '../molecules/CustomSelect';
 // Styles
 import '../style/animation.css';
@@ -20,6 +21,7 @@ function MainTable(props) {
     entityData,
     deleteEntity,
     actionCheckbox,
+    actionSlider,
   } = props;
   return (
     <Table>
@@ -79,6 +81,12 @@ function MainTable(props) {
                           action={(value) => actionSelect(value, index, el.key)}
                         />
                       )}
+                      {el.slider && (
+                        <CustomSlider
+                          actionPerc={(value) => actionSlider(value, el.key)}
+                          valuePerc={item[el.key].percent}
+                        />
+                      )}
                       {el.delete
                       // eslint-disable-next-line react/button-has-type
                           && <button value={index} onClick={deleteEntity}>Delete</button>}
@@ -119,6 +127,7 @@ MainTable.propTypes = {
   addEntity: PropTypes.func,
   deleteEntity: PropTypes.func,
   actionCheckbox: PropTypes.func,
+  actionSlider: PropTypes.func,
 };
 MainTable.defaultProps = {
   actionInput: () => {},
@@ -126,6 +135,7 @@ MainTable.defaultProps = {
   actionSelect: () => {},
   actionCheckbox: () => {},
   deleteEntity: () => {},
+  actionSlider: () => {},
 };
 
 const Table = styled.table`
@@ -140,7 +150,6 @@ const Text = styled.p`
   margin: 0 5px;
 `;
 const Th = styled.th`
-  border: none;
   border-left: 1px solid black;
   &:first-child {
     border-left: none;
@@ -154,14 +163,12 @@ const BodyRow = styled.tr`
   }
 `;
 const Tb = styled.td`
-  border: none;
   border-left: 1px solid #D9D9D9;
   &:first-child{
     border-left: none;
   }
 `;
 const Tf = styled.td`
-  border: none;
   border-top: 3px solid black;
   &:nth-last-child(2) {
     border-left: 1px solid #D9D9D9;

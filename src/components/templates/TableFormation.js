@@ -1,13 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 import MainTableContainer from '../../containers/MainTableContainer';
-// import EditTableContainer from '../../containers/EditTableContainer';
+import EditTableContainer from '../../containers/EditTableContainer';
 
 function TableFormation() {
   return (
     <Container>
       <MainTableContainer />
-      {/* <EditTableContainer /> */}
+      <Setting>
+        <EditTableContainer />
+      </Setting>
     </Container>
   );
 }
@@ -15,8 +17,12 @@ function TableFormation() {
 const Container = styled.div`
   margin-top: 50px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   box-sizing: border-box;
+`;
+const Setting = styled.div`
+  margin-top: 50px;
 `;
 
 export default TableFormation;
