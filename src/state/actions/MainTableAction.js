@@ -2,55 +2,53 @@ import {
   ADD_ENTITY,
   DELETE_ENTITY,
   ACTION_CHECKBOX,
+  ACTION_CHECKBOX_ALL,
   ACTION_SELECT,
   ACTION_INPUT,
 } from '../constants';
-import empty from '../../config/ImitateData.json';
 
 export const addEntity = () => (dispatch) => {
   dispatch({
     type: ADD_ENTITY,
-    payload: { ...empty, key: Math.random() },
+    payload: Math.random(),
   });
 };
 
-export const deleteEntity = (index) => (dispatch, getState) => {
+export const deleteEntity = (index) => (dispatch) => {
   dispatch({
     type: DELETE_ENTITY,
-    payload: getState().entityData.filter((el, i) => (i !== Number(index.target.value)) && el),
+    payload: Number(index.target.value),
   });
 };
 
-export const actionCheckbox = (value) => (dispatch, getState) => {
+export const actionCheckbox = (value) => (dispatch) => {
   if (typeof (value) === 'number') {
     dispatch({
       type: ACTION_CHECKBOX,
-      payload: getState().entityData.map((el, i) => ((i === value)
-        ? { ...el, selected: !el.selected }
-        : el)),
+      payload: value,
     });
   } else {
     dispatch({
-      type: ACTION_CHECKBOX,
-      payload: getState().entityData.map((el) => ({ ...el, selected: value })),
+      type: ACTION_CHECKBOX_ALL,
+      payload: value,
     });
   }
 };
 
-export const actionSelect = (value, index, name) => (dispatch, getState) => {
+export const actionSelect = (value, index, name) => (dispatch) => {
   dispatch({
     type: ACTION_SELECT,
-    payload: getState().entityData.map((el, i) => ((index === i)
-      ? { ...el, [name]: { ...el[name], select: value } }
-      : el)),
+    value,
+    index,
+    name,
   });
 };
 
-export const actionInput = (value, index, name) => (dispatch, getState) => {
+export const actionInput = (value, index, name) => (dispatch) => {
   dispatch({
     type: ACTION_INPUT,
-    payload: getState().entityData.map((el, i) => ((index === i)
-      ? { ...el, [name]: { ...el[name], input: value } }
-      : el)),
+    value,
+    index,
+    name,
   });
 };
