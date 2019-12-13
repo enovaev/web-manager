@@ -12,10 +12,10 @@ import HeaderConfig from '../config/HeaderEditTable.json';
 // eslint-disable-next-line react/prefer-stateless-function
 class EditTableContainer extends Component {
   render() {
-    const { editData, slider } = this.props;
+    const { entityData, slider } = this.props;
     return (
       <MainTable
-        entityData={[editData]}
+        entityData={entityData}
         headerConfig={HeaderConfig}
         actionSlider={slider}
       />
@@ -23,11 +23,11 @@ class EditTableContainer extends Component {
   }
 }
 EditTableContainer.propTypes = {
-  editData: PropTypes.objectOf(PropTypes.any).isRequired,
+  entityData: PropTypes.objectOf(PropTypes.any).isRequired,
   slider: PropTypes.func.isRequired,
 };
 const mapStateToProps = (store) => ({
-  editData: store.editData,
+  entityData: store.entityData,
 });
 const mapDispatchToProps = (dispatch) => ({
   slider: (value, name) => dispatch(actionSlider(value, name)),

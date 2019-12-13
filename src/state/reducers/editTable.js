@@ -8,6 +8,7 @@ export function EditTableReducer(state = initialState, action) {
   switch (action.type) {
     case ACTION_SLIDER:
       return action.payload;
+
     default:
       return state;
   }

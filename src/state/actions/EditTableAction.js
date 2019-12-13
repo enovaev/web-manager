@@ -1,13 +1,20 @@
-import { ACTION_SLIDER } from '../constants';
+import { ACTION_SLIDER, ACTION_SLIDER_ALL } from '../constants';
 
 
 // eslint-disable-next-line import/prefer-default-export
 export const actionSlider = (value, name) => (dispatch, getState) => {
-  dispatch({
-    type: ACTION_SLIDER,
-    payload: {
-      ...getState().editData,
-      [name]: { ...getState().editData[name], percent: Number(value) },
-    },
-  });
+  const filter = getState().entityData.filter((item) => item.selected === true);
+  if (filter.length) {
+    dispatch({
+      type: ACTION_SLIDER,
+      Value: Number(value),
+      name,
+    });
+  } else {
+    dispatch({
+      type: ACTION_SLIDER_ALL,
+      Value: Number(value),
+      name,
+    });
+  }
 };

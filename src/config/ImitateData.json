@@ -7,7 +7,7 @@
     "input": ""
   },
   "posName": {
-  "input": ""
+    "input": ""
   },
   "exw": {
     "input": "",
@@ -24,6 +24,24 @@
   "priceCust": {
     "text": 20500,
     "select": "rub"
+  },
+  "delivery": {
+    "percent": 0
+  },
+  "cusHouse": {
+    "percent": 0
+  },
+  "nds": {
+    "percent": 0
+  },
+  "convert": {
+    "percent": 30
+  },
+  "another": {
+    "percent": 0
+  },
+  "discount": {
+    "percent": 0
   },
   "selected": false
 }

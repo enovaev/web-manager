@@ -5,6 +5,8 @@ import {
   ACTION_CHECKBOX_ALL,
   ACTION_SELECT,
   ACTION_INPUT,
+  ACTION_SLIDER,
+  ACTION_SLIDER_ALL,
 } from '../constants';
 import empty from '../../config/ImitateData.json';
 
@@ -36,6 +38,16 @@ export function MainTableReducer(state = initialState, action) {
       return state.map((el, i) => ((action.index === i)
         ? { ...el, [action.name]: { ...el[action.name], input: action.value } }
         : el));
+
+    case ACTION_SLIDER:
+      return state.map((el) => ((action.selected)
+        ? { ...el, [action.name]: { ...el[action.name], percent: action.value } }
+        : el));
+
+    case ACTION_SLIDER_ALL:
+      return state.map(
+        (el) => ({ ...el, [action.name]: { ...el[action.name], percent: action.value } }),
+      );
 
     default:
       return state;
