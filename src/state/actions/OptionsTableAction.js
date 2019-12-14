@@ -7,13 +7,13 @@ export const actionSlider = (value, name) => (dispatch, getState) => {
   if (filter.length) {
     dispatch({
       type: ACTION_SLIDER,
-      Value: Number(value),
+      value: Number(value),
       name,
     });
   } else {
     dispatch({
       type: ACTION_SLIDER_ALL,
-      Value: Number(value),
+      value: Number(value),
       name,
     });
   }

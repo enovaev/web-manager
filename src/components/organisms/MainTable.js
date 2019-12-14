@@ -7,7 +7,6 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import CheckBox from '../molecules/CheckBox';
 import CustomText from '../molecules/CustomText';
 import CustomInput from '../molecules/CustomInput';
-import CustomSlider from '../molecules/CustomSlider';
 import CustomSelect from '../molecules/CustomSelect';
 // Styles
 import '../style/animation.css';
@@ -21,13 +20,12 @@ function MainTable(props) {
     entityData,
     deleteEntity,
     actionCheckbox,
-    actionSlider,
   } = props;
   return (
     <Table>
       <thead>
         <tr>
-          { headerConfig.map((item) => (
+          {headerConfig.map((item) => (
             <Th key={item.key}>
               <Container>
                 {item.label && <Text>{item.label}</Text>}
@@ -39,7 +37,7 @@ function MainTable(props) {
                 )}
               </Container>
             </Th>
-          )) }
+          ))}
           <th>
             {/* eslint-disable-next-line react/button-has-type */}
             <button onClick={addEntity}>Click</button>
@@ -48,14 +46,14 @@ function MainTable(props) {
       </thead>
       <tbody>
         <TransitionGroup component={null}>
-          { entityData.map((item, index) => (
+          {entityData.map((item, index) => (
             <CSSTransition
               key={item.key}
               timeout={200}
               classNames="item"
             >
               <BodyRow>
-                { headerConfig.map((el) => (
+                {headerConfig.map((el) => (
                   <Tb key={el.key}>
                     <Container>
                       {el.checkbox && (
@@ -81,19 +79,12 @@ function MainTable(props) {
                           action={(value) => actionSelect(value, index, el.key)}
                         />
                       )}
-                      {el.slider && (
-                        <CustomSlider
-                          elementType={el.slider}
-                          actionPerc={(value) => actionSlider(value, el.key)}
-                          valuePerc={item[el.key].percent}
-                        />
-                      )}
                       {el.delete
                       // eslint-disable-next-line react/button-has-type
                           && <button value={index} onClick={deleteEntity}>Delete</button>}
                     </Container>
                   </Tb>
-                )) }
+                ))}
               </BodyRow>
             </CSSTransition>
           ))}
@@ -101,7 +92,7 @@ function MainTable(props) {
       </tbody>
       <tfoot>
         <tr>
-          { headerConfig.map((el) => (
+          {headerConfig.map((el) => (
             <Tf key={el.key}>
               <Container>
                 {el.footer && (
@@ -113,7 +104,7 @@ function MainTable(props) {
                 )}
               </Container>
             </Tf>
-          )) }
+          ))}
         </tr>
       </tfoot>
     </Table>
@@ -128,7 +119,6 @@ MainTable.propTypes = {
   addEntity: PropTypes.func,
   deleteEntity: PropTypes.func,
   actionCheckbox: PropTypes.func,
-  actionSlider: PropTypes.func,
 };
 MainTable.defaultProps = {
   actionInput: () => {},
@@ -136,7 +126,6 @@ MainTable.defaultProps = {
   actionSelect: () => {},
   actionCheckbox: () => {},
   deleteEntity: () => {},
-  actionSlider: () => {},
 };
 
 const Table = styled.table`

@@ -3,18 +3,18 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 // Components
-import MainTable from '../components/organisms/MainTable';
+import OptionTable from '../components/organisms/OptionTable';
 // Store
-import { actionSlider } from '../state/actions/SetTableAction';
+import { actionSlider } from '../state/actions/OptionsTableAction';
 import HeaderConfig from '../config/HeaderSetTable.json';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class SetTableContainer extends Component {
   render() {
-    const { setData, slider } = this.props;
+    const { entityData, slider } = this.props;
     return (
-      <MainTable
-        entityData={[setData]}
+      <OptionTable
+        entityData={[entityData[0]]}
         headerConfig={HeaderConfig}
         actionSlider={slider}
       />
@@ -22,11 +22,13 @@ class SetTableContainer extends Component {
   }
 }
 SetTableContainer.propTypes = {
-  setData: PropTypes.objectOf(PropTypes.any).isRequired,
+  entityData: PropTypes.arrayOf(PropTypes.any).isRequired,
   slider: PropTypes.func.isRequired,
 };
 const mapStateToProps = (store) => ({
-  setData: store.setData,
+  entityData: (store.entityData.some((el) => el.selected === true))
+    ? store.entityData.filter((el) => el.selected === true)
+    : store.entityData,
 });
 const mapDispatchToProps = (dispatch) => ({
   slider: (value, name) => dispatch(actionSlider(value, name)),

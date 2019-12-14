@@ -26,9 +26,11 @@
     "select": "rub"
   },
   "delivery": {
+    "input": "",
     "percent": 0
   },
   "cusHouse": {
+    "input": "",
     "percent": 0
   },
   "nds": {
@@ -41,6 +43,15 @@
     "percent": 0
   },
   "discount": {
+    "percent": 0
+  },
+  "extra": {
+    "percent": 0
+  },
+  "sale": {
+    "percent": 0
+  },
+  "delta": {
     "percent": 0
   },
   "selected": false

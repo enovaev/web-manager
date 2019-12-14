@@ -3,9 +3,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 // Components
-import MainTable from '../components/organisms/MainTable';
+import OptionTable from '../components/organisms/OptionTable';
 // Store
-import { actionSlider } from '../state/actions/EditTableAction';
+import { actionSlider } from '../state/actions/OptionsTableAction';
 // Configs
 import HeaderConfig from '../config/HeaderEditTable.json';
 
@@ -14,8 +14,8 @@ class EditTableContainer extends Component {
   render() {
     const { entityData, slider } = this.props;
     return (
-      <MainTable
-        entityData={entityData}
+      <OptionTable
+        entityData={[entityData[0]]}
         headerConfig={HeaderConfig}
         actionSlider={slider}
       />
@@ -23,11 +23,13 @@ class EditTableContainer extends Component {
   }
 }
 EditTableContainer.propTypes = {
-  entityData: PropTypes.objectOf(PropTypes.any).isRequired,
+  entityData: PropTypes.arrayOf(PropTypes.any).isRequired,
   slider: PropTypes.func.isRequired,
 };
 const mapStateToProps = (store) => ({
-  entityData: store.entityData,
+  entityData: (store.entityData.some((el) => el.selected === true))
+    ? store.entityData.filter((el) => el.selected === true)
+    : store.entityData,
 });
 const mapDispatchToProps = (dispatch) => ({
   slider: (value, name) => dispatch(actionSlider(value, name)),

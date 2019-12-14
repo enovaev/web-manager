@@ -40,7 +40,7 @@ export function MainTableReducer(state = initialState, action) {
         : el));
 
     case ACTION_SLIDER:
-      return state.map((el) => ((action.selected)
+      return state.map((el) => ((el.selected)
         ? { ...el, [action.name]: { ...el[action.name], percent: action.value } }
         : el));
 
