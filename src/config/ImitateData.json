@@ -18,7 +18,7 @@
     "select": "piece"
   },
   "priceOur": {
-    "text": "not data",
+    "text": "",
     "select": "rub"
   },
   "priceCust": {

@@ -7,6 +7,7 @@ import {
   ACTION_INPUT,
   ACTION_SLIDER,
   ACTION_SLIDER_ALL,
+  OUR_PRICE_CALC,
 } from '../constants';
 import empty from '../../config/ImitateData.json';
 
@@ -48,6 +49,11 @@ export function MainTableReducer(state = initialState, action) {
       return state.map(
         (el) => ({ ...el, [action.name]: { ...el[action.name], percent: action.value } }),
       );
+
+    case OUR_PRICE_CALC:
+      return state.map((el, i) => ((action.index === i)
+        ? { ...el, priceOur: { ...el.priceOur, text: action.value } }
+        : el));
 
     default:
       return state;

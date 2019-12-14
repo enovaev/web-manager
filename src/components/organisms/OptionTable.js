@@ -16,7 +16,7 @@ function OptionTable(props) {
       <thead>
         <tr>
           {headerConfig.map((item) => (
-            <Th>
+            <Th key={item.key}>
               <Container>
                 {item.label && <Text>{item.label}</Text>}
               </Container>
@@ -26,7 +26,7 @@ function OptionTable(props) {
       </thead>
       <tbody>
         {entityData.map((item) => (
-          <BodyRow>
+          <BodyRow key={item.key}>
             {headerConfig.map((el) => (
               <Tb key={el.key}>
                 {el.slider && (

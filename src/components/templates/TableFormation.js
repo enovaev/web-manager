@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import MainTableContainer from '../../containers/MainTableContainer';
 import EditTableContainer from '../../containers/EditTableContainer';
 import SetTableContainer from '../../containers/SetTableContainer';
+import CalculatorContainer from '../../containers/CalculatorContainer';
 
 function TableFormation() {
   return (
@@ -14,6 +15,7 @@ function TableFormation() {
       <Setting>
         <SetTableContainer />
       </Setting>
+      <CalculatorContainer />
     </Container>
   );
 }
