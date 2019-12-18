@@ -10,9 +10,9 @@ class CalculatorContainer extends Component {
     const { entityData, calculator } = this.props;
     entityData.forEach((el, i) => {
       if (el.exw.input && el.quantity.input) {
-        const calc = Number(el.exw.input)
+        const calc = (Number(el.exw.input)
           * Number(el.quantity.input)
-          * 0.01 * Number(el.nds.percent);
+          * 0.01 * Number(el.nds.percent)).toFixed(2);
         if (calc !== el.priceOur.text) calculator(i, calc);
       } else if (el.priceOur.text !== 'not data') calculator(i, 'not data');
       return false;

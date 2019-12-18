@@ -4,6 +4,7 @@ import MainTableContainer from '../../containers/MainTableContainer';
 import EditTableContainer from '../../containers/EditTableContainer';
 import SetTableContainer from '../../containers/SetTableContainer';
 import CalculatorContainer from '../../containers/CalculatorContainer';
+import TestSlider from '../molecules/TestSlider';
 
 function TableFormation() {
   return (
@@ -16,6 +17,7 @@ function TableFormation() {
         <SetTableContainer />
       </Setting>
       <CalculatorContainer />
+      <TestSlider />
     </Container>
   );
 }

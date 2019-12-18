@@ -27,9 +27,9 @@ function CustomInput(props) {
     <Input
       style={styling(width)}
       value={value}
-      onChange={(e) => ((elementType === 'number')
-        ? action(validator(e.target.value, min, max))
-        : action(e.target.value))}
+      onChange={({ target }) => ((elementType === 'number')
+        ? action(validator(target.value, min, max))
+        : action(target.value))}
     />
   );
 }
