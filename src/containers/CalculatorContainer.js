@@ -8,20 +8,15 @@ import { calcOurPrice } from '../state/actions/CalculatorAction';
 class CalculatorContainer extends Component {
   componentDidUpdate() {
     const { entityData, calculator } = this.props;
-
-    const valid = entityData.map(
-      (el, i) => ((el.exw.input && el.quantity.input)
-        ? { ...el, index: i } : false),
-    ).filter((el) => el);
-
-    if (valid.length) {
-      valid.forEach((el) => {
-        const calc = Number(el.exw.input) * Number(el.quantity.input);
-        if (calc !== el.priceOur.text) {
-          calculator(el.index, calc);
-        }
-      });
-    }
+    entityData.forEach((el, i) => {
+      if (el.exw.input && el.quantity.input) {
+        const calc = Number(el.exw.input)
+          * Number(el.quantity.input)
+          * 0.01 * Number(el.nds.percent);
+        if (calc !== el.priceOur.text) calculator(i, calc);
+      } else if (el.priceOur.text !== 'not data') calculator(i, 'not data');
+      return false;
+    });
   }
 
   render() {

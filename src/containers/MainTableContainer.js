@@ -14,17 +14,31 @@ import {
 } from '../state/actions/MainTableAction';
 // Configs
 import HeaderConfig from '../config/HeaderMainTable.json';
+import HeaderConfig2 from '../config/HeaderConfig2.json';
 
 class MainTableContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
       // eslint-disable-next-line react/no-unused-state
-      naming: '',
+      name: null,
+      headerMain: [],
     };
+
+    this.changeHeader = this.changeHeader.bind(this);
+  }
+
+  componentDidMount() {
+    this.setState({ headerMain: HeaderConfig, name: true });
+  }
+
+  changeHeader() {
+    const { name } = this.state;
+    this.setState({ headerMain: (name) ? HeaderConfig2 : HeaderConfig, name: !name });
   }
 
   render() {
+    const { headerMain } = this.state;
     const {
       entityData,
       addAction,
@@ -35,13 +49,14 @@ class MainTableContainer extends Component {
     } = this.props;
     return (
       <MainTable
-        headerConfig={HeaderConfig}
+        headerConfig={headerMain}
         actionCheckbox={checkbox}
         entityData={entityData}
         actionInput={input}
         actionSelect={select}
         addEntity={addAction}
         deleteEntity={deleteAction}
+        modeShow={this.changeHeader}
       />
     );
   }

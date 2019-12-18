@@ -12,7 +12,8 @@
   {
     "key": "nds",
     "label": "НДС",
-    "slider": "single"
+    "slider": "single",
+    "max": 100
   },
   {
     "key": "convert",

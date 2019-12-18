@@ -1,6 +1,6 @@
 import React from 'react';
 // Utils
-import { Slider } from 'antd';
+import Slider from 'antd/es/slider';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import 'antd/es/slider/style/index.css';
@@ -21,8 +21,6 @@ function CustomSlider(props) {
             value={0}
             action={() => {}}
             width={120}
-            min={min}
-            max={max}
           />
           <CustomSelect elementType="curr" value="rub" action={() => {}} />
         </InputDiv>
@@ -40,6 +38,9 @@ function CustomSlider(props) {
           tooltipVisible={false}
           value={valuePerc}
           onChange={actionPerc}
+          min={min}
+          max={max}
+          step={1}
         />
       </SliderDiv>
     </Container>
@@ -54,7 +55,7 @@ CustomSlider.propTypes = {
 };
 CustomSlider.defaultProps = {
   min: 0,
-  max: 50,
+  max: 100,
 };
 const Container = styled.div`
 display: flex;

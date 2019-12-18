@@ -20,6 +20,7 @@ function MainTable(props) {
     entityData,
     deleteEntity,
     actionCheckbox,
+    modeShow,
   } = props;
   return (
     <Table>
@@ -41,6 +42,8 @@ function MainTable(props) {
           <th>
             {/* eslint-disable-next-line react/button-has-type */}
             <button onClick={addEntity}>Click</button>
+            {/* eslint-disable-next-line react/button-has-type */}
+            <button onClick={modeShow}>click</button>
           </th>
         </tr>
       </thead>
@@ -119,6 +122,7 @@ MainTable.propTypes = {
   addEntity: PropTypes.func,
   deleteEntity: PropTypes.func,
   actionCheckbox: PropTypes.func,
+  modeShow: PropTypes.func,
 };
 MainTable.defaultProps = {
   actionInput: () => {},
@@ -126,6 +130,7 @@ MainTable.defaultProps = {
   actionSelect: () => {},
   actionCheckbox: () => {},
   deleteEntity: () => {},
+  modeShow: () => {},
 };
 
 const Table = styled.table`

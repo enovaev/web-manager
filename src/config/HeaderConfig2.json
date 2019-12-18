@@ -1,0 +1,49 @@
+[
+  {
+    "key": "check",
+    "checkbox": true
+  },
+  {
+    "key": "number",
+    "label": "№",
+    "number": true
+  },
+  {
+    "key": "posName",
+    "label": "Name of position",
+    "input": "string",
+    "width": 150
+  },
+  {
+    "key": "exw",
+    "label": "ExW Price",
+    "input": "number",
+    "width": 90,
+    "select": "curr"
+  },
+  {
+    "key": "quantity",
+    "label": "Quantity",
+    "input": "number",
+    "width": 60,
+    "select": "quan"
+  },
+  {
+    "key": "priceOur",
+    "label": "Our price",
+    "footer": true,
+    "text": true,
+    "select": "curr"
+  },
+  {
+    "key": "priceCust",
+    "label": "Price for Customer",
+    "text": true,
+    "footer": true,
+    "select": "curr"
+  },
+  {
+    "key": "delete",
+    "delete": true
+  }
+]

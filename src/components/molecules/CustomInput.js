@@ -47,8 +47,8 @@ CustomInput.propTypes = {
   max: PropTypes.number,
 };
 CustomInput.defaultProps = {
-  min: false,
-  max: false,
+  min: 0,
+  max: 0,
 };
 
 

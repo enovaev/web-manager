@@ -34,6 +34,8 @@ function OptionTable(props) {
                     elementType={el.slider}
                     actionPerc={(value) => actionSlider(value, el.key)}
                     valuePerc={item[el.key].percent}
+                    min={el.min}
+                    max={el.max}
                   />
                 )}
               </Tb>
