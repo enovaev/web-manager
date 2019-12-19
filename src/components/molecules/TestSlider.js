@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Slider from 'antd/es/slider';
-import 'antd/es/slider/style/index.css';
 import styled from 'styled-components';
 
 // eslint-disable-next-line react/prefer-stateless-function

@@ -1,7 +1,6 @@
 import React from 'react';
 // Utils
 import PropTypes from 'prop-types';
-import 'antd/es/input/style/index.css';
 import { Input } from 'antd';
 
 const styling = (value) => ({ width: value });

@@ -1,7 +1,6 @@
 import React from 'react';
 // Utils
 import { Input } from 'antd';
-import 'antd/es/input/style/index.css';
 import PropTypes from 'prop-types';
 
 

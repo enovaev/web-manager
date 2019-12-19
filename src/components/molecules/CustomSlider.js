@@ -3,7 +3,6 @@ import React from 'react';
 import Slider from 'antd/es/slider';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import 'antd/es/slider/style/index.css';
 // Components
 import CustomInput from './CustomInput';
 import CustomSelect from './CustomSelect';
