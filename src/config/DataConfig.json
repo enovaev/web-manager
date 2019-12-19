@@ -1,0 +1,67 @@
+[
+  {
+    "id": 123,
+    "option": [
+      {
+        "key": "check",
+        "components": [
+          {
+            "name": "checkbox"
+          }
+        ]
+      },
+      {
+        "key": "number",
+        "components": [
+          {
+            "name": "text"
+          }
+        ]
+      },
+      {
+        "key": "part",
+        "components": [
+          {
+            "name": "input",
+            "type": "string",
+            "width": 100
+          }
+        ]
+      },
+      {
+        "key": "option",
+        "components": [
+          {
+            "name": "input",
+            "type": "number",
+            "width": 60
+          }
+        ]
+      },
+      {
+        "key": "posName",
+        "components": [{}]
+      },
+      {
+        "key": "exw",
+        "components": [{}]
+      },
+      {
+        "key": "quantity",
+        "components": [{}]
+      },
+      {
+        "key": "priceOur",
+        "components": [{}]
+      },
+      {
+        "key": "priceCust",
+        "components": [{}]
+      },
+      {
+        "key": "delete",
+        "components": [{}]
+      }
+    ]
+  }
+]

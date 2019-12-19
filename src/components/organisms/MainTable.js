@@ -1,136 +1,67 @@
-import React from 'react';
+import React, { Component } from 'react';
 // Utils
+// eslint-disable-next-line no-unused-vars
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 // Components
-import CheckBox from '../molecules/CheckBox';
-import CustomText from '../molecules/CustomText';
-import CustomInput from '../molecules/CustomInput';
-import CustomSelect from '../molecules/CustomSelect';
+import UniversalContainer from '../../containers/UniversalContainer';
 // Styles
 import '../style/animation.css';
+// Configs
+import HeaderConfig from '../../config/HeaderMainTable.json';
+import ConfigData from '../../config/DataConfig.json';
 
-function MainTable(props) {
-  const {
-    headerConfig,
-    actionInput,
-    actionSelect,
-    addEntity,
-    entityData,
-    deleteEntity,
-    actionCheckbox,
-    modeShow,
-  } = props;
-  return (
-    <Table>
-      <thead>
-        <tr>
-          {headerConfig.map((item) => (
-            <Th key={item.key}>
-              <Container>
-                {item.label && <Text>{item.label}</Text>}
-                {item.checkbox && (
-                <CheckBox
-                  header
-                  action={(checked) => actionCheckbox(checked)}
-                />
-                )}
-              </Container>
-            </Th>
-          ))}
-          <th>
-            {/* eslint-disable-next-line react/button-has-type */}
-            <button onClick={addEntity}>Click</button>
-            {/* eslint-disable-next-line react/button-has-type */}
-            <button onClick={modeShow}>click</button>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <TransitionGroup component={null}>
-          {entityData.map((item, index) => (
-            <CSSTransition
-              key={item.key}
-              timeout={200}
-              classNames="item"
-            >
-              <BodyRow>
-                {headerConfig.map((el) => (
-                  <Tb key={el.key}>
-                    <Container>
-                      {el.checkbox && (
-                        <CheckBox
-                          value={item.selected}
-                          action={() => actionCheckbox(index)}
+
+// eslint-disable-next-line react/prefer-stateless-function
+class MainTable extends Component {
+  render() {
+    return (
+      <Table>
+        <thead>
+          <tr>
+            {HeaderConfig.map((item) => (
+              <Th key={item.key}>
+                <Container>
+                  {item.label && <Text>{item.label}</Text>}
+                </Container>
+              </Th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          <TransitionGroup component={null}>
+            {ConfigData.map((item) => (
+              <CSSTransition
+                key={item.id}
+                timeout={200}
+                classNames="item"
+              >
+                <BodyRow>
+                  {HeaderConfig.map((elm) => (
+                    <Tb key={elm.key}>
+                      {item.option.map((el) => elm.key === el.key && (
+                        <UniversalContainer
+                          key={el.key}
+                          name={el.key}
+                          component={el.components}
                         />
-                      )}
-                      {el.number && index + 1}
-                      {el.input && (
-                        <CustomInput
-                          width={el.width}
-                          elementType={el.input}
-                          value={item[el.key].input}
-                          action={(value) => actionInput(value, index, el.key)}
-                        />
-                      )}
-                      {el.text && <CustomText value={item[el.key].text} />}
-                      {el.select && (
-                        <CustomSelect
-                          elementType={el.select}
-                          value={item[el.key].select}
-                          action={(value) => actionSelect(value, index, el.key)}
-                        />
-                      )}
-                      {el.delete
-                      // eslint-disable-next-line react/button-has-type
-                          && <button value={index} onClick={deleteEntity}>Delete</button>}
-                    </Container>
-                  </Tb>
-                ))}
-              </BodyRow>
-            </CSSTransition>
-          ))}
-        </TransitionGroup>
-      </tbody>
-      <tfoot>
-        <tr>
-          {headerConfig.map((el) => (
-            <Tf key={el.key}>
-              <Container>
-                {el.footer && (
-                  <div>
-                    <Text>Сумма:</Text>
-                    <CustomText />
-                    {/* <CustomSelect cellName={el.key} /> */}
-                  </div>
-                )}
-              </Container>
-            </Tf>
-          ))}
-        </tr>
-      </tfoot>
-    </Table>
-  );
+                      ))}
+                    </Tb>
+                  ))}
+                </BodyRow>
+              </CSSTransition>
+            ))}
+          </TransitionGroup>
+        </tbody>
+      </Table>
+    );
+  }
 }
 
 MainTable.propTypes = {
-  headerConfig: PropTypes.arrayOf(PropTypes.any).isRequired,
-  entityData: PropTypes.arrayOf(PropTypes.any).isRequired,
-  actionInput: PropTypes.func,
-  actionSelect: PropTypes.func,
-  addEntity: PropTypes.func,
-  deleteEntity: PropTypes.func,
-  actionCheckbox: PropTypes.func,
-  modeShow: PropTypes.func,
 };
 MainTable.defaultProps = {
-  actionInput: () => {},
-  addEntity: () => {},
-  actionSelect: () => {},
-  actionCheckbox: () => {},
-  deleteEntity: () => {},
-  modeShow: () => {},
 };
 
 const Table = styled.table`
@@ -161,12 +92,6 @@ const Tb = styled.td`
   border-left: 1px solid #D9D9D9;
   &:first-child{
     border-left: none;
-  }
-`;
-const Tf = styled.td`
-  border-top: 3px solid black;
-  &:nth-last-child(2) {
-    border-left: 1px solid #D9D9D9;
   }
 `;
 
