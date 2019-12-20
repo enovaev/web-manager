@@ -87,7 +87,6 @@ const mapDispatchToProps = (dispatch) => ({
   checkbox: (index) => dispatch(actionCheckbox(index)),
   select: (value, index, name) => dispatch(actionSelect(value, index, name)),
   input: (value, index, name) => dispatch(actionInput(value, index, name)),
-
 });
 
 export default connect(

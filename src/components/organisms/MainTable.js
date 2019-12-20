@@ -31,7 +31,7 @@ class MainTable extends Component {
         </thead>
         <tbody>
           <TransitionGroup component={null}>
-            {ConfigData.map((item) => (
+            {ConfigData.map((item, index) => (
               <CSSTransition
                 key={item.id}
                 timeout={200}
@@ -43,7 +43,8 @@ class MainTable extends Component {
                       {item.option.map((el) => elm.key === el.key && (
                         <UniversalContainer
                           key={el.key}
-                          name={el.key}
+                          entityName={el.key}
+                          entityIndex={index}
                           component={el.components}
                         />
                       ))}
