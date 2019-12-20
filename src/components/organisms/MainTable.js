@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { connect } from 'react-redux';
 // Components
 import UniversalContainer from '../../containers/UniversalContainer';
 // Styles
@@ -11,11 +12,16 @@ import '../style/animation.css';
 // Configs
 import HeaderConfig from '../../config/HeaderMainTable.json';
 import ConfigData from '../../config/DataConfig.json';
+import { addEntity } from '../../state/actions/MainTableAction';
 
 
 // eslint-disable-next-line react/prefer-stateless-function
 class MainTable extends Component {
   render() {
+    const {
+      // eslint-disable-next-line no-shadow,react/prop-types
+      addEntity,
+    } = this.props;
     return (
       <Table>
         <thead>
@@ -27,6 +33,10 @@ class MainTable extends Component {
                 </Container>
               </Th>
             ))}
+            <Th>
+              {/* eslint-disable-next-line react/button-has-type */}
+              <button onClick={addEntity}>Click</button>
+            </Th>
           </tr>
         </thead>
         <tbody>
@@ -38,16 +48,13 @@ class MainTable extends Component {
                 classNames="item"
               >
                 <BodyRow>
-                  {HeaderConfig.map((elm) => (
-                    <Tb key={elm.key}>
-                      {item.option.map((el) => elm.key === el.key && (
-                        <UniversalContainer
-                          key={el.key}
-                          entityName={el.key}
-                          entityIndex={index}
-                          component={el.components}
-                        />
-                      ))}
+                  {HeaderConfig.map((el) => (
+                    <Tb key={el.key}>
+                      <UniversalContainer
+                        entityName={el.key}
+                        entityIndex={index}
+                        component={el.components}
+                      />
                     </Tb>
                   ))}
                 </BodyRow>
@@ -55,6 +62,9 @@ class MainTable extends Component {
             ))}
           </TransitionGroup>
         </tbody>
+        <tfoot>
+          <tr />
+        </tfoot>
       </Table>
     );
   }
@@ -64,6 +74,14 @@ MainTable.propTypes = {
 };
 MainTable.defaultProps = {
 };
+
+const mapStateToProps = (store) => ({
+  entityID: store.entityID,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  addEntity: () => dispatch(addEntity()),
+});
 
 const Table = styled.table`
   border-collapse: collapse;
@@ -96,4 +114,7 @@ const Tb = styled.td`
   }
 `;
 
-export default MainTable;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(MainTable);

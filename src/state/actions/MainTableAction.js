@@ -7,6 +7,15 @@ import {
   ACTION_INPUT,
 } from '../constants';
 
+export const actionInput = (value, index, name) => (dispatch) => {
+  dispatch({
+    type: ACTION_INPUT,
+    value,
+    index,
+    name,
+  });
+};
+
 export const addEntity = () => (dispatch) => {
   dispatch({
     type: ADD_ENTITY,
@@ -38,15 +47,6 @@ export const actionCheckbox = (value) => (dispatch) => {
 export const actionSelect = (value, index, name) => (dispatch) => {
   dispatch({
     type: ACTION_SELECT,
-    value,
-    index,
-    name,
-  });
-};
-
-export const actionInput = (value, index, name) => (dispatch) => {
-  dispatch({
-    type: ACTION_INPUT,
     value,
     index,
     name,
