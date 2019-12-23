@@ -1,16 +1,18 @@
+import _ from 'lodash';
 import {
-  ACTION_INPUT, ADD_ENTITY,
+  ACTION_INPUT, ADD_ENTITY, DELETE_ENTITY,
 } from '../constants';
 
 
 const initialState = {
-  part: [{ id: 123, input: '' }, { id: 143, input: '' }],
-  option: [{ id: 123, input: '' }, { id: 143, input: '' }],
-  posName: [{ id: 123, input: '' }, { id: 143, input: '' }],
-  exw: [{ id: 123, input: '' }, { id: 143, input: '' }],
-  quantity: [{ id: 123, input: '' }, { id: 143, input: '' }],
-  priceOur: [{ id: 123, input: '' }, { id: 143, input: '' }],
-  priceCust: [{ id: 123, input: '' }, { id: 143, input: '' }],
+  part: [{ id: 123, input: '' }],
+  option: [{ id: 123, input: '' }],
+  posName: [{ id: 123, input: '' }],
+  exw: [{ id: 123, input: '' }],
+  quantity: [{ id: 123, input: '' }],
+  priceOur: [{ id: 123, input: '' }],
+  priceCust: [{ id: 123, input: '' }],
+  ID: [{ id: 123 }],
 };
 
 
@@ -26,11 +28,15 @@ export function partReducer(state = initialState, action) {
           : el)),
       };
 
+    case DELETE_ENTITY:
+      return _.zipObject(Object.keys(state), Object.keys(state).map((el) => (
+        state[el].filter((item, i) => i !== action.payload)
+      )));
+
     case ADD_ENTITY:
-      // eslint-disable-next-line max-len
-      // console.log(Object.keys(state).forEach((el) => ({ [el]: [...state[el], initialState[el][0]] })))
-      console.log(Object.keys(state).map((el) => el));
-      return state;
+      return _.zipObject(Object.keys(state), Object.keys(state).map((el) => (
+        [...state[el], { ...initialState[el][0], id: action.payload }]
+      )));
 
     default:
       return state;

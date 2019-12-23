@@ -26,7 +26,7 @@ export const addEntity = () => (dispatch) => {
 export const deleteEntity = (index) => (dispatch) => {
   dispatch({
     type: DELETE_ENTITY,
-    payload: Number(index.target.value),
+    payload: index,
   });
 };
 

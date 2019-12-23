@@ -124,6 +124,10 @@
   {
     "key": "delete",
     "delete": true,
-    "components": []
+    "components": [
+      {
+        "name": "button"
+      }
+    ]
   }
 ]

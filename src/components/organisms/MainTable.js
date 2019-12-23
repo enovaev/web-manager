@@ -1,26 +1,24 @@
 import React, { Component } from 'react';
 // Utils
-// eslint-disable-next-line no-unused-vars
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import { connect } from 'react-redux';
 // Components
 import UniversalContainer from '../../containers/UniversalContainer';
-// Styles
-import '../style/animation.css';
+// Store
+import { addEntity } from '../../state/actions/MainTableAction';
 // Configs
 import HeaderConfig from '../../config/HeaderMainTable.json';
-import ConfigData from '../../config/DataConfig.json';
-import { addEntity } from '../../state/actions/MainTableAction';
-
+// Styles
+import '../style/animation.css';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class MainTable extends Component {
   render() {
     const {
-      // eslint-disable-next-line no-shadow,react/prop-types
-      addEntity,
+      addAction,
+      entityID,
     } = this.props;
     return (
       <Table>
@@ -35,13 +33,13 @@ class MainTable extends Component {
             ))}
             <Th>
               {/* eslint-disable-next-line react/button-has-type */}
-              <button onClick={addEntity}>Click</button>
+              <button onClick={addAction}>Click</button>
             </Th>
           </tr>
         </thead>
         <tbody>
           <TransitionGroup component={null}>
-            {ConfigData.map((item, index) => (
+            {entityID.map((item, index) => (
               <CSSTransition
                 key={item.id}
                 timeout={200}
@@ -71,6 +69,8 @@ class MainTable extends Component {
 }
 
 MainTable.propTypes = {
+  entityID: PropTypes.arrayOf(PropTypes.any).isRequired,
+  addAction: PropTypes.func.isRequired,
 };
 MainTable.defaultProps = {
 };
@@ -80,7 +80,7 @@ const mapStateToProps = (store) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  addEntity: () => dispatch(addEntity()),
+  addAction: () => dispatch(addEntity()),
 });
 
 const Table = styled.table`
