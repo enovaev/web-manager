@@ -12,7 +12,7 @@ export function IDReducer(state = initialState, action) {
       return [...state, action.payload];
 
     case DELETE_ENTITY:
-      return state.filter((el, i) => i !== action.payload);
+      return state.filter((el) => el !== action.payload);
 
     default:
       return state;

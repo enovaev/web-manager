@@ -1,14 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import MainTable from '../organisms/MainTable';
+import MainTableContainer from '../../containers/MainTableContainer';
 
-function TableFormation() {
-  return (
-    <Container>
-      <MainTable />
-    </Container>
-  );
-}
+
+const PageContainer = () => (
+  <Container>
+    <MainTableContainer />
+  </Container>
+);
 
 const Container = styled.div`
   margin-top: 50px;
@@ -18,4 +17,4 @@ const Container = styled.div`
   box-sizing: border-box;
 `;
 
-export default TableFormation;
+export default PageContainer;

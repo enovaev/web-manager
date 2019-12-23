@@ -1,0 +1,10 @@
+{
+  "check": [{ "id": 123, "checked": false }],
+  "part": [{ "id": 123, "input": "" }],
+  "option": [{ "id": 123, "input": "" }],
+  "posName": [{ "id": 123, "input": "" }],
+  "exw": [{ "id": 123, "input": "", "select": "rub" }],
+  "quantity": [{ "id": 123, "input": "", "select": "rub" }],
+  "priceOur": [{ "id": 123, "input": "", "select": "rub" }],
+  "priceCust": [{ "id": 123, "input": "", "select": "rub" }]
+}

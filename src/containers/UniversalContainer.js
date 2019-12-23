@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
+// Utils
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+// Components
 import CustomInput from '../components/molecules/CustomInput';
+import CheckBox from '../components/molecules/CheckBox';
+// Store
 import {
+  actionCheckbox,
   actionInput,
   deleteEntity,
 } from '../state/actions/MainTableAction';
+
 
 // eslint-disable-next-line react/prefer-stateless-function
 class UniversalContainer extends Component {
@@ -14,9 +20,10 @@ class UniversalContainer extends Component {
     const {
       entityData,
       entityName,
-      entityIndex,
+      entityID,
       component,
       deleteAction,
+      checkbox,
       input,
     } = this.props;
     console.log('ren');
@@ -24,17 +31,23 @@ class UniversalContainer extends Component {
       <div>
         {component.map((el) => (
           <Container key={el.name}>
+            {el.name === 'checkbox' && (
+              <CheckBox
+                action={() => checkbox(entityID, entityName)}
+                value={entityData ? entityData.checked : ''}
+              />
+            )}
             {el.name === 'input' && (
               <CustomInput
-                action={(value) => input(value, entityIndex, entityName)}
+                action={(value) => input(value, entityID, entityName)}
                 width={el.width}
-                value={entityData.input}
+                value={entityData ? entityData.input : ''}
                 elementType={el.type}
               />
             )}
             {el.name === 'button' && (
               // eslint-disable-next-line react/button-has-type
-              <button onClick={() => deleteAction(entityIndex)}>delete</button>
+              <button onClick={() => deleteAction(entityID)}>delete</button>
             )}
           </Container>
         ))}
@@ -46,24 +59,27 @@ class UniversalContainer extends Component {
 UniversalContainer.propTypes = {
   component: PropTypes.arrayOf(PropTypes.any).isRequired,
   entityName: PropTypes.string.isRequired,
-  entityIndex: PropTypes.number.isRequired,
+  entityID: PropTypes.number.isRequired,
   entityData: PropTypes.objectOf(PropTypes.any).isRequired,
   deleteAction: PropTypes.func,
+  checkbox: PropTypes.func,
   input: PropTypes.func,
 };
 UniversalContainer.defaultProps = {
   deleteAction: () => {},
+  checkbox: () => {},
   input: () => {},
 };
 
-const mapStateToProps = (store, { entityName, entityIndex }) => ({
+const mapStateToProps = (store, { entityName, entityID }) => ({
   // eslint-disable-next-line max-len
-  entityData: store.entityProps[entityName] && store.entityProps[entityName][entityIndex],
+  entityData: store[entityName] && store[entityName].filter((el) => el.id === entityID)[0],
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  deleteAction: (index) => dispatch(deleteEntity(index)),
-  input: (value, index, name) => dispatch(actionInput(value, index, name)),
+  deleteAction: (id) => dispatch(deleteEntity(id)),
+  input: (value, id, name) => dispatch(actionInput(value, id, name)),
+  checkbox: (id, name) => dispatch(actionCheckbox(id, name)),
 });
 
 const Container = styled.div`

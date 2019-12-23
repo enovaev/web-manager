@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
-import { partReducer } from './reducer';
+import { mainReducer } from './reducer';
 import { IDReducer } from './IDReducer';
 
 // eslint-disable-next-line import/prefer-default-export
 export const rootReducer = combineReducers({
-  entityProps: partReducer,
+  part: mainReducer('part'),
+  option: mainReducer('option'),
+  check: mainReducer('check'),
   entityID: IDReducer,
 });

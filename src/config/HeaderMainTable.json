@@ -11,11 +11,7 @@
   {
     "key": "number",
     "label": "№",
-    "components": [
-      {
-        "name": "text"
-      }
-    ]
+    "container": false
   },
   {
     "key": "part",

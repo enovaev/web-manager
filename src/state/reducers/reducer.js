@@ -1,44 +1,40 @@
-import _ from 'lodash';
+import initialState from '../../config/initialState.json';
 import {
+  ACTION_CHECKBOX, ACTION_CHECKBOX_ALL,
   ACTION_INPUT, ADD_ENTITY, DELETE_ENTITY,
 } from '../constants';
 
 
-const initialState = {
-  part: [{ id: 123, input: '' }],
-  option: [{ id: 123, input: '' }],
-  posName: [{ id: 123, input: '' }],
-  exw: [{ id: 123, input: '' }],
-  quantity: [{ id: 123, input: '' }],
-  priceOur: [{ id: 123, input: '' }],
-  priceCust: [{ id: 123, input: '' }],
-  ID: [{ id: 123 }],
-};
-
-
 // eslint-disable-next-line import/prefer-default-export
-export function partReducer(state = initialState, action) {
-  switch (action.type) {
-    case ACTION_INPUT:
-      return {
-        ...state,
-        [action.name]:
-        state[action.name].map((el, i) => ((action.index === i)
+export const mainReducer = (root) => (state = initialState[root], action) => {
+  if (action.name === root) {
+    switch (action.type) {
+      case ACTION_CHECKBOX:
+        return state.map((el, i) => ((action.value === el.id)
+          ? { ...el, checked: !state[i].checked }
+          : el));
+
+      case ACTION_CHECKBOX_ALL:
+        return state.map((el) => ({ ...el, checked: action.value }));
+
+      case ACTION_INPUT:
+        return state.map((el) => ((action.id === el.id)
           ? { ...el, input: action.value }
-          : el)),
-      };
+          : el));
 
-    case DELETE_ENTITY:
-      return _.zipObject(Object.keys(state), Object.keys(state).map((el) => (
-        state[el].filter((item, i) => i !== action.payload)
-      )));
+      default:
+        return state;
+    }
+  } else {
+    switch (action.type) {
+      case ADD_ENTITY:
+        return [...state, { ...initialState[root][0], id: action.payload }];
 
-    case ADD_ENTITY:
-      return _.zipObject(Object.keys(state), Object.keys(state).map((el) => (
-        [...state[el], { ...initialState[el][0], id: action.payload }]
-      )));
+      case DELETE_ENTITY:
+        return state.filter((el) => el.id !== action.payload);
 
-    default:
-      return state;
+      default:
+        return state;
+    }
   }
-}
+};
