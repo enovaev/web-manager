@@ -4,7 +4,10 @@
   "option": [{ "id": 123, "input": "" }],
   "posName": [{ "id": 123, "input": "" }],
   "exw": [{ "id": 123, "input": "", "select": "rub" }],
-  "quantity": [{ "id": 123, "input": "", "select": "rub" }],
-  "priceOur": [{ "id": 123, "input": "", "select": "rub" }],
-  "priceCust": [{ "id": 123, "input": "", "select": "rub" }]
+  "quantity": [{ "id": 123, "input": "", "select": "piece" }],
+  "priceOur": [{ "id": 123, "text": "", "select": "rub" }],
+  "priceCust": [{ "id": 123, "text": "", "select": "rub" }],
+  "exwSum": [{ "id": 0, "text": "", "select": "rub" }],
+  "priceOurSum": [{ "id": 0, "text": "", "select": "rub" }],
+  "priceCustSum": [{ "id": 0, "text": "", "select": "rub" }]
 }

@@ -7,5 +7,13 @@ export const rootReducer = combineReducers({
   part: mainReducer('part'),
   option: mainReducer('option'),
   check: mainReducer('check'),
+  posName: mainReducer('posName'),
+  exw: mainReducer('exw'),
+  quantity: mainReducer('quantity'),
+  priceOur: mainReducer('priceOur'),
+  priceCust: mainReducer('priceCust'),
+  exwSum: mainReducer('exwSum'),
+  priceOurSum: mainReducer('priceOurSum'),
+  priceCustSum: mainReducer('priceCustSum'),
   entityID: IDReducer,
 });

@@ -61,14 +61,22 @@
         "name": "select",
         "type": "curr"
       }
-    ]
+    ],
+    "footer": {
+      "components": [
+        {
+          "name": "text"
+        },
+        {
+          "name": "select",
+          "type": "curr"
+        }
+      ]
+    }
   },
   {
     "key": "quantity",
     "label": "Quantity",
-    "input": "number",
-    "width": 60,
-    "select": "quan",
     "components": [
       {
         "name": "input",
@@ -84,38 +92,50 @@
   {
     "key": "priceOur",
     "label": "Our price",
-    "footer": true,
-    "text": true,
-    "select": "curr",
     "components": [
       {
-        "name": "text",
-        "type": "number",
-        "width": 90
+        "name": "text"
       },
       {
         "name": "select",
         "type": "curr"
       }
-    ]
+    ],
+    "footer": {
+      "components": [
+        {
+          "name": "text"
+        },
+        {
+          "name": "select",
+          "type": "curr"
+        }
+      ]
+    }
   },
   {
     "key": "priceCust",
     "label": "Price for Customer",
-    "text": true,
-    "footer": true,
-    "select": "curr",
     "components": [
       {
-        "name": "text",
-        "type": "number",
-        "width": 90
+        "name": "text"
       },
       {
         "name": "select",
         "type": "curr"
       }
-    ]
+    ],
+    "footer": {
+      "components": [
+        {
+          "name": "text"
+        },
+        {
+          "name": "select",
+          "type": "curr"
+        }
+      ]
+    }
   },
   {
     "key": "delete",

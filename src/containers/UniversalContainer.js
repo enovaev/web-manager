@@ -5,11 +5,14 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 // Components
 import CustomInput from '../components/molecules/CustomInput';
+import CustomSelect from '../components/molecules/CustomSelect';
+import CustomText from '../components/molecules/CustomText';
 import CheckBox from '../components/molecules/CheckBox';
 // Store
 import {
   actionCheckbox,
   actionInput,
+  actionSelect,
   deleteEntity,
 } from '../state/actions/MainTableAction';
 
@@ -24,13 +27,14 @@ class UniversalContainer extends Component {
       component,
       deleteAction,
       checkbox,
+      select,
       input,
     } = this.props;
     console.log('ren');
     return (
-      <div>
+      <Container>
         {component.map((el) => (
-          <Container key={el.name}>
+          <div key={el.name}>
             {el.name === 'checkbox' && (
               <CheckBox
                 action={() => checkbox(entityID, entityName)}
@@ -41,7 +45,15 @@ class UniversalContainer extends Component {
               <CustomInput
                 action={(value) => input(value, entityID, entityName)}
                 width={el.width}
-                value={entityData ? entityData.input : ''}
+                value={entityData.input}
+                elementType={el.type}
+              />
+            )}
+            {el.name === 'text' && (<CustomText value={entityData.text} />)}
+            {el.name === 'select' && (
+              <CustomSelect
+                action={(value) => select(value, entityID, entityName)}
+                value={entityData.select}
                 elementType={el.type}
               />
             )}
@@ -49,9 +61,9 @@ class UniversalContainer extends Component {
               // eslint-disable-next-line react/button-has-type
               <button onClick={() => deleteAction(entityID)}>delete</button>
             )}
-          </Container>
+          </div>
         ))}
-      </div>
+      </Container>
     );
   }
 }
@@ -60,14 +72,17 @@ UniversalContainer.propTypes = {
   component: PropTypes.arrayOf(PropTypes.any).isRequired,
   entityName: PropTypes.string.isRequired,
   entityID: PropTypes.number.isRequired,
-  entityData: PropTypes.objectOf(PropTypes.any).isRequired,
+  entityData: PropTypes.objectOf(PropTypes.any),
   deleteAction: PropTypes.func,
   checkbox: PropTypes.func,
+  select: PropTypes.func,
   input: PropTypes.func,
 };
 UniversalContainer.defaultProps = {
+  entityData: {},
   deleteAction: () => {},
   checkbox: () => {},
+  select: () => {},
   input: () => {},
 };
 
@@ -80,6 +95,7 @@ const mapDispatchToProps = (dispatch) => ({
   deleteAction: (id) => dispatch(deleteEntity(id)),
   input: (value, id, name) => dispatch(actionInput(value, id, name)),
   checkbox: (id, name) => dispatch(actionCheckbox(id, name)),
+  select: (value, id, name) => dispatch(actionSelect(value, id, name)),
 });
 
 const Container = styled.div`

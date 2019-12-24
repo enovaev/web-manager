@@ -63,7 +63,19 @@ const TableFormation = ({
       </TransitionGroup>
     </tbody>
     <tfoot>
-      <tr />
+      <tr>
+        {headerConfig.map((el) => (
+          <td key={el.key}>
+            {el.footer && (
+              <UniversalContainer
+                entityName={`${el.key}Sum`}
+                entityID={0}
+                component={el.footer.components}
+              />
+            )}
+          </td>
+        ))}
+      </tr>
     </tfoot>
   </Table>
 );

@@ -46,11 +46,11 @@ export const actionCheckbox = (value, name) => (dispatch) => {
   }
 };
 
-export const actionSelect = (value, index, name) => (dispatch) => {
+export const actionSelect = (value, id, name) => (dispatch) => {
   dispatch({
     type: ACTION_SELECT,
     value,
-    index,
+    id,
     name,
   });
 };
