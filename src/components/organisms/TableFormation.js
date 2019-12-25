@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 // Components
-import UniversalContainer from '../../containers/UniversalContainer';
 import CheckBox from '../molecules/CheckBox';
+import UniversalContainer from '../../containers/UniversalContainer';
 // Styles
 import '../style/animation.css';
 
@@ -96,6 +96,7 @@ TableFormation.defaultProps = {
 
 const Table = styled.table`
   border-collapse: collapse;
+  margin-bottom: 40px;
 `;
 const Container = styled.div`
   display: flex;

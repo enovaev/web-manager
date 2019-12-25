@@ -7,44 +7,42 @@ import styled from 'styled-components';
 import CustomInput from './CustomInput';
 import CustomSelect from './CustomSelect';
 
-function CustomSlider(props) {
-  const {
-    valuePerc, actionPerc, elementType, min, max,
-  } = props;
-  return (
-    <Container>
-      {elementType === 'double' && (
-        <InputDiv>
-          <CustomInput
-            elementType="number"
-            value={0}
-            action={() => {}}
-            width={120}
-          />
-          <CustomSelect elementType="curr" value="rub" action={() => {}} />
-        </InputDiv>
-      )}
+const CustomSlider = ({
+  valuePerc, actionPerc, elementType, min, max,
+}) => (
+  <Container>
+    {elementType === 'double' && (
+    <InputDiv>
       <CustomInput
         elementType="number"
+        value={0}
+        action={() => {}}
+        width={120}
+      />
+      <CustomSelect elementType="curr" value="rub" action={() => {}} />
+    </InputDiv>
+    )}
+    <CustomInput
+      elementType="number"
+      value={valuePerc}
+      action={actionPerc}
+      width={50}
+      min={min}
+      max={max}
+    />
+    <SliderDiv>
+      <Slider
+        tooltipVisible={false}
         value={valuePerc}
-        action={actionPerc}
-        width={50}
+        onChange={actionPerc}
         min={min}
         max={max}
+        step={1}
       />
-      <SliderDiv>
-        <Slider
-          tooltipVisible={false}
-          value={valuePerc}
-          onChange={actionPerc}
-          min={min}
-          max={max}
-          step={1}
-        />
-      </SliderDiv>
-    </Container>
-  );
-}
+    </SliderDiv>
+  </Container>
+);
+
 CustomSlider.propTypes = {
   elementType: PropTypes.string.isRequired,
   valuePerc: PropTypes.number.isRequired,
@@ -56,6 +54,7 @@ CustomSlider.defaultProps = {
   min: 0,
   max: 100,
 };
+
 const Container = styled.div`
 display: flex;
 flex-direction: column;
@@ -67,4 +66,5 @@ width: 200px;
 const InputDiv = styled.div`
 margin: 10px 0;
 `;
+
 export default CustomSlider;

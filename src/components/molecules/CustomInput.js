@@ -13,26 +13,17 @@ const validator = (value, min, max) => {
   return val;
 };
 
-function CustomInput(props) {
-  const {
-    action,
-    value,
-    elementType,
-    width,
-    min,
-    max,
-  } = props;
-  return (
-    <Input
-      style={styling(width)}
-      value={value}
-      onChange={({ target }) => ((elementType === 'number')
-        ? action(validator(target.value, min, max))
-        : action(target.value))}
-    />
-  );
-}
-
+const CustomInput = ({
+  action, value, elementType, width, min, max,
+}) => (
+  <Input
+    style={styling(width)}
+    value={value}
+    onChange={({ target }) => ((elementType === 'number')
+      ? action(validator(target.value, min, max))
+      : action(target.value))}
+  />
+);
 
 CustomInput.propTypes = {
   elementType: PropTypes.string.isRequired,
@@ -49,6 +40,5 @@ CustomInput.defaultProps = {
   min: 0,
   max: 0,
 };
-
 
 export default CustomInput;

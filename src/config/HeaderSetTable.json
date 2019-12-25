@@ -2,16 +2,31 @@
   {
     "key": "extra",
     "label": "Наценка",
-    "slider": "double"
+    "components": [
+      {
+        "name": "slider",
+        "type": "double"
+      }
+    ]
   },
   {
     "key": "sale",
     "label": "Скидка",
-    "slider": "double"
+    "components": [
+      {
+        "name": "slider",
+        "type": "double"
+      }
+    ]
   },
   {
     "key": "delta",
     "label": "Дельта",
-    "slider": "double"
+    "components": [
+      {
+        "name": "slider",
+        "type": "double"
+      }
+    ]
   }
 ]

@@ -1,13 +1,18 @@
 import React from 'react';
+// Utils
 import styled from 'styled-components';
-import MainTableContainer from '../../containers/MainTableContainer';
+// Components
+import SetTable from '../organisms/SetTable';
 import EditTable from '../organisms/EditTable';
-
+import MainTableContainer from '../../containers/MainTableContainer';
+import CalculatorContainer from '../../containers/CalculatorContainer';
 
 const PageFormation = () => (
   <Container>
     <MainTableContainer />
     <EditTable />
+    <SetTable />
+    <CalculatorContainer />
   </Container>
 );
 

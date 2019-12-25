@@ -1,7 +1,8 @@
 import initialState from '../../config/initialState.json';
 import {
   ACTION_CHECKBOX, ACTION_CHECKBOX_ALL,
-  ACTION_INPUT, ADD_ENTITY, DELETE_ENTITY, ACTION_SELECT, ACTION_SLIDER_ALL, ACTION_SLIDER,
+  ACTION_INPUT, ADD_ENTITY, DELETE_ENTITY,
+  ACTION_SELECT, ACTION_SLIDER_ALL, ACTION_SLIDER, OUR_PRICE_CALC,
 } from '../constants';
 
 
@@ -30,8 +31,13 @@ export const mainReducer = (root) => (state = initialState[root], action) => {
         return state.map((el) => ({ ...el, percent: action.value }));
 
       case ACTION_SLIDER:
-        return state.map((el) => (action.id.find((item) => item === el.id)
+        return state.map((el) => (action.id.find((item) => item.id === el.id)
           ? { ...el, percent: action.value }
+          : el));
+
+      case OUR_PRICE_CALC:
+        return state.map((el) => ((action.id === el.id)
+          ? { ...el, text: action.value }
           : el));
 
       default:

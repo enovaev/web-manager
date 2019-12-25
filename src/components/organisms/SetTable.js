@@ -2,13 +2,13 @@ import React from 'react';
 // Components
 import TableFormation from './TableFormation';
 // Configs
-import HeaderConfig from '../../config/HeaderEditTable';
+import HeaderConfig from '../../config/HeaderSetTable';
 
-const EditTable = () => (
+const SetTable = () => (
   <TableFormation
     headerConfig={HeaderConfig}
     entityID={[0]}
   />
 );
 
-export default EditTable;
+export default SetTable;

@@ -63,7 +63,7 @@ export const actionSlider = (value, name) => (dispatch, getState) => {
     dispatch({
       type: ACTION_SLIDER,
       value: Number(value),
-      id: filter.map((el) => el.id),
+      id: filter,
       name,
     });
   } else {

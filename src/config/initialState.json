@@ -15,5 +15,8 @@
   "nds": [{ "id": 123, "percent": 0, "input": "" }],
   "convert": [{ "id": 123, "percent": 0, "input": "" }],
   "another": [{ "id": 123, "percent": 0, "input": "" }],
-  "discount": [{ "id": 123, "percent": 0, "input": "" }]
+  "discount": [{ "id": 123, "percent": 0, "input": "" }],
+  "extra": [{ "id": 123, "percent": 0, "input": "" }],
+  "sale": [{ "id": 123, "percent": 0, "input": "" }],
+  "delta": [{ "id": 123, "percent": 0, "input": "" }]
 }

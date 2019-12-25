@@ -102,7 +102,6 @@ UniversalContainer.defaultProps = {
 };
 
 const mapStateToProps = (store, { entityName, entityID }) => ({
-  // eslint-disable-next-line max-len
   entityData: store[entityName] && store[entityName].filter((el) => el.id === entityID)[0],
   entityDataSlider: store[entityName]
     && (
@@ -127,6 +126,7 @@ const Container = styled.div`
   margin: 3px 10px;
   justify-content: center;
 `;
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps,

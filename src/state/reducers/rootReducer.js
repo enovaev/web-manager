@@ -24,6 +24,10 @@ export const rootReducer = combineReducers({
   convert: mainReducer('convert'),
   another: mainReducer('another'),
   discount: mainReducer('discount'),
+  // Set
+  extra: mainReducer('extra'),
+  sale: mainReducer('sale'),
+  delta: mainReducer('delta'),
   // Id
   entityID: IDReducer,
 });
