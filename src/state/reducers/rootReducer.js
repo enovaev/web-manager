@@ -1,9 +1,10 @@
 import { combineReducers } from 'redux';
-import { mainReducer } from './reducer';
+import { mainReducer, footerReducer } from './reducer';
 import { IDReducer } from './IDReducer';
 
 // eslint-disable-next-line import/prefer-default-export
 export const rootReducer = combineReducers({
+  // Main
   part: mainReducer('part'),
   option: mainReducer('option'),
   check: mainReducer('check'),
@@ -12,8 +13,17 @@ export const rootReducer = combineReducers({
   quantity: mainReducer('quantity'),
   priceOur: mainReducer('priceOur'),
   priceCust: mainReducer('priceCust'),
-  exwSum: mainReducer('exwSum'),
-  priceOurSum: mainReducer('priceOurSum'),
-  priceCustSum: mainReducer('priceCustSum'),
+  // MainFooter
+  exwSum: footerReducer('exwSum'),
+  priceOurSum: footerReducer('priceOurSum'),
+  priceCustSum: footerReducer('priceCustSum'),
+  // Edit
+  delivery: mainReducer('delivery'),
+  cusHouse: mainReducer('cusHouse'),
+  nds: mainReducer('nds'),
+  convert: mainReducer('convert'),
+  another: mainReducer('another'),
+  discount: mainReducer('discount'),
+  // Id
   entityID: IDReducer,
 });

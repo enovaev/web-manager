@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 // Components
 import TableFormation from '../components/organisms/TableFormation';
 // Store
-import { actionCheckbox, addEntity } from '../state/actions/MainTableAction';
+import { actionCheckbox, addEntity } from '../state/actions/MainAction';
 // Configs
 import HeaderConfig from '../config/HeaderMainTable.json';
 

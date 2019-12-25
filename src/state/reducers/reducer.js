@@ -5,7 +5,6 @@ import {
 } from '../constants';
 
 
-// eslint-disable-next-line import/prefer-default-export
 export const mainReducer = (root) => (state = initialState[root], action) => {
   if (action.name === root) {
     switch (action.type) {
@@ -41,5 +40,21 @@ export const mainReducer = (root) => (state = initialState[root], action) => {
       default:
         return state;
     }
+  }
+};
+
+export const footerReducer = (root) => (state = initialState[root], action) => {
+  if (action.name === root) {
+    switch (action.type) {
+      case ACTION_SELECT:
+        return state.map((el) => ((action.id === el.id)
+          ? { ...el, select: action.value }
+          : el));
+
+      default:
+        return state;
+    }
+  } else {
+    return state;
   }
 };

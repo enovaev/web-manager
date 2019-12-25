@@ -5,6 +5,8 @@ import {
   ACTION_CHECKBOX_ALL,
   ACTION_SELECT,
   ACTION_INPUT,
+  ACTION_SLIDER,
+  ACTION_SLIDER_ALL,
 } from '../constants';
 
 export const actionInput = (value, id, name) => (dispatch) => {
@@ -53,4 +55,21 @@ export const actionSelect = (value, id, name) => (dispatch) => {
     id,
     name,
   });
+};
+
+export const actionSlider = (value, name) => (dispatch, getState) => {
+  const filter = getState().entityData.filter((item) => item.selected === true);
+  if (filter.length) {
+    dispatch({
+      type: ACTION_SLIDER,
+      value: Number(value),
+      name,
+    });
+  } else {
+    dispatch({
+      type: ACTION_SLIDER_ALL,
+      value: Number(value),
+      name,
+    });
+  }
 };

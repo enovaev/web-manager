@@ -1,20 +1,22 @@
 import React, { Component } from 'react';
 // Utils
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 // Components
+import CheckBox from '../components/molecules/CheckBox';
+import CustomText from '../components/molecules/CustomText';
 import CustomInput from '../components/molecules/CustomInput';
 import CustomSelect from '../components/molecules/CustomSelect';
-import CustomText from '../components/molecules/CustomText';
-import CheckBox from '../components/molecules/CheckBox';
+import CustomSlider from '../components/molecules/CustomSlider';
 // Store
 import {
-  actionCheckbox,
   actionInput,
-  actionSelect,
   deleteEntity,
-} from '../state/actions/MainTableAction';
+  actionSelect,
+  actionSlider,
+  actionCheckbox,
+} from '../state/actions/MainAction';
 
 
 // eslint-disable-next-line react/prefer-stateless-function
@@ -28,6 +30,7 @@ class UniversalContainer extends Component {
       deleteAction,
       checkbox,
       select,
+      slider,
       input,
     } = this.props;
     console.log('ren');
@@ -57,6 +60,13 @@ class UniversalContainer extends Component {
                 elementType={el.type}
               />
             )}
+            {el.name === 'slider' && (
+              <CustomSlider
+                actionPerc={(value) => slider(value, entityID, entityName)}
+                valuePerc={entityData.percent}
+                elementType={el.type}
+              />
+            )}
             {el.name === 'button' && (
               // eslint-disable-next-line react/button-has-type
               <button onClick={() => deleteAction(entityID)}>delete</button>
@@ -76,6 +86,7 @@ UniversalContainer.propTypes = {
   deleteAction: PropTypes.func,
   checkbox: PropTypes.func,
   select: PropTypes.func,
+  slider: PropTypes.func,
   input: PropTypes.func,
 };
 UniversalContainer.defaultProps = {
@@ -83,6 +94,7 @@ UniversalContainer.defaultProps = {
   deleteAction: () => {},
   checkbox: () => {},
   select: () => {},
+  slider: () => {},
   input: () => {},
 };
 
@@ -96,6 +108,7 @@ const mapDispatchToProps = (dispatch) => ({
   input: (value, id, name) => dispatch(actionInput(value, id, name)),
   checkbox: (id, name) => dispatch(actionCheckbox(id, name)),
   select: (value, id, name) => dispatch(actionSelect(value, id, name)),
+  slider: (value, id, name) => dispatch(actionSlider(value, id, name)),
 });
 
 const Container = styled.div`

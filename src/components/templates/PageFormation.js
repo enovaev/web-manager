@@ -1,11 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import MainTableContainer from '../../containers/MainTableContainer';
+import EditTable from '../organisms/EditTable';
 
 
-const PageContainer = () => (
+const PageFormation = () => (
   <Container>
     <MainTableContainer />
+    <EditTable />
   </Container>
 );
 
@@ -17,4 +19,4 @@ const Container = styled.div`
   box-sizing: border-box;
 `;
 
-export default PageContainer;
+export default PageFormation;

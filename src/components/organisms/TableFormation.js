@@ -36,7 +36,7 @@ const TableFormation = ({
         ))}
       </tr>
     </thead>
-    <tbody>
+    <Tbody>
       <TransitionGroup component={null}>
         {entityID.map((item, index) => (
           <CSSTransition
@@ -61,19 +61,22 @@ const TableFormation = ({
           </CSSTransition>
         ))}
       </TransitionGroup>
-    </tbody>
+    </Tbody>
     <tfoot>
       <tr>
         {headerConfig.map((el) => (
-          <td key={el.key}>
+          <Tf key={el.key}>
             {el.footer && (
-              <UniversalContainer
-                entityName={`${el.key}Sum`}
-                entityID={0}
-                component={el.footer.components}
-              />
+              <div>
+                <Text>Сумма:</Text>
+                <UniversalContainer
+                  entityName={`${el.key}Sum`}
+                  entityID={0}
+                  component={el.footer.components}
+                />
+              </div>
             )}
-          </td>
+          </Tf>
         ))}
       </tr>
     </tfoot>
@@ -100,6 +103,8 @@ const Container = styled.div`
   justify-content: center;
 `;
 const Text = styled.p`
+text-align: center;
+margin: 0;
 `;
 const Th = styled.th`
   border-left: 1px solid black;
@@ -119,6 +124,14 @@ const Tb = styled.td`
   &:first-child{
     border-left: none;
   }
+`;
+const Tf = styled.td`
+  border-top: 3px solid black;
+  &:nth-last-child(2) {
+    border-left: 1px solid #D9D9D9;
+  }
+`;
+const Tbody = styled.tbody`
 `;
 
 export default TableFormation;

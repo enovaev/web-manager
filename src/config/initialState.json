@@ -9,5 +9,11 @@
   "priceCust": [{ "id": 123, "text": "", "select": "rub" }],
   "exwSum": [{ "id": 0, "text": "", "select": "rub" }],
   "priceOurSum": [{ "id": 0, "text": "", "select": "rub" }],
-  "priceCustSum": [{ "id": 0, "text": "", "select": "rub" }]
+  "priceCustSum": [{ "id": 0, "text": "", "select": "rub" }],
+  "delivery": [{ "id": 0, "percent": 0, "input": "" }],
+  "cusHouse": [{ "id": 0, "percent": 0, "input": "" }],
+  "nds": [{ "id": 0, "percent": 0, "input": "" }],
+  "convert": [{ "id": 0, "percent": 0, "input": "" }],
+  "another": [{ "id": 0, "percent": 0, "input": "" }],
+  "discount": [{ "id": 0, "percent": 0, "input": "" }]
 }
