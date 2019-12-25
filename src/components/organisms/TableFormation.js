@@ -10,12 +10,11 @@ import UniversalContainer from '../../containers/UniversalContainer';
 import '../style/animation.css';
 
 
-// eslint-disable-next-line react/prefer-stateless-function
 const TableFormation = ({
   addEntity, entityID, headerConfig, actionCheckbox,
 }) => (
   <Table>
-    <thead>
+    <Thead>
       <tr>
         {headerConfig.map((item) => (
           <Th key={item.key}>
@@ -35,7 +34,7 @@ const TableFormation = ({
           </Th>
         ))}
       </tr>
-    </thead>
+    </Thead>
     <Tbody>
       <TransitionGroup component={null}>
         {entityID.map((item, index) => (
@@ -47,7 +46,7 @@ const TableFormation = ({
             <BodyRow>
               {headerConfig.map((el) => (
                 <Tb key={el.key}>
-                  {el.key === 'number' && <Container>{index}</Container>}
+                  {el.key === 'number' && <Container>{index + 1}</Container>}
                   {el.components && (
                     <UniversalContainer
                       entityName={el.key}
@@ -62,7 +61,7 @@ const TableFormation = ({
         ))}
       </TransitionGroup>
     </Tbody>
-    <tfoot>
+    <Tfoot>
       <tr>
         {headerConfig.map((el) => (
           <Tf key={el.key}>
@@ -79,7 +78,7 @@ const TableFormation = ({
           </Tf>
         ))}
       </tr>
-    </tfoot>
+    </Tfoot>
   </Table>
 );
 
@@ -104,8 +103,8 @@ const Container = styled.div`
   justify-content: center;
 `;
 const Text = styled.p`
-text-align: center;
-margin: 0;
+  text-align: center;
+  margin: 0;
 `;
 const Th = styled.th`
   border-left: 1px solid black;
@@ -133,6 +132,10 @@ const Tf = styled.td`
   }
 `;
 const Tbody = styled.tbody`
+`;
+const Thead = styled.thead`
+`;
+const Tfoot = styled.tfoot`
 `;
 
 export default TableFormation;

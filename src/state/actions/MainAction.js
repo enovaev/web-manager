@@ -57,20 +57,22 @@ export const actionSelect = (value, id, name) => (dispatch) => {
   });
 };
 
-export const actionSlider = (value, name) => (dispatch, getState) => {
+export const actionSlider = (value, name, prop) => (dispatch, getState) => {
   const filter = getState().check.filter((item) => item.checked === true);
   if (filter.length) {
     dispatch({
       type: ACTION_SLIDER,
-      value: Number(value),
+      value,
       id: filter,
       name,
+      prop,
     });
   } else {
     dispatch({
       type: ACTION_SLIDER_ALL,
-      value: Number(value),
+      value,
       name,
+      prop,
     });
   }
 };

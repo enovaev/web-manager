@@ -10,13 +10,13 @@
   "exwSum": [{ "id": 0, "text": "", "select": "rub" }],
   "priceOurSum": [{ "id": 0, "text": "", "select": "rub" }],
   "priceCustSum": [{ "id": 0, "text": "", "select": "rub" }],
-  "delivery": [{ "id": 123, "percent": 0, "input": "" }],
-  "cusHouse": [{ "id": 123, "percent": 0, "input": "" }],
+  "delivery": [{ "id": 123, "percent": 0, "input": "", "select": "rub" }],
+  "cusHouse": [{ "id": 123, "percent": 0, "input": "", "select": "rub" }],
   "nds": [{ "id": 123, "percent": 0, "input": "" }],
-  "convert": [{ "id": 123, "percent": 0, "input": "" }],
-  "another": [{ "id": 123, "percent": 0, "input": "" }],
-  "discount": [{ "id": 123, "percent": 0, "input": "" }],
-  "extra": [{ "id": 123, "percent": 0, "input": "" }],
-  "sale": [{ "id": 123, "percent": 0, "input": "" }],
-  "delta": [{ "id": 123, "percent": 0, "input": "" }]
+  "convert": [{ "id": 123, "percent": 0, "input": "", "select": "rub" }],
+  "another": [{ "id": 123, "percent": 0, "input": "", "select": "rub" }],
+  "discount": [{ "id": 123, "percent": 0, "input": "", "select": "rub" }],
+  "extra": [{ "id": 123, "percent": 0, "input": "", "select": "rub" }],
+  "sale": [{ "id": 123, "percent": 0, "input": "", "select": "rub" }],
+  "delta": [{ "id": 123, "percent": 0, "input": "", "select": "rub" }]
 }

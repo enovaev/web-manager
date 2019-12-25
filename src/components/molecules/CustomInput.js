@@ -8,9 +8,9 @@ const styling = (value) => ({ width: value });
 const validator = (value, min, max) => {
   const val = value.replace(/[^\d]/g, '');
 
-  if (min && val < min) return min;
-  if (max && val > max) return max;
-  return val;
+  if (min && val < min) return Number(min);
+  if (max && val > max) return Number(max);
+  return Number(val);
 };
 
 const CustomInput = ({

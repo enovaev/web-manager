@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 // Components
+import Icon from 'antd/es/icon';
 import CheckBox from '../components/molecules/CheckBox';
 import CustomText from '../components/molecules/CustomText';
 import CustomInput from '../components/molecules/CustomInput';
@@ -63,14 +64,17 @@ class UniversalContainer extends Component {
             )}
             {el.name === 'slider' && (
               <CustomSlider
-                actionPerc={(value) => slider(value, entityName)}
+                actionPerc={(value) => slider(value, entityName, 'percent')}
+                actionSelect={(value) => slider(value, entityName, 'select')}
+                valueSelect={entityDataSlider.select}
                 valuePerc={entityDataSlider.percent}
                 elementType={el.type}
               />
             )}
             {el.name === 'button' && (
-              // eslint-disable-next-line react/button-has-type
-              <button onClick={() => deleteAction(entityID)}>delete</button>
+              <Div>
+                <Icon type="delete" onClick={() => deleteAction(entityID)} />
+              </Div>
             )}
           </div>
         ))}
@@ -118,13 +122,21 @@ const mapDispatchToProps = (dispatch) => ({
   input: (value, id, name) => dispatch(actionInput(value, id, name)),
   checkbox: (id, name) => dispatch(actionCheckbox(id, name)),
   select: (value, id, name) => dispatch(actionSelect(value, id, name)),
-  slider: (value, name) => dispatch(actionSlider(value, name)),
+  slider: (value, name, prop) => dispatch(actionSlider(value, name, prop)),
 });
 
 const Container = styled.div`
   display: flex;
   margin: 3px 10px;
   justify-content: center;
+`;
+const Div = styled.div`
+  color: #D9D9D9;
+  font-size: 20px;
+  &:hover {
+    color: rgba(0, 0, 0, 0.65);
+    font-size: 22px;
+  }
 `;
 
 export default connect(

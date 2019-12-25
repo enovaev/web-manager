@@ -28,11 +28,11 @@ export const mainReducer = (root) => (state = initialState[root], action) => {
           : el));
 
       case ACTION_SLIDER_ALL:
-        return state.map((el) => ({ ...el, percent: action.value }));
+        return state.map((el) => ({ ...el, [action.prop]: action.value }));
 
       case ACTION_SLIDER:
         return state.map((el) => (action.id.find((item) => item.id === el.id)
-          ? { ...el, percent: action.value }
+          ? { ...el, [action.prop]: action.value }
           : el));
 
       case OUR_PRICE_CALC:
