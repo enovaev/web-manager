@@ -58,11 +58,12 @@ export const actionSelect = (value, id, name) => (dispatch) => {
 };
 
 export const actionSlider = (value, name) => (dispatch, getState) => {
-  const filter = getState().entityData.filter((item) => item.selected === true);
+  const filter = getState().check.filter((item) => item.checked === true);
   if (filter.length) {
     dispatch({
       type: ACTION_SLIDER,
       value: Number(value),
+      id: filter.map((el) => el.id),
       name,
     });
   } else {

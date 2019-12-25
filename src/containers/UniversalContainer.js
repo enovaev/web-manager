@@ -24,6 +24,7 @@ class UniversalContainer extends Component {
   render() {
     const {
       entityData,
+      entityDataSlider,
       entityName,
       entityID,
       component,
@@ -62,8 +63,8 @@ class UniversalContainer extends Component {
             )}
             {el.name === 'slider' && (
               <CustomSlider
-                actionPerc={(value) => slider(value, entityID, entityName)}
-                valuePerc={entityData.percent}
+                actionPerc={(value) => slider(value, entityName)}
+                valuePerc={entityDataSlider.percent}
                 elementType={el.type}
               />
             )}
@@ -83,6 +84,7 @@ UniversalContainer.propTypes = {
   entityName: PropTypes.string.isRequired,
   entityID: PropTypes.number.isRequired,
   entityData: PropTypes.objectOf(PropTypes.any),
+  entityDataSlider: PropTypes.objectOf(PropTypes.any),
   deleteAction: PropTypes.func,
   checkbox: PropTypes.func,
   select: PropTypes.func,
@@ -90,7 +92,8 @@ UniversalContainer.propTypes = {
   input: PropTypes.func,
 };
 UniversalContainer.defaultProps = {
-  entityData: {},
+  entityData: { input: 0, select: '' },
+  entityDataSlider: { percent: 0 },
   deleteAction: () => {},
   checkbox: () => {},
   select: () => {},
@@ -101,6 +104,14 @@ UniversalContainer.defaultProps = {
 const mapStateToProps = (store, { entityName, entityID }) => ({
   // eslint-disable-next-line max-len
   entityData: store[entityName] && store[entityName].filter((el) => el.id === entityID)[0],
+  entityDataSlider: store[entityName]
+    && (
+      store.check.filter((item) => item.checked === true).length
+        ? store[entityName].find(
+          (item) => item.id === store.check.filter((el) => el.checked === true)[0].id,
+        )
+        : store[entityName][0]
+    ),
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -108,7 +119,7 @@ const mapDispatchToProps = (dispatch) => ({
   input: (value, id, name) => dispatch(actionInput(value, id, name)),
   checkbox: (id, name) => dispatch(actionCheckbox(id, name)),
   select: (value, id, name) => dispatch(actionSelect(value, id, name)),
-  slider: (value, id, name) => dispatch(actionSlider(value, id, name)),
+  slider: (value, name) => dispatch(actionSlider(value, name)),
 });
 
 const Container = styled.div`
