@@ -95,7 +95,7 @@ TableFormation.defaultProps = {
 
 const Table = styled.table`
   border-collapse: collapse;
-  margin-bottom: 40px;
+  margin: 20px 0;
 `;
 const Container = styled.div`
   display: flex;

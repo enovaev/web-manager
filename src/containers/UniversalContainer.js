@@ -96,7 +96,7 @@ UniversalContainer.propTypes = {
   input: PropTypes.func,
 };
 UniversalContainer.defaultProps = {
-  entityData: { input: 0, select: '' },
+  entityData: { input: '', select: '' },
   entityDataSlider: { percent: 0 },
   deleteAction: () => {},
   checkbox: () => {},
