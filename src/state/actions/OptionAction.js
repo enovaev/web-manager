@@ -9,7 +9,7 @@ export const actionModal = (type, value) => (dispatch, getState) => {
       type: SAVE_NAME,
       payload: value,
     });
-    localStorage.setItem(value, JSON.stringify({ ...getState(), time: new Date() }));
+    localStorage.setItem(value, JSON.stringify({ ...getState(), time: Number(new Date()) }));
   } else {
     dispatch({
       type: DOWNLOAD,

@@ -9,6 +9,7 @@ import RosterElement from '../components/molecules/RosterElement';
 // Store
 import { actionModal } from '../state/actions/OptionAction';
 
+const convert = (a) => JSON.parse(localStorage.getItem(a)).time;
 
 class ModalContainer extends Component {
   constructor(props) {
@@ -82,7 +83,7 @@ class ModalContainer extends Component {
             />
           </div>
         )}
-        {type === 'down' && saveData.map((el) => (
+        {type === 'down' && saveData.sort((a, b) => convert(b) - convert(a)).map((el) => (
           <RosterElement
             key={el}
             name={el}

@@ -32,11 +32,15 @@ CustomInput.propTypes = {
     PropTypes.number,
   ]).isRequired,
   action: PropTypes.func.isRequired,
-  width: PropTypes.number.isRequired,
+  width: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
   min: PropTypes.number,
   max: PropTypes.number,
 };
 CustomInput.defaultProps = {
+  width: '100%',
   min: 0,
   max: 0,
 };

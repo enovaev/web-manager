@@ -18,7 +18,7 @@ const RosterElement = ({
     <Text>{name}</Text>
     <Tools>
       <Date>
-        {moment(JSON.parse(localStorage.getItem(name)).time).format('HH:mm DD.MM.YY')}
+        {moment(JSON.parse(localStorage.getItem(name)).time).format('HH:mm:ss DD.MM.YY')}
       </Date>
       <Div>
         <Icon type="delete" onClick={deleteSave} />
