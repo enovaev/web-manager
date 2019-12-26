@@ -3,18 +3,27 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Icon from 'antd/es/icon';
+import moment from 'moment';
 
 const RosterElement = ({
   name, deleteSave, select, action,
 }) => (
   <Container
-    style={{ backgroundColor: select && '#000' }}
-    onClick={action}
+    style={{
+      backgroundColor: select && '#1890FF',
+      color: select && 'white',
+    }}
+    onClick={({ target, currentTarget }) => target === currentTarget && action()}
   >
     <Text>{name}</Text>
-    <Div>
-      <Icon type="delete" onClick={deleteSave} />
-    </Div>
+    <Tools>
+      <Date>
+        {moment(JSON.parse(localStorage.getItem(name)).time).format('HH:mm DD.MM.YY')}
+      </Date>
+      <Div>
+        <Icon type="delete" onClick={deleteSave} />
+      </Div>
+    </Tools>
   </Container>
 );
 
@@ -33,6 +42,7 @@ RosterElement.defaultProps = {
 const Container = styled.div`
   display: flex;
   justify-content:space-between;
+  border-radius: 3px;
   padding: 3px 20px;
   &:hover {
     background-color: #E6F7FF;
@@ -40,9 +50,20 @@ const Container = styled.div`
 `;
 const Text = styled.p`
  margin: 0;
+  line-height: 27px;
+`;
+const Date = styled.p`
+ margin: 0;
+ font-size: 12px;
+ line-height: 27px;
+ text-align: center;
+`;
+const Tools = styled.div`
+display: flex;
 `;
 const Div = styled.div`
   color: #D9D9D9;
+  margin-left: 20px;
   font-size: 18px;
   &:hover {
     color: rgba(0, 0, 0, 0.65);

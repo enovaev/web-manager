@@ -33,15 +33,25 @@ class ModalContainer extends Component {
     this.setState({ inputText: value });
   }
 
-  applyModal(type, inputText) {
-    const { apply, action } = this.props;
-    apply(type, inputText);
-    action();
+  applyModal() {
+    const { apply, action, type } = this.props;
+    const { inputText, select } = this.state;
+    if (type === 'save') {
+      apply(type, inputText);
+      action();
+    } else if (select) {
+      apply(type, select);
+      action();
+    }
   }
 
   deleteSaves(el) {
+    const { select } = this.state;
     localStorage.removeItem(el);
-    this.setState({ saveData: Object.keys(localStorage) });
+    this.setState({
+      saveData: Object.keys(localStorage),
+      select: select === el ? null : select,
+    });
   }
 
   selectEntity(el) {
@@ -58,7 +68,8 @@ class ModalContainer extends Component {
         title={type === 'save' ? 'Сохранить проект' : 'Загрузить проект'}
         okText={type === 'save' ? 'Save' : 'Download'}
         visible={visible}
-        onOk={() => this.applyModal(type, inputText)}
+        onOk={this.applyModal}
+        okButtonProps={{ disabled: !select && type === 'down' }}
         onCancel={action}
       >
         {type === 'save' && (

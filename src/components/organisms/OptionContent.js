@@ -52,7 +52,9 @@ class OptionContent extends Component {
           onCancel={this.handleClose}
         />
         <SaveContainer>
-          <Button type="primary" value="save" onClick={this.openModalCont}>Сохранить</Button>
+          <Div>
+            <Button type="primary" value="save" onClick={this.openModalCont}>Сохранить</Button>
+          </Div>
           <Button type="primary" value="down" onClick={this.openModalCont}>Загрузить</Button>
           {showModalCont && (
             <ModalContainer
@@ -73,5 +75,9 @@ const Container = styled.div`
   width: 100%;
 `;
 const SaveContainer = styled.div`
+  display: flex;
+`;
+const Div = styled.div`
+  margin-right: 15px;
 `;
 export default OptionContent;
