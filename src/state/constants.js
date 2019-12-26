@@ -7,3 +7,5 @@ export const ACTION_INPUT = 'ACTION_INPUT';
 export const ACTION_SLIDER = 'ACTION_SLIDER';
 export const ACTION_SLIDER_ALL = 'ACTION_SLIDER_ALL';
 export const OUR_PRICE_CALC = 'OUR_PRICE_CALC';
+export const DOWNLOAD = 'DOWNLOAD';
+export const SAVE_NAME = 'SAVE_NAME';

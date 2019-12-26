@@ -35,7 +35,6 @@ class UniversalContainer extends Component {
       slider,
       input,
     } = this.props;
-    console.log('ren');
     return (
       <Container>
         {component.map((el) => (

@@ -1,0 +1,51 @@
+import React from 'react';
+// Utils
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import Icon from 'antd/es/icon';
+
+const RosterElement = ({
+  name, deleteSave, select, action,
+}) => (
+  <Container
+    style={{ backgroundColor: select && '#000' }}
+    onClick={action}
+  >
+    <Text>{name}</Text>
+    <Div>
+      <Icon type="delete" onClick={deleteSave} />
+    </Div>
+  </Container>
+);
+
+RosterElement.propTypes = {
+  name: PropTypes.string.isRequired,
+  deleteSave: PropTypes.func,
+  action: PropTypes.func,
+  select: PropTypes.bool,
+};
+RosterElement.defaultProps = {
+  deleteSave: () => {},
+  action: () => {},
+  select: false,
+};
+
+const Container = styled.div`
+  display: flex;
+  justify-content:space-between;
+  padding: 3px 20px;
+  &:hover {
+    background-color: #E6F7FF;
+  }
+`;
+const Text = styled.p`
+ margin: 0;
+`;
+const Div = styled.div`
+  color: #D9D9D9;
+  font-size: 18px;
+  &:hover {
+    color: rgba(0, 0, 0, 0.65);
+  }
+`;
+export default RosterElement;
