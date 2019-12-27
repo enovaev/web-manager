@@ -9,13 +9,32 @@ import {
   ACTION_SLIDER_ALL,
 } from '../constants';
 
-export const actionInput = (value, id, name) => (dispatch) => {
-  dispatch({
-    type: ACTION_INPUT,
-    value,
-    id,
-    name,
-  });
+export const actionInput = (value, id, name, paste = false) => (dispatch) => {
+  const inputName = ['part', 'option', 'posName', 'exw', 'quantity'];
+  const row = value.toString().split('\t');
+
+  if (row.length > 1 && paste) {
+    inputName.slice(inputName.indexOf(name)).forEach((el, i) => {
+      if (row[i]) {
+        dispatch({
+          type: ACTION_INPUT,
+          // eslint-disable-next-line no-nested-ternary
+          value: (el === 'part' || el === 'posName')
+            ? row[i]
+            : ((Number(row[i]) ? Number(row[i]) : 0)),
+          id,
+          name: el,
+        });
+      }
+    });
+  } else {
+    dispatch({
+      type: ACTION_INPUT,
+      value,
+      id,
+      name,
+    });
+  }
 };
 
 export const addEntity = () => (dispatch) => {

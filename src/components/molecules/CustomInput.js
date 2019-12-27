@@ -6,6 +6,7 @@ import { Input } from 'antd';
 const styling = (value) => ({ width: value });
 
 const validator = (value, min, max) => {
+  if (value.toString().split('\t').length > 1) return value;
   const val = value.replace(/[^\d]/g, '');
 
   if (min && val < min) return Number(min);

@@ -47,7 +47,7 @@ class UniversalContainer extends Component {
             )}
             {el.name === 'input' && (
               <CustomInput
-                action={(value) => input(value, entityID, entityName)}
+                action={(value) => input(value, entityID, entityName, true)}
                 width={el.width}
                 value={entityData.input}
                 elementType={el.type}
@@ -118,7 +118,7 @@ const mapStateToProps = (store, { entityName, entityID }) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   deleteAction: (id) => dispatch(deleteEntity(id)),
-  input: (value, id, name) => dispatch(actionInput(value, id, name)),
+  input: (value, id, name, paste) => dispatch(actionInput(value, id, name, paste)),
   checkbox: (id, name) => dispatch(actionCheckbox(id, name)),
   select: (value, id, name) => dispatch(actionSelect(value, id, name)),
   slider: (value, name, prop) => dispatch(actionSlider(value, name, prop)),
