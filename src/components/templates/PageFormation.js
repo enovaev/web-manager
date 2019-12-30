@@ -6,11 +6,11 @@ import SetTable from '../organisms/SetTable';
 import EditTable from '../organisms/EditTable';
 import MainTableContainer from '../../containers/MainTableContainer';
 import CalculatorContainer from '../../containers/CalculatorContainer';
-import OptionContent from '../organisms/OptionContent';
+import OptionFormation from '../organisms/OptionFormation';
 
 const PageFormation = () => (
   <Container>
-    <OptionContent />
+    <OptionFormation />
     <MainTableContainer />
     <EditTable />
     <SetTable />

@@ -2,12 +2,15 @@ import React, { Component } from 'react';
 // Utils
 import Modal from 'antd/es/modal';
 import PropTypes from 'prop-types';
+import Button from 'antd/es/button';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 // Components
 import CustomInput from '../components/molecules/CustomInput';
 import RosterElement from '../components/molecules/RosterElement';
 // Store
 import { actionModal } from '../state/actions/OptionAction';
+
 
 const convert = (a) => JSON.parse(localStorage.getItem(a)).time;
 
@@ -18,16 +21,26 @@ class ModalContainer extends Component {
       inputText: '',
       saveData: [],
       select: null,
+      showModal: false,
+      type: '',
     };
 
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
     this.inputAction = this.inputAction.bind(this);
     this.applyModal = this.applyModal.bind(this);
     this.deleteSaves = this.deleteSaves.bind(this);
   }
 
-  componentDidMount() {
+  openModal({ target }) {
     const { saveName } = this.props;
-    this.setState({ inputText: saveName, saveData: Object.keys(localStorage) });
+    this.setState({
+      showModal: true, type: target.value, inputText: saveName, saveData: Object.keys(localStorage),
+    });
+  }
+
+  closeModal() {
+    this.setState({ showModal: false, select: null });
   }
 
   inputAction(value) {
@@ -35,14 +48,14 @@ class ModalContainer extends Component {
   }
 
   applyModal() {
-    const { apply, action, type } = this.props;
-    const { inputText, select } = this.state;
+    const { apply } = this.props;
+    const { inputText, select, type } = this.state;
     if (type === 'save') {
       apply(type, inputText);
-      action();
+      this.closeModal();
     } else if (select) {
       apply(type, select);
-      action();
+      this.closeModal();
     }
   }
 
@@ -60,20 +73,24 @@ class ModalContainer extends Component {
   }
 
   render() {
-    const { inputText, saveData, select } = this.state;
     const {
-      visible, action, type,
-    } = this.props;
+      inputText, saveData, select, type, showModal,
+    } = this.state;
     return (
-      <Modal
-        title={type === 'save' ? 'Сохранить проект' : 'Загрузить проект'}
-        okText={type === 'save' ? 'Save' : 'Download'}
-        visible={visible}
-        onOk={this.applyModal}
-        okButtonProps={{ disabled: !select && type === 'down' }}
-        onCancel={action}
-      >
-        {type === 'save' && (
+      <Container>
+        <Div>
+          <Button type="primary" value="save" onClick={this.openModal}>Сохранить</Button>
+        </Div>
+        <Button type="primary" value="down" onClick={this.openModal}>Загрузить</Button>
+        <Modal
+          title={type === 'save' ? 'Сохранить проект' : 'Загрузить проект'}
+          okText={type === 'save' ? 'Save' : 'Download'}
+          visible={showModal}
+          onOk={this.applyModal}
+          okButtonProps={{ disabled: !select && type === 'down' }}
+          onCancel={this.closeModal}
+        >
+          {type === 'save' && (
           <div>
             <span>Сохранить как:</span>
             <CustomInput
@@ -82,26 +99,24 @@ class ModalContainer extends Component {
               elementType="string"
             />
           </div>
-        )}
-        {type === 'down' && saveData.sort((a, b) => convert(b) - convert(a)).map((el) => (
-          <RosterElement
-            key={el}
-            name={el}
-            select={el === select}
-            deleteSave={() => this.deleteSaves(el)}
-            action={() => this.selectEntity(el)}
-          />
-        ))}
-      </Modal>
+          )}
+          {type === 'down' && saveData.sort((a, b) => convert(b) - convert(a)).map((el) => (
+            <RosterElement
+              key={el}
+              name={el}
+              select={el === select}
+              deleteSave={() => this.deleteSaves(el)}
+              action={() => this.selectEntity(el)}
+            />
+          ))}
+        </Modal>
+      </Container>
     );
   }
 }
 
 ModalContainer.propTypes = {
-  visible: PropTypes.bool.isRequired,
   apply: PropTypes.func,
-  action: PropTypes.func.isRequired,
-  type: PropTypes.string.isRequired,
   saveName: PropTypes.string.isRequired,
 };
 ModalContainer.defaultProps = {
@@ -115,6 +130,14 @@ const mapStateToProps = ({ saveName }) => ({
 const mapDispatchToProps = (dispatch) => ({
   apply: (type, value) => dispatch(actionModal(type, value)),
 });
+
+const Div = styled.div`
+  margin-right: 15px;
+`;
+
+const Container = styled.div`
+  display: flex;
+`;
 
 export default connect(
   mapStateToProps,
