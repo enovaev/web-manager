@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 // Components
 import Icon from 'antd/es/icon';
+import Badge from 'antd/es/badge';
 import CheckBox from '../components/molecules/CheckBox';
 import CustomText from '../components/molecules/CustomText';
 import CustomInput from '../components/molecules/CustomInput';
@@ -39,6 +40,9 @@ class UniversalContainer extends Component {
       <Container>
         {component.map((el) => (
           <div key={el.name}>
+            {el.name === 'badge' && (
+              <Badge color="red" />
+            )}
             {el.name === 'checkbox' && (
               <CheckBox
                 action={() => checkbox(entityID, entityName)}
@@ -128,6 +132,7 @@ const Container = styled.div`
   display: flex;
   margin: 3px 10px;
   justify-content: center;
+  align-items: center;
 `;
 const Div = styled.div`
   color: #D9D9D9;

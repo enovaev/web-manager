@@ -4,6 +4,9 @@
     "checkbox": true,
     "components": [
       {
+        "name": "badge"
+      },
+      {
         "name": "checkbox"
       }
     ]
