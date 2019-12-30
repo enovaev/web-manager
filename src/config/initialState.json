@@ -1,5 +1,5 @@
 {
-  "check": [{ "id": 123, "checked": false }],
+  "check": [{ "id": 123, "checked": false, "group": "" }],
   "part": [{ "id": 123, "input": "" }],
   "option": [{ "id": 123, "input": "" }],
   "posName": [{ "id": 123, "input": "" }],

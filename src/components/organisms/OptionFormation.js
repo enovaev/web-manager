@@ -2,10 +2,12 @@ import React from 'react';
 // Utils
 import styled from 'styled-components';
 // Components
-import ModalContainer from '../../containers/ModalContainer';
+import ModalContainer from '../../containers/SaveContainer';
+import CreateGroupContainer from '../../containers/CreateGroupContainer';
 
 const OptionFormation = () => (
   <Container>
+    <CreateGroupContainer />
     <ModalContainer />
   </Container>
 );

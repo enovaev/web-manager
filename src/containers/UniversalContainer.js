@@ -41,12 +41,12 @@ class UniversalContainer extends Component {
         {component.map((el) => (
           <div key={el.name}>
             {el.name === 'badge' && (
-              <Badge color="red" />
+              <Badge color={entityData.group || '#D9D9D9'} />
             )}
             {el.name === 'checkbox' && (
               <CheckBox
                 action={() => checkbox(entityID, entityName)}
-                value={entityData ? entityData.checked : ''}
+                value={entityData.checked}
               />
             )}
             {el.name === 'input' && (

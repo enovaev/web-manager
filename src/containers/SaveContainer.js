@@ -14,7 +14,7 @@ import { actionModal } from '../state/actions/OptionAction';
 
 const convert = (a) => JSON.parse(localStorage.getItem(a)).time;
 
-class ModalContainer extends Component {
+class SaveContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -115,11 +115,11 @@ class ModalContainer extends Component {
   }
 }
 
-ModalContainer.propTypes = {
+SaveContainer.propTypes = {
   apply: PropTypes.func,
   saveName: PropTypes.string.isRequired,
 };
-ModalContainer.defaultProps = {
+SaveContainer.defaultProps = {
   apply: () => {},
 };
 
@@ -142,4 +142,4 @@ const Container = styled.div`
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(ModalContainer);
+)(SaveContainer);
