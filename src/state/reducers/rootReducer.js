@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import { mainReducer, footerReducer } from './reducer';
-import { IDReducer, saveName } from './IDReducer';
+import { mainReducer, footerReducer } from './mainReducer';
+import { OptionReducer, saveName, Mode } from './optionReducer';
 
 // eslint-disable-next-line import/prefer-default-export
 export const rootReducer = combineReducers({
@@ -29,6 +29,7 @@ export const rootReducer = combineReducers({
   sale: mainReducer('sale'),
   delta: mainReducer('delta'),
   // Id
-  entityID: IDReducer,
+  entityID: OptionReducer,
   saveName,
+  mode: Mode,
 });

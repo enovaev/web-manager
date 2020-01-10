@@ -1,12 +1,13 @@
 import {
-  ADD_ENTITY, DELETE_ENTITY, DOWNLOAD, SAVE_NAME,
+  ADD_ENTITY, CHANGE_MODE, DELETE_ENTITY, DOWNLOAD, SAVE_NAME,
 } from '../constants';
 
 
 const initialState = [123];
 const initialStateSave = '';
+const initialStateMode = 'Main';
 
-export function IDReducer(state = initialState, action) {
+export function OptionReducer(state = initialState, action) {
   switch (action.type) {
     case ADD_ENTITY:
       return [...state, action.payload];
@@ -29,6 +30,16 @@ export function saveName(state = initialStateSave, action) {
 
     case DOWNLOAD:
       return action.payload.saveName;
+
+    default:
+      return state;
+  }
+}
+
+export function Mode(state = initialStateMode, action) {
+  switch (action.type) {
+    case CHANGE_MODE:
+      return action.payload;
 
     default:
       return state;

@@ -1,0 +1,58 @@
+[
+  {
+    "key": "check",
+    "checkbox": true,
+    "components": [
+      {
+        "name": "badge"
+      },
+      {
+        "name": "checkbox"
+      }
+    ]
+  },
+  {
+    "key": "number",
+    "label": "№",
+    "container": false
+  },
+  {
+    "key": "posName",
+    "label": "Name of position / Group name",
+    "input": "string",
+    "width": 300,
+    "components": [
+      {
+        "name": "input",
+        "type": "string",
+        "width": 300
+      }
+    ]
+  },
+  {
+    "key": "priceOur",
+    "label": "Our price",
+    "components": [
+      {
+        "name": "text"
+      },
+      {
+        "name": "select",
+        "type": "curr"
+      }
+    ]
+  },
+  {
+    "key": "priceCust",
+    "label": "Price for Customer",
+    "components": [
+      {
+        "name": "text"
+      },
+      {
+        "name": "select",
+        "type": "curr"
+      }
+    ]
+  }
+]

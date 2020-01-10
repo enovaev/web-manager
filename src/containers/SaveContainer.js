@@ -9,7 +9,7 @@ import styled from 'styled-components';
 import CustomInput from '../components/molecules/CustomInput';
 import RosterElement from '../components/molecules/RosterElement';
 // Store
-import { actionModal } from '../state/actions/OptionAction';
+import { actionSaveDown } from '../state/actions/OptionAction';
 
 
 const convert = (a) => JSON.parse(localStorage.getItem(a)).time;
@@ -128,7 +128,7 @@ const mapStateToProps = ({ saveName }) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  apply: (type, value) => dispatch(actionModal(type, value)),
+  apply: (type, value) => dispatch(actionSaveDown(type, value)),
 });
 
 const Div = styled.div`

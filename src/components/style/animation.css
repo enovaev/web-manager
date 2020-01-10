@@ -1,20 +1,38 @@
 .item-enter {
-    opacity: 0;
-    transform: translate3d(0, -20px, 0);
-    will-change: transform;
+  opacity: 0;
+  transform: translate3d(0, -20px, 0);
 }
 .item-enter-active {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-    transition: transform 200ms ease-in-out, opacity 200ms ease-in-out;
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition: transform 200ms ease-in-out, opacity 200ms ease-in-out;
 }
 .item-exit {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
 }
 .item-exit-active {
-    opacity: 0;
-    transition: transform 200ms ease-in-out, opacity 200ms ease-in-out;
-    transform: translate3d(0, -20px, 0);
-    height: 0px;
+  opacity: 0;
+  transition: transform 200ms ease-in-out, opacity 200ms ease-in-out;
+  transform: translate3d(0, -20px, 0);
+  height: 0px;
+}
+
+.mode-enter {
+  left: 50%;
+  transform: translateX(-50%);
+  position: absolute;
+  opacity: 0;
+}
+.mode-enter-active {
+  opacity: 1;
+  transition: opacity 200ms linear;
+}
+.mode-exit {
+  position: relative;
+  opacity: 1;
+}
+.mode-exit-active {
+  opacity: 0;
+  transition: opacity 200ms linear;
 }

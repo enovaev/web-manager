@@ -2,15 +2,16 @@ import React from 'react';
 // Utils
 import styled from 'styled-components';
 // Components
-import ModalContainer from '../../containers/SaveContainer';
+import SaveContainer from '../../containers/SaveContainer';
 import CreateGroupContainer from '../../containers/CreateGroupContainer';
-import CustomTabs from '../molecules/CustomTabs';
+import ModeAppContainer from '../../containers/ModeAppContainer';
+
 
 const OptionFormation = () => (
   <Container>
     <CreateGroupContainer />
-    <CustomTabs />
-    <ModalContainer />
+    <ModeAppContainer />
+    <SaveContainer />
   </Container>
 );
 

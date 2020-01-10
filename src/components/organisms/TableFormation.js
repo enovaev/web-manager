@@ -61,24 +61,6 @@ const TableFormation = ({
         ))}
       </TransitionGroup>
     </Tbody>
-    <Tfoot>
-      <tr>
-        {headerConfig.map((el) => (
-          <Tf key={el.key}>
-            {el.footer && (
-              <div>
-                <Text>Сумма:</Text>
-                <UniversalContainer
-                  entityName={`${el.key}Sum`}
-                  entityID={0}
-                  component={el.footer.components}
-                />
-              </div>
-            )}
-          </Tf>
-        ))}
-      </tr>
-    </Tfoot>
   </Table>
 );
 
@@ -111,7 +93,6 @@ const Th = styled.th`
   &:first-child {
     border-left: none;
   }
-  border-bottom: 3px solid black;
 `;
 const BodyRow = styled.tr`
   border: none;
@@ -125,17 +106,11 @@ const Tb = styled.td`
     border-left: none;
   }
 `;
-const Tf = styled.td`
-  border-top: 3px solid black;
-  &:nth-last-child(2) {
-    border-left: 1px solid #D9D9D9;
-  }
-`;
 const Tbody = styled.tbody`
+  border-top: 3px solid black;
+  border-bottom: 3px solid black;
 `;
 const Thead = styled.thead`
-`;
-const Tfoot = styled.tfoot`
 `;
 
 export default TableFormation;
