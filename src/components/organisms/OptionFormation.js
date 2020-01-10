@@ -4,10 +4,12 @@ import styled from 'styled-components';
 // Components
 import ModalContainer from '../../containers/SaveContainer';
 import CreateGroupContainer from '../../containers/CreateGroupContainer';
+import CustomTabs from '../molecules/CustomTabs';
 
 const OptionFormation = () => (
   <Container>
     <CreateGroupContainer />
+    <CustomTabs />
     <ModalContainer />
   </Container>
 );
