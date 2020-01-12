@@ -7,7 +7,9 @@ import {
   ACTION_INPUT,
   ACTION_SLIDER,
   ACTION_SLIDER_ALL,
+  ACTION_PERCENT,
 } from '../constants';
+import { calculate } from './CalculatorAction';
 
 export const actionInput = (value, id, name, paste = false) => (dispatch) => {
   const inputName = ['part', 'option', 'posName', 'exw', 'quantity'];
@@ -35,6 +37,7 @@ export const actionInput = (value, id, name, paste = false) => (dispatch) => {
       name,
     });
   }
+  if (name === 'exw' || name === 'quantity') dispatch(calculate('percent'));
 };
 
 export const addEntity = () => (dispatch) => {
@@ -94,4 +97,5 @@ export const actionSlider = (value, name, prop) => (dispatch, getState) => {
       prop,
     });
   }
+  if (prop !== 'select') dispatch(calculate(prop));
 };

@@ -5,7 +5,6 @@ import styled from 'styled-components';
 import SetTable from '../organisms/SetTable';
 import EditTable from '../organisms/EditTable';
 import MainTableContainer from '../../containers/MainTableContainer';
-import CalculatorContainer from '../../containers/CalculatorContainer';
 import OptionFormation from '../organisms/OptionFormation';
 
 const PageFormation = () => (
@@ -14,7 +13,6 @@ const PageFormation = () => (
     <MainTableContainer />
     <EditTable />
     <SetTable />
-    <CalculatorContainer />
   </Container>
 );
 

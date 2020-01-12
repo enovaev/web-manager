@@ -78,6 +78,32 @@
     ]
   },
   {
+    "key": "priceOur",
+    "label": "Our price",
+    "components": [
+      {
+        "name": "text"
+      },
+      {
+        "name": "select",
+        "type": "curr"
+      }
+    ]
+  },
+  {
+    "key": "priceCust",
+    "label": "Price for Customer",
+    "components": [
+      {
+        "name": "text"
+      },
+      {
+        "name": "select",
+        "type": "curr"
+      }
+    ]
+  },
+  {
     "key": "delete",
     "delete": true,
     "components": [

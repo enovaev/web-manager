@@ -8,7 +8,7 @@ import CustomInput from './CustomInput';
 import CustomSelect from './CustomSelect';
 
 const CustomSlider = ({
-  valuePerc, valueCurr, valueSelect, actionPerc, actionSelect, elementType, min, max,
+  valuePerc, valueCurr, valueSelect, actionPerc, actionValue, actionSelect, elementType, min, max,
 }) => (
   <Container>
     {elementType === 'double' && (
@@ -16,7 +16,7 @@ const CustomSlider = ({
       <CustomInput
         elementType="number"
         value={valueCurr}
-        action={() => {}}
+        action={actionValue}
         width={120}
       />
       <CustomSelect elementType="curr" value={valueSelect} action={actionSelect} />
@@ -48,6 +48,7 @@ CustomSlider.propTypes = {
   valuePerc: PropTypes.number.isRequired,
   valueCurr: PropTypes.number.isRequired,
   actionPerc: PropTypes.func.isRequired,
+  actionValue: PropTypes.func.isRequired,
   actionSelect: PropTypes.func,
   valueSelect: PropTypes.string,
   min: PropTypes.number,
