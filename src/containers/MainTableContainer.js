@@ -35,7 +35,7 @@ const MainTableContainer = ({
               addEntity={addAction}
               actionCheckbox={actionCheck}
             />
-            {mode === 'Group' && <div>Приветт</div>}
+            {mode === 'Group' && <div></div>}
           </Div>
         </CSSTransition>
       ))}

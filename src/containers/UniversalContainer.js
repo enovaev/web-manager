@@ -71,6 +71,7 @@ class UniversalContainer extends Component {
                 actionSelect={(value) => slider(value, entityName, 'select')}
                 valueSelect={entityDataSlider.select}
                 valuePerc={entityDataSlider.percent}
+                valueCurr={entityDataSlider.input}
                 elementType={el.type}
               />
             )}
