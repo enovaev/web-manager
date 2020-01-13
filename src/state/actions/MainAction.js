@@ -7,7 +7,6 @@ import {
   ACTION_INPUT,
   ACTION_SLIDER,
   ACTION_SLIDER_ALL,
-  ACTION_PERCENT,
 } from '../constants';
 import { calculate } from './CalculatorAction';
 

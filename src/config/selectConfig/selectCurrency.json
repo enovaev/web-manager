@@ -1,26 +1,26 @@
 [
   {
     "name": "RUB",
-    "value": "rub"
+    "value": "RUB"
   },
   {
     "name": "USD",
-    "value": "usd"
+    "value": "USD"
   },
   {
     "name": "EUR",
-    "value": "eur"
+    "value": "EUR"
   },
   {
     "name": "GBP",
-    "value": "gbp"
+    "value": "GBP"
   },
   {
     "name": "CHF",
-    "value": "chf"
+    "value": "CHF"
   },
   {
     "name": "BYN",
-    "value": "byn"
+    "value": "BYN"
   }
 ]

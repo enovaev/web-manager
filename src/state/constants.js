@@ -11,3 +11,4 @@ export const DOWNLOAD = 'DOWNLOAD';
 export const SAVE_NAME = 'SAVE_NAME';
 export const CHANGE_MODE = 'CHANGE_MODE';
 export const CREATE_GROUP = 'CREATE_GROUP';
+export const QUERY_CURR = 'QUERY_CURR';

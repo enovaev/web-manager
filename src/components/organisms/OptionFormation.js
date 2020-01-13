@@ -3,23 +3,27 @@ import React from 'react';
 import styled from 'styled-components';
 // Components
 import SaveContainer from '../../containers/SaveContainer';
-import CreateGroupContainer from '../../containers/CreateGroupContainer';
 import ModeAppContainer from '../../containers/ModeAppContainer';
-
+import CurrencyContainer from '../../containers/CurrencyContainer';
+import CreateGroupContainer from '../../containers/CreateGroupContainer';
 
 const OptionFormation = () => (
-  <Container>
-    <CreateGroupContainer />
-    <ModeAppContainer />
-    <SaveContainer />
-  </Container>
+  <Div>
+    <CurrencyContainer />
+    <Container>
+      <CreateGroupContainer />
+      <ModeAppContainer />
+      <SaveContainer />
+    </Container>
+  </Div>
 );
-
-const Container = styled.div`
+const Div = styled.div`
   align-self: flex-start;
-  justify-content:space-between;
+  width: 90vw;
+`;
+const Container = styled.div`
   display: flex;
-  width: 100%;
+  justify-content:space-between;
 `;
 
 export default OptionFormation;
