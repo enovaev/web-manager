@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
 import { mainReducer, footerReducer } from './mainReducer';
-import { OptionReducer, saveName, Mode } from './optionReducer';
+import {
+  OptionReducer, saveName, Mode, quotes,
+} from './optionReducer';
 
 // eslint-disable-next-line import/prefer-default-export
 export const rootReducer = combineReducers({
@@ -32,4 +34,5 @@ export const rootReducer = combineReducers({
   entityID: OptionReducer,
   saveName,
   mode: Mode,
+  quotes,
 });

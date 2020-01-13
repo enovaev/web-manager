@@ -1,4 +1,3 @@
-/*eslint-disable*/
 import React, { Component } from 'react';
 // Utils
 import Icon from 'antd/es/icon';
@@ -6,31 +5,41 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { queryCurr } from '../state/actions/QueryAction';
-// import styled from 'styled-components';
 
+
+// eslint-disable-next-line react/prefer-stateless-function
 class CurrencyContainer extends Component {
   render() {
-    const { query } = this.props;
+    const { query, data, loading } = this.props;
     return (
       <Container>
         <Div>
-          <Icon type="reload" onClick={query} />
+          {loading
+            ? <Icon type="loading" />
+            : <Icon type="reload" onClick={query} />}
         </Div>
-        <Text>обновлено: </Text>
+        <Text>
+          {data
+            ? `обновлено: ${data.date}`
+            : 'нет данных'}
+        </Text>
       </Container>
     );
   }
 }
 
 CurrencyContainer.propTypes = {
-  component: PropTypes.arrayOf(PropTypes.any).isRequired,
+  query: PropTypes.func.isRequired,
+  data: PropTypes.objectOf(PropTypes.any).isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
 CurrencyContainer.defaultProps = {
-  entityData: { input: '', select: '' },
 };
 
-const mapStateToProps = (store) => ({
+const mapStateToProps = ({ quotes }) => ({
+  data: quotes.data,
+  loading: quotes.loading,
 });
 
 const mapDispatchToProps = (dispatch) => ({

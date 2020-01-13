@@ -46,7 +46,10 @@ const CustomSlider = ({
 CustomSlider.propTypes = {
   elementType: PropTypes.string.isRequired,
   valuePerc: PropTypes.number.isRequired,
-  valueCurr: PropTypes.number.isRequired,
+  valueCurr: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]).isRequired,
   actionPerc: PropTypes.func.isRequired,
   actionValue: PropTypes.func.isRequired,
   actionSelect: PropTypes.func,

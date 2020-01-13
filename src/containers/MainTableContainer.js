@@ -25,6 +25,7 @@ const MainTableContainer = ({
     <TransitionGroup component={null}>
       {modeApp.map((el) => el.value === mode && (
         <CSSTransition
+          key={el.value}
           timeout={200}
           classNames="mode"
         >
