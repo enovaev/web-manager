@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 // Utils
+import moment from 'moment';
 import Icon from 'antd/es/icon';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -20,7 +21,7 @@ class CurrencyContainer extends Component {
         </Div>
         <Text>
           {data
-            ? `обновлено: ${data.date}`
+            ? `обновлено: ${moment(data.date).format('HH:mm DD.MM.YY')}`
             : 'нет данных'}
         </Text>
       </Container>
