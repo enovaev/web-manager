@@ -76,6 +76,7 @@ export const actionSelect = (value, id, name) => (dispatch) => {
     id,
     name,
   });
+  if (name === 'exw' || name === 'priceOur' || name === 'priceCust') dispatch(calculate('percent'));
 };
 
 export const actionSlider = (value, name, prop) => (dispatch, getState) => {
