@@ -5,9 +5,17 @@ import Icon from 'antd/es/icon';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
+import { Tooltip } from 'antd';
 import { queryCurr } from '../state/actions/QueryAction';
 
-
+const currTooltip = (rates) => (
+  rates
+    ? Object.keys(rates).reduce((acc, curr) => (curr !== 'RUB'
+      ? `${acc}${curr}: ${(rates.RUB / rates[curr]).toFixed(5)}; `
+      : ''),
+    '')
+    : 'Нажмите для загрузки котировок'
+);
 // eslint-disable-next-line react/prefer-stateless-function
 class CurrencyContainer extends Component {
   render() {
@@ -15,12 +23,14 @@ class CurrencyContainer extends Component {
     return (
       <Container>
         <Div>
-          {loading
-            ? <Icon type="loading" />
-            : <Icon type="reload" onClick={query} />}
+          <Tooltip title={currTooltip(data.rates)} placement="bottomLeft" overlayStyle={{ fontSize: 12 }}>
+            {loading
+              ? <Icon type="loading" />
+              : <Icon type="reload" onClick={query} />}
+          </Tooltip>
         </Div>
         <Text>
-          {data
+          {data.rates
             ? `обновлено: ${moment(data.date).format('HH:mm DD.MM.YY')}`
             : 'нет данных'}
         </Text>

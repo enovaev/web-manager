@@ -6,7 +6,7 @@ import {
 const initialState = [123];
 const initialStateSave = '';
 const initialStateMode = 'Main';
-const initialStateQuotes = { loading: false, data: null };
+const initialStateQuotes = { loading: false, data: { rates: null } };
 
 export function OptionReducer(state = initialState, action) {
   switch (action.type) {
