@@ -76,6 +76,10 @@ export const actionSelect = (value, id, name) => (dispatch) => {
     id,
     name,
   });
+  if (name === 'exw') {
+    const changeCurr = ['priceOur', 'priceCust', 'delivery', 'cusHouse', 'nds', 'discount', 'sale', 'delta'];
+    changeCurr.forEach((el) => dispatch(actionSelect(value, id, el)));
+  }
   if (name === 'exw' || name === 'priceOur' || name === 'priceCust') dispatch(calculate('percent'));
 };
 

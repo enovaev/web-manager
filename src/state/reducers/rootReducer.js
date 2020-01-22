@@ -23,11 +23,8 @@ export const rootReducer = combineReducers({
   delivery: mainReducer('delivery'),
   cusHouse: mainReducer('cusHouse'),
   nds: mainReducer('nds'),
-  convert: mainReducer('convert'),
-  another: mainReducer('another'),
   discount: mainReducer('discount'),
   // Set
-  extra: mainReducer('extra'),
   sale: mainReducer('sale'),
   delta: mainReducer('delta'),
   // Id

@@ -12,11 +12,8 @@
   "priceCustSum": [{ "id": 0, "text": "", "select": "RUB" }],
   "delivery": [{ "id": 123, "percent": 0, "input": "", "select": "RUB" }],
   "cusHouse": [{ "id": 123, "percent": 0, "input": "", "select": "RUB" }],
-  "nds": [{ "id": 123, "percent": 0, "input": "" }],
-  "convert": [{ "id": 123, "percent": 0, "input": "", "select": "RUB" }],
-  "another": [{ "id": 123, "percent": 0, "input": "", "select": "RUB" }],
+  "nds": [{ "id": 123, "percent": 20 }],
   "discount": [{ "id": 123, "percent": 0, "input": "", "select": "RUB" }],
-  "extra": [{ "id": 123, "percent": 0, "input": "", "select": "RUB" }],
   "sale": [{ "id": 123, "percent": 0, "input": "", "select": "RUB" }],
   "delta": [{ "id": 123, "percent": 0, "input": "", "select": "RUB" }]
 }

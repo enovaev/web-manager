@@ -31,26 +31,6 @@
     ]
   },
   {
-    "key": "convert",
-    "label": "Конвертация",
-    "components": [
-      {
-        "name": "slider",
-        "type": "double"
-      }
-    ]
-  },
-  {
-    "key": "another",
-    "label": "Другие расходы",
-    "components": [
-      {
-        "name": "slider",
-        "type": "double"
-      }
-    ]
-  },
-  {
     "key": "discount",
     "label": "Дисконт поставщика",
     "components": [

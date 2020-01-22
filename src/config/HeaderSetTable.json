@@ -1,15 +1,5 @@
 [
   {
-    "key": "extra",
-    "label": "Наценка",
-    "components": [
-      {
-        "name": "slider",
-        "type": "double"
-      }
-    ]
-  },
-  {
     "key": "sale",
     "label": "Скидка",
     "components": [

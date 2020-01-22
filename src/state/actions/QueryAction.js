@@ -4,6 +4,7 @@ import { message } from 'antd';
 import currConfig from '../../config/selectConfig/selectCurrency.json';
 import { QUERY_CURR, LOADING_CURR } from '../constants';
 import { messages } from '../../config/textConfigs/text';
+import { calculate } from './CalculatorAction';
 
 const accessKey = 'c02f99dfb405783c393d94049b9e952b';
 
@@ -32,10 +33,13 @@ export const queryCurr = () => async (dispatch, getState) => {
       date: Number(date),
       reload: Number(moment(new Date()).add(1, 'h').format('x')),
     };
+
     dispatch({
       type: QUERY_CURR,
       payload: update,
     });
+    dispatch(calculate('percent'));
+
     message.success(messages().success);
   } catch (e) {
     console.log(e);
