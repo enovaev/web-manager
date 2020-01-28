@@ -13,7 +13,7 @@ const RosterElement = ({
       backgroundColor: select && '#1890FF',
       color: select && 'white',
     }}
-    onClick={({ target, currentTarget }) => target === currentTarget && action()}
+    onClick={action}
   >
     <Text>{name}</Text>
     <Tools>
@@ -21,7 +21,13 @@ const RosterElement = ({
         {moment(JSON.parse(localStorage.getItem(name)).time).format('HH:mm:ss DD.MM.YY')}
       </Date>
       <Div>
-        <Icon type="delete" onClick={deleteSave} />
+        <Icon
+          type="delete"
+          onClick={(e) => {
+            e.stopPropagation();
+            deleteSave();
+          }}
+        />
       </Div>
     </Tools>
   </Container>
@@ -46,6 +52,7 @@ const Container = styled.div`
   padding: 3px 20px;
   &:hover {
     background-color: #E6F7FF;
+    cursor: pointer;
   }
 `;
 const Text = styled.p`
