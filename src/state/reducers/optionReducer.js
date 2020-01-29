@@ -3,7 +3,7 @@ import {
 } from '../constants';
 
 
-const initialState = [123];
+const initialState = [{ id: 123, group: false }];
 const initialStateSave = '';
 const initialStateMode = 'Main';
 const initialStateQuotes = { loading: false, data: { rates: null } };
@@ -11,10 +11,10 @@ const initialStateQuotes = { loading: false, data: { rates: null } };
 export function OptionReducer(state = initialState, action) {
   switch (action.type) {
     case ADD_ENTITY:
-      return [...state, action.payload];
+      return [...state, { id: action.payload, group: 'other' }];
 
     case DELETE_ENTITY:
-      return state.filter((el) => el !== action.payload);
+      return state.filter((el) => el.id !== action.payload);
 
     case DOWNLOAD:
       return action.payload.entityID;
