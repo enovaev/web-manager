@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // Utils
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 // Components
 import Icon from 'antd/es/icon';
 import Badge from 'antd/es/badge';
@@ -19,22 +19,16 @@ import {
   actionSlider,
   actionCheckbox,
 } from '../state/actions/MainAction';
+import { expandGroup } from '../state/actions/OptionAction';
 
 
 // eslint-disable-next-line react/prefer-stateless-function
 class UniversalContainer extends Component {
   render() {
     const {
-      entityData,
-      entityDataSlider,
-      entityName,
-      entityID,
-      component,
-      deleteAction,
-      checkbox,
-      select,
-      slider,
-      input,
+      entityData, entityDataSlider, entityName, entityID,
+      component, deleteAction, checkbox, select, slider,
+      input, expandAction,
     } = this.props;
     return (
       <Container>
@@ -81,6 +75,11 @@ class UniversalContainer extends Component {
                 <Icon type="delete" onClick={() => deleteAction(entityID)} />
               </Div>
             )}
+            {el.name === 'expand' && (
+              <Expand show={entityData.show}>
+                <Icon type="left" onClick={() => expandAction(entityID, entityName)} />
+              </Expand>
+            )}
           </div>
         ))}
       </Container>
@@ -94,6 +93,7 @@ UniversalContainer.propTypes = {
   entityID: PropTypes.number.isRequired,
   entityData: PropTypes.objectOf(PropTypes.any),
   entityDataSlider: PropTypes.objectOf(PropTypes.any),
+  expandAction: PropTypes.func,
   deleteAction: PropTypes.func,
   checkbox: PropTypes.func,
   select: PropTypes.func,
@@ -103,6 +103,7 @@ UniversalContainer.propTypes = {
 UniversalContainer.defaultProps = {
   entityData: { input: '', select: '' },
   entityDataSlider: { percent: 0 },
+  expandAction: () => {},
   deleteAction: () => {},
   checkbox: () => {},
   select: () => {},
@@ -128,6 +129,7 @@ const mapDispatchToProps = (dispatch) => ({
   checkbox: (id, name) => dispatch(actionCheckbox(id, name)),
   select: (value, id, name) => dispatch(actionSelect(value, id, name)),
   slider: (value, name, prop) => dispatch(actionSlider(value, name, prop)),
+  expandAction: (id, name) => dispatch(expandGroup(id, name)),
 });
 
 const Container = styled.div`
@@ -143,6 +145,15 @@ const Div = styled.div`
     color: rgba(0, 0, 0, 0.65);
     font-size: 22px;
   }
+`;
+const Expand = styled.div`
+  color: #D9D9D9;
+  font-size: 14px;
+  transition: transform 200ms ease-in-out;
+  &:hover {
+    color: rgba(0, 0, 0, 0.65);
+  }
+  ${(props) => (props.show && css`transform: rotate(-90deg)`)}
 `;
 
 export default connect(

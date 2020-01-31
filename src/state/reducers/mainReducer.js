@@ -2,7 +2,8 @@ import initialState from '../../config/initialState.json';
 import {
   ACTION_CHECKBOX, ACTION_CHECKBOX_ALL,
   ACTION_INPUT, ADD_ENTITY, DELETE_ENTITY,
-  ACTION_SELECT, ACTION_SLIDER_ALL, ACTION_SLIDER, RESULT_CALC, DOWNLOAD,
+  ACTION_SELECT, ACTION_SLIDER_ALL, CREATE_GROUP,
+  ACTION_SLIDER, RESULT_CALC, DOWNLOAD, EXPAND_GROUP,
 } from '../constants';
 
 
@@ -60,13 +61,21 @@ export const mainReducer = (root) => (state = initialState[root], action) => {
   }
 };
 
-export const footerReducer = (root) => (state = initialState[root], action) => {
+export const groupReducer = (root) => (state = initialState[root], action) => {
   if (action.name === root) {
     switch (action.type) {
-      case ACTION_SELECT:
-        return state.map((el) => ((action.id === el.id)
-          ? { ...el, select: action.value }
+      case EXPAND_GROUP:
+        return state.map((el) => (el.id === action.id
+          ? { ...el, show: !el.show }
           : el));
+
+      default:
+        return state;
+    }
+  } else {
+    switch (action.type) {
+      case CREATE_GROUP:
+        return [...state, { ...initialState[root][0], id: action.id }];
 
       case DOWNLOAD:
         return action.payload[root];
@@ -74,7 +83,5 @@ export const footerReducer = (root) => (state = initialState[root], action) => {
       default:
         return state;
     }
-  } else {
-    return state;
   }
 };

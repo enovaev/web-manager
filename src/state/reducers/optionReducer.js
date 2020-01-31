@@ -1,23 +1,38 @@
 import {
-  ADD_ENTITY, CHANGE_MODE, DELETE_ENTITY, DOWNLOAD, SAVE_NAME, QUERY_CURR, LOADING_CURR,
+  ADD_ENTITY, CHANGE_MODE, DELETE_ENTITY, DOWNLOAD,
+  SAVE_NAME, QUERY_CURR, LOADING_CURR, CREATE_GROUP,
 } from '../constants';
 
 
-const initialState = [{ id: 123, group: false }];
+const initialState = [123];
+const initialStateGroup = [236];
 const initialStateSave = '';
 const initialStateMode = 'Main';
 const initialStateQuotes = { loading: false, data: { rates: null } };
 
-export function OptionReducer(state = initialState, action) {
+export function entityID(state = initialState, action) {
   switch (action.type) {
     case ADD_ENTITY:
-      return [...state, { id: action.payload, group: 'other' }];
+      return [...state, action.payload];
 
     case DELETE_ENTITY:
-      return state.filter((el) => el.id !== action.payload);
+      return state.filter((el) => el !== action.payload);
 
     case DOWNLOAD:
       return action.payload.entityID;
+
+    default:
+      return state;
+  }
+}
+
+export function entityGroup(state = initialStateGroup, action) {
+  switch (action.type) {
+    case CREATE_GROUP:
+      return [...state, action.id];
+
+    case DOWNLOAD:
+      return action.payload.entityGroup;
 
     default:
       return state;

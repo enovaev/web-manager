@@ -39,7 +39,7 @@ const TableFormation = ({
       <TransitionGroup component={null}>
         {entityID.map((item, index) => (
           <CSSTransition
-            key={item.id}
+            key={item}
             timeout={200}
             classNames="item"
           >
@@ -50,7 +50,7 @@ const TableFormation = ({
                   {el.components && (
                     <UniversalContainer
                       entityName={el.key}
-                      entityID={item.id}
+                      entityID={item}
                       component={el.components}
                     />
                   )}

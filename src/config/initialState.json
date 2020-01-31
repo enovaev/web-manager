@@ -7,13 +7,16 @@
   "quantity": [{ "id": 123, "input": "" }],
   "priceOur": [{ "id": 123, "text": "", "select": "RUB" }],
   "priceCust": [{ "id": 123, "text": "", "select": "RUB" }],
-  "exwSum": [{ "id": 0, "text": "", "select": "RUB" }],
-  "priceOurSum": [{ "id": 0, "text": "", "select": "RUB" }],
-  "priceCustSum": [{ "id": 0, "text": "", "select": "RUB" }],
   "delivery": [{ "id": 123, "percent": 0, "input": "", "select": "RUB" }],
   "cusHouse": [{ "id": 123, "percent": 0, "input": "", "select": "RUB" }],
   "nds": [{ "id": 123, "percent": 20 }],
   "discount": [{ "id": 123, "percent": 0, "input": "", "select": "RUB" }],
   "sale": [{ "id": 123, "percent": 0, "input": "", "select": "RUB" }],
-  "delta": [{ "id": 123, "percent": 0, "input": "", "select": "RUB" }]
+  "delta": [{ "id": 123, "percent": 0, "input": "", "select": "RUB" }],
+  "checkGr": [{ "id": 236, "checked": false, "group": "" }],
+  "posNameGr": [{ "id": 236, "input": "others" }],
+  "exwGr": [{ "id": 236, "input": "", "select": "RUB" }],
+  "priceOurGr": [{ "id": 236, "text": "", "select": "RUB" }],
+  "priceCustGr": [{ "id": 236, "text": "", "select": "RUB" }],
+  "expandGr": [{ "id": 236, "ids": [123], "show": false }]
 }

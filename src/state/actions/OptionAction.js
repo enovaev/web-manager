@@ -1,5 +1,5 @@
 import {
-  DOWNLOAD, SAVE_NAME, CHANGE_MODE, CREATE_GROUP,
+  DOWNLOAD, SAVE_NAME, CHANGE_MODE, CREATE_GROUP, EXPAND_GROUP,
 } from '../constants';
 
 // eslint-disable-next-line import/prefer-default-export
@@ -26,11 +26,20 @@ export const actionMode = (mode) => (dispatch) => {
 };
 
 export const actionCreateGroup = (name, color) => (dispatch, getState) => {
-  const check = getState().check.filter((el) => el.checked);
-  console.log(check);
+  const check = getState().check.filter((el) => el.checked).map((el) => el.id);
   dispatch({
     type: CREATE_GROUP,
+    id: Math.random(),
+    ids: check,
     name,
     color,
+  });
+};
+
+export const expandGroup = (id, name) => (dispatch) => {
+  dispatch({
+    type: EXPAND_GROUP,
+    name,
+    id,
   });
 };

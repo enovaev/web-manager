@@ -15,9 +15,9 @@ export const actionCalc = (value, id, name, prop = 'text') => (dispatch) => {
   });
 };
 
-const convertCurr = (value, rates, start, end) => rates
+const convertCurr = (value, rates, start, end) => (rates
   ? (value * rates[end]) / rates[start]
-  : value;
+  : value);
 
 const calcPlus = (price, arr, type, dispatch, last = false) => {
   let calc = price;

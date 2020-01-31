@@ -1,6 +1,6 @@
 [
   {
-    "key": "check",
+    "key": "checkGr",
     "checkbox": true,
     "components": [
       {
@@ -17,7 +17,7 @@
     "container": false
   },
   {
-    "key": "posName",
+    "key": "posNameGr",
     "label": "Name of position / Group name",
     "input": "string",
     "width": 300,
@@ -30,7 +30,7 @@
     ]
   },
   {
-    "key": "priceOur",
+    "key": "priceOurGr",
     "label": "Our price",
     "components": [
       {
@@ -43,7 +43,7 @@
     ]
   },
   {
-    "key": "priceCust",
+    "key": "priceCustGr",
     "label": "Price for Customer",
     "components": [
       {
@@ -52,6 +52,14 @@
       {
         "name": "select",
         "type": "curr"
+      }
+    ]
+  },
+  {
+    "key": "expandGr",
+    "components": [
+      {
+        "name": "expand"
       }
     ]
   }
