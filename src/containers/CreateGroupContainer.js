@@ -54,7 +54,7 @@ class CreateGroupContainer extends Component {
           title="Управление группами"
           okText="Create"
           visible={showModal}
-          onOk={() => applyModal()}
+          onOk={() => applyModal(inputText, select)}
           onCancel={this.closeModal}
         >
           <span>Название группы:</span>

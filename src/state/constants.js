@@ -14,3 +14,4 @@ export const CREATE_GROUP = 'CREATE_GROUP';
 export const QUERY_CURR = 'QUERY_CURR';
 export const LOADING_CURR = 'LOADING_CURR';
 export const EXPAND_GROUP = 'EXPAND_GROUP';
+export const MANAGE_ID = 'MANAGE_ID';

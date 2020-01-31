@@ -3,7 +3,7 @@ import {
   ACTION_CHECKBOX, ACTION_CHECKBOX_ALL,
   ACTION_INPUT, ADD_ENTITY, DELETE_ENTITY,
   ACTION_SELECT, ACTION_SLIDER_ALL, CREATE_GROUP,
-  ACTION_SLIDER, RESULT_CALC, DOWNLOAD, EXPAND_GROUP,
+  ACTION_SLIDER, RESULT_CALC, DOWNLOAD, EXPAND_GROUP, MANAGE_ID,
 } from '../constants';
 
 
@@ -69,13 +69,41 @@ export const groupReducer = (root) => (state = initialState[root], action) => {
           ? { ...el, show: !el.show }
           : el));
 
+      case MANAGE_ID:
+        return state.map((el) => {
+          if (el.id === action.inId) return { ...el, ids: [...el.ids, ...action.ids] };
+          if (el.id === action.outId) {
+            return { ...el, ids: el.ids.filter((item) => !action.ids.includes(item)) };
+          }
+          return el;
+        });
+
       default:
         return state;
     }
   } else {
     switch (action.type) {
       case CREATE_GROUP:
+        if (root === 'expandGr') return [...state, { ...initialState[root][0], id: action.id, ids: [] }];
+        if (root === 'posNameGr') return [...state, { ...initialState[root][0], id: action.id, input: action.name }];
         return [...state, { ...initialState[root][0], id: action.id }];
+
+      case ADD_ENTITY:
+        if (root === 'expandGr') {
+          return state.map((el) => (el.id === 236
+            ? { ...el, ids: [...el.ids, action.payload] }
+            : el));
+        }
+        return state;
+
+      case DELETE_ENTITY:
+        if (root === 'expandGr') {
+          return state.map((el) => ({
+            ...el,
+            ids: el.ids.filter((item) => item !== action.payload),
+          }));
+        }
+        return state;
 
       case DOWNLOAD:
         return action.payload[root];

@@ -1,8 +1,8 @@
 import {
-  DOWNLOAD, SAVE_NAME, CHANGE_MODE, CREATE_GROUP, EXPAND_GROUP,
+  DOWNLOAD, SAVE_NAME, CHANGE_MODE, CREATE_GROUP, EXPAND_GROUP, MANAGE_ID,
 } from '../constants';
 
-// eslint-disable-next-line import/prefer-default-export
+
 export const actionSaveDown = (type, value) => (dispatch, getState) => {
   if (type === 'save') {
     dispatch({
@@ -25,15 +25,26 @@ export const actionMode = (mode) => (dispatch) => {
   });
 };
 
+export const idManager = (inId, ids, outId) => (dispatch) => {
+  dispatch({
+    type: MANAGE_ID,
+    name: 'expandGr',
+    outId,
+    inId,
+    ids,
+  });
+};
+
 export const actionCreateGroup = (name, color) => (dispatch, getState) => {
   const check = getState().check.filter((el) => el.checked).map((el) => el.id);
+  const id = Math.random();
   dispatch({
     type: CREATE_GROUP,
-    id: Math.random(),
-    ids: check,
+    id,
     name,
     color,
   });
+  dispatch(idManager(id, check, 236));
 };
 
 export const expandGroup = (id, name) => (dispatch) => {
