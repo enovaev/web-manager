@@ -11,7 +11,7 @@ import '../style/animation.css';
 
 
 const TableFormation = ({
-  addEntity, entityID, headerConfig, actionCheckbox,
+  addEntity, entityID, headerConfig, actionCheckbox, expandGroup,
 }) => (
   <Table>
     <Thead>
@@ -46,13 +46,31 @@ const TableFormation = ({
             <BodyRow>
               {headerConfig.map((el) => (
                 <Tb key={el.key}>
-                  {el.key === 'number' && <Container>{index + 1}</Container>}
-                  {el.components && (
-                    <UniversalContainer
-                      entityName={el.key}
-                      entityID={item}
-                      component={el.components}
-                    />
+                  <Div>
+                    {el.key === 'number' && <Container>{index + 1}</Container>}
+                    {el.components && (
+                      <UniversalContainer
+                        entityName={el.key}
+                        entityID={item}
+                        component={el.components}
+                      />
+                    )}
+                  </Div>
+                  {expandGroup && expandGroup.find((val) => val.id === item).show && (
+                    <Div>
+                      {expandGroup.find((val) => val.id === item).ids.map((elSub, iSub) => (
+                        <Div>
+                          {el.key === 'number' && <Container>{iSub + 1}</Container>}
+                          {el.componentsSub && (
+                            <UniversalContainer
+                              entityName={el.keySub}
+                              entityID={elSub}
+                              component={el.components}
+                            />
+                          )}
+                        </Div>
+                      ))}
+                    </Div>
                   )}
                 </Tb>
               ))}
@@ -67,6 +85,7 @@ const TableFormation = ({
 TableFormation.propTypes = {
   entityID: PropTypes.arrayOf(PropTypes.any).isRequired,
   headerConfig: PropTypes.arrayOf(PropTypes.any).isRequired,
+  expandGroup: PropTypes.arrayOf(PropTypes.any).isRequired,
   actionCheckbox: PropTypes.func,
   addEntity: PropTypes.func,
 };
@@ -111,6 +130,8 @@ const Tbody = styled.tbody`
   border-bottom: 3px solid black;
 `;
 const Thead = styled.thead`
+`;
+const Div = styled.div`
 `;
 
 export default TableFormation;

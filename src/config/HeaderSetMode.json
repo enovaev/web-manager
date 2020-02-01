@@ -1,8 +1,17 @@
 [
   {
     "key": "checkGr",
+    "keySub": "check",
     "checkbox": true,
     "components": [
+      {
+        "name": "badge"
+      },
+      {
+        "name": "checkbox"
+      }
+    ],
+    "componentsSub": [
       {
         "name": "badge"
       },
@@ -13,11 +22,13 @@
   },
   {
     "key": "number",
+    "keySub": "number",
     "label": "№",
     "container": false
   },
   {
     "key": "posNameGr",
+    "keySub": "posName",
     "label": "Name of position / Group name",
     "input": "string",
     "width": 300,
@@ -27,12 +38,29 @@
         "type": "string",
         "width": 300
       }
+    ],
+    "componentsSub": [
+      {
+        "name": "input",
+        "type": "string",
+        "width": 300
+      }
     ]
   },
   {
     "key": "priceOurGr",
+    "keySub": "priceOur",
     "label": "Our price",
     "components": [
+      {
+        "name": "text"
+      },
+      {
+        "name": "select",
+        "type": "curr"
+      }
+    ],
+    "componentsSub": [
       {
         "name": "text"
       },
@@ -44,8 +72,18 @@
   },
   {
     "key": "priceCustGr",
+    "keySub": "priceCust",
     "label": "Price for Customer",
     "components": [
+      {
+        "name": "text"
+      },
+      {
+        "name": "select",
+        "type": "curr"
+      }
+    ],
+    "componentsSub": [
       {
         "name": "text"
       },

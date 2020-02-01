@@ -19,7 +19,7 @@ const modeApp = [
 ];
 
 const MainTableContainer = ({
-  entityID, entityGroup, mode, addAction, actionCheck,
+  entityID, entityGroup, expandGr, mode, addAction, actionCheck,
 }) => (
   <Container>
     <TransitionGroup component={null}>
@@ -32,6 +32,7 @@ const MainTableContainer = ({
           <Div>
             <TableFormation
               headerConfig={el.config}
+              expandGroup={mode === 'Group' ? expandGr : null}
               entityID={mode === 'Group' ? entityGroup : entityID}
               addEntity={addAction}
               actionCheckbox={actionCheck}
@@ -48,6 +49,7 @@ MainTableContainer.propTypes = {
   entityID: PropTypes.arrayOf(PropTypes.any).isRequired,
   entityGroup: PropTypes.arrayOf(PropTypes.any).isRequired,
   actionCheck: PropTypes.func.isRequired,
+  expandGr: PropTypes.arrayOf(PropTypes.any).isRequired,
   addAction: PropTypes.func.isRequired,
   mode: PropTypes.string.isRequired,
 };
@@ -55,8 +57,11 @@ MainTableContainer.propTypes = {
 MainTableContainer.defaultProps = {
 };
 
-const mapStateToProps = ({ entityID, entityGroup, mode }) => ({
+const mapStateToProps = ({
+  entityID, entityGroup, expandGr, mode,
+}) => ({
   entityGroup,
+  expandGr,
   entityID,
   mode,
 });
