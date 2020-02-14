@@ -35,6 +35,15 @@ export const idManager = (inId, ids, outId) => (dispatch) => {
   });
 };
 
+export const idDirection = (inId, ids) => (dispatch, getState) => {
+  const arrDiff = getState().expandGr.map((item) => ({
+    idGroup: item.id,
+    diffIds: item.ids.filter((el) => ids.includes(el)),
+  }));
+  arrDiff.forEach((item) => item.diffIds.length
+    && dispatch(idManager(inId, item.diffIds, item.idGroup)));
+};
+
 export const actionCreateGroup = (name, color) => (dispatch, getState) => {
   const check = getState().check.filter((el) => el.checked).map((el) => el.id);
   const id = Math.random();
@@ -44,7 +53,7 @@ export const actionCreateGroup = (name, color) => (dispatch, getState) => {
     name,
     color,
   });
-  dispatch(idManager(id, check, 236));
+  dispatch(idDirection(id, check));
 };
 
 export const expandGroup = (id, name) => (dispatch) => {

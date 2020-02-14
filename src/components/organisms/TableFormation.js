@@ -43,38 +43,44 @@ const TableFormation = ({
             timeout={200}
             classNames="item"
           >
-            <BodyRow>
-              {headerConfig.map((el) => (
-                <Tb key={el.key}>
-                  <Div>
-                    {el.key === 'number' && <Container>{index + 1}</Container>}
-                    {el.components && (
+            <>
+              <BodyRow>
+                {headerConfig.map((el) => (
+                  <Tb key={el.key}>
+                    <Div>
+                      {el.key === 'number' && <Container>{index + 1}</Container>}
+                      {el.components && (
                       <UniversalContainer
                         entityName={el.key}
                         entityID={item}
                         component={el.components}
                       />
-                    )}
-                  </Div>
-                  {expandGroup && expandGroup.find((val) => val.id === item).show && (
-                    <Div>
-                      {expandGroup.find((val) => val.id === item).ids.map((elSub, iSub) => (
-                        <Div>
-                          {el.key === 'number' && <Container>{iSub + 1}</Container>}
-                          {el.componentsSub && (
-                            <UniversalContainer
-                              entityName={el.keySub}
-                              entityID={elSub}
-                              component={el.components}
-                            />
-                          )}
-                        </Div>
-                      ))}
+                      )}
                     </Div>
-                  )}
-                </Tb>
+                  </Tb>
+                ))}
+              </BodyRow>
+              {expandGroup
+              && expandGroup.find((val) => val.id === item).show
+              && expandGroup.find((val) => val.id === item).ids.map((elSub, iSub) => (
+                <BodyRow key={elSub}>
+                  {headerConfig.map((el) => (
+                    <Tb key={el.key}>
+                      <Div>
+                        {el.key === 'number' && <Container>{iSub + 1}</Container>}
+                        {el.componentsSub && (
+                        <UniversalContainer
+                          entityName={el.keySub}
+                          entityID={elSub}
+                          component={el.components}
+                        />
+                        )}
+                      </Div>
+                    </Tb>
+                  ))}
+                </BodyRow>
               ))}
-            </BodyRow>
+            </>
           </CSSTransition>
         ))}
       </TransitionGroup>
@@ -85,13 +91,14 @@ const TableFormation = ({
 TableFormation.propTypes = {
   entityID: PropTypes.arrayOf(PropTypes.any).isRequired,
   headerConfig: PropTypes.arrayOf(PropTypes.any).isRequired,
-  expandGroup: PropTypes.arrayOf(PropTypes.any).isRequired,
+  expandGroup: PropTypes.arrayOf(PropTypes.any),
   actionCheckbox: PropTypes.func,
   addEntity: PropTypes.func,
 };
 TableFormation.defaultProps = {
   actionCheckbox: () => {},
   addEntity: () => {},
+  expandGroup: null,
 };
 
 const Table = styled.table`
