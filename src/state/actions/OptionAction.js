@@ -1,5 +1,5 @@
 import {
-  DOWNLOAD, SAVE_NAME, CHANGE_MODE, CREATE_GROUP, EXPAND_GROUP, MANAGE_ID,
+  DOWNLOAD, SAVE_NAME, CHANGE_MODE, CREATE_GROUP, EXPAND_GROUP, MANAGE_ID, SET_COLOR_GROUP,
 } from '../constants';
 
 
@@ -51,6 +51,11 @@ export const actionCreateGroup = (name, color) => (dispatch, getState) => {
     type: CREATE_GROUP,
     id,
     name,
+  });
+  dispatch({
+    type: SET_COLOR_GROUP,
+    name: 'check',
+    ids: check,
     color,
   });
   dispatch(idDirection(id, check));

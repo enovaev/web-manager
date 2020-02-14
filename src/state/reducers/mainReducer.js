@@ -4,6 +4,7 @@ import {
   ACTION_INPUT, ADD_ENTITY, DELETE_ENTITY,
   ACTION_SELECT, ACTION_SLIDER_ALL, CREATE_GROUP,
   ACTION_SLIDER, RESULT_CALC, DOWNLOAD, EXPAND_GROUP, MANAGE_ID,
+  SET_COLOR_GROUP,
 } from '../constants';
 
 
@@ -34,6 +35,11 @@ export const mainReducer = (root) => (state = initialState[root], action) => {
       case ACTION_SLIDER:
         return state.map((el) => (action.id.find((item) => item.id === el.id)
           ? { ...el, [action.prop]: action.value }
+          : el));
+
+      case SET_COLOR_GROUP:
+        return state.map((el) => (action.ids.includes(el.id)
+          ? { ...el, group: action.color }
           : el));
 
       case RESULT_CALC:
