@@ -84,6 +84,11 @@ export const groupReducer = (root) => (state = initialState[root], action) => {
           return el;
         });
 
+      case RESULT_CALC:
+        return state.map((el) => (el.id === action.id
+          ? { ...el, [action.prop]: action.value }
+          : el));
+
       default:
         return state;
     }

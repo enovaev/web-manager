@@ -49,6 +49,24 @@ const calcPlus = (price, arr, type, dispatch, last = false) => {
   return calc;
 };
 
+export const calculateGroup = () => (dispatch, getState) => {
+  const { expandGr, priceOur, priceCust } = getState();
+  expandGr.forEach((el) => {
+    let sumPriceOur = 0;
+    let sumPriceCust = 0;
+    el.ids.forEach((item) => {
+      priceOur.forEach((val) => {
+        if (val.id === item && Number(val.text)) sumPriceOur += val.text;
+      });
+      priceCust.forEach((val) => {
+        if (val.id === item && Number(val.text)) sumPriceCust += val.text;
+      });
+    });
+    dispatch(actionCalc(sumPriceOur, el.id, 'priceOurGr'));
+    dispatch(actionCalc(sumPriceCust, el.id, 'priceCustGr'));
+  });
+};
+
 export const calculate = (type) => (dispatch, getState) => {
   const {
     exw, quantity, nds, priceOur, priceCust, discount, cusHouse, delivery, sale, quotes,
@@ -75,4 +93,5 @@ export const calculate = (type) => (dispatch, getState) => {
     }
     return false;
   });
+  dispatch(calculateGroup());
 };
