@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // Utils
 import Modal from 'antd/es/modal';
+import PropTypes from 'prop-types';
 import Button from 'antd/es/button';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
@@ -8,6 +9,7 @@ import styled from 'styled-components';
 import CustomInput from '../components/molecules/CustomInput';
 import CustomSelect from '../components/molecules/CustomSelect';
 import { actionCreateGroup } from '../state/actions/OptionAction';
+
 
 class CreateGroupContainer extends Component {
   constructor(props) {
@@ -22,7 +24,7 @@ class CreateGroupContainer extends Component {
     this.closeModal = this.closeModal.bind(this);
     this.inputAction = this.inputAction.bind(this);
     this.selectAction = this.selectAction.bind(this);
-    // this.applyModal = this.applyModal.bind(this);
+    this.applyModal = this.applyModal.bind(this);
   }
 
   openModal() {
@@ -31,6 +33,14 @@ class CreateGroupContainer extends Component {
 
   closeModal() {
     this.setState({ showModal: false });
+  }
+
+  applyModal() {
+    const { inputText, select } = this.state;
+    const { applyModal } = this.props;
+
+    applyModal(inputText, select);
+    this.closeModal();
   }
 
   inputAction(inputText) {
@@ -42,11 +52,7 @@ class CreateGroupContainer extends Component {
   }
 
   render() {
-    const {
-      showModal, inputText, select,
-    } = this.state;
-    // eslint-disable-next-line react/prop-types
-    const { applyModal } = this.props;
+    const { showModal, inputText, select } = this.state;
     return (
       <Container>
         <Button type="primary" onClick={this.openModal}>Управление группами</Button>
@@ -54,7 +60,7 @@ class CreateGroupContainer extends Component {
           title="Управление группами"
           okText="Create"
           visible={showModal}
-          onOk={() => applyModal(inputText, select)}
+          onOk={this.applyModal}
           onCancel={this.closeModal}
         >
           <span>Название группы:</span>
@@ -75,6 +81,14 @@ class CreateGroupContainer extends Component {
     );
   }
 }
+
+CreateGroupContainer.propTypes = {
+  applyModal: PropTypes.func,
+};
+
+CreateGroupContainer.defaultProps = {
+  applyModal: () => {},
+};
 
 const Container = styled.div`
 `;

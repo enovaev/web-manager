@@ -1,11 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 // Utils
 import moment from 'moment';
+import { Tooltip } from 'antd';
 import Icon from 'antd/es/icon';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { Tooltip } from 'antd';
+// Store
 import { queryCurr } from '../state/actions/QueryAction';
 
 const currTooltip = (rates) => (
@@ -16,28 +17,23 @@ const currTooltip = (rates) => (
     '')
     : 'Нажмите для загрузки котировок'
 );
-// eslint-disable-next-line react/prefer-stateless-function
-class CurrencyContainer extends Component {
-  render() {
-    const { query, data, loading } = this.props;
-    return (
-      <Container>
-        <Div>
-          <Tooltip title={currTooltip(data.rates)} placement="bottomLeft" overlayStyle={{ fontSize: 12 }}>
-            {loading
-              ? <Icon type="loading" />
-              : <Icon type="reload" onClick={query} />}
-          </Tooltip>
-        </Div>
-        <Text>
-          {data.rates
-            ? `обновлено: ${moment(data.date).format('HH:mm DD.MM.YY')}`
-            : 'нет данных'}
-        </Text>
-      </Container>
-    );
-  }
-}
+
+const CurrencyContainer = ({ query, data, loading }) => (
+  <Container>
+    <Div>
+      <Tooltip title={currTooltip(data.rates)} placement="bottomLeft" overlayStyle={{ fontSize: 12 }}>
+        {loading
+          ? <Icon type="loading" />
+          : <Icon type="reload" onClick={query} />}
+      </Tooltip>
+    </Div>
+    <Text>
+      {data.rates
+        ? `обновлено: ${moment(data.date).format('HH:mm DD.MM.YY')}`
+        : 'нет данных'}
+    </Text>
+  </Container>
+);
 
 CurrencyContainer.propTypes = {
   query: PropTypes.func.isRequired,

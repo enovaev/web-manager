@@ -13,11 +13,8 @@ import CustomSelect from '../components/molecules/CustomSelect';
 import CustomSlider from '../components/molecules/CustomSlider';
 // Store
 import {
-  actionInput,
-  deleteEntity,
-  actionSelect,
-  actionSlider,
-  actionCheckbox,
+  actionInput, deleteEntity, actionSelect,
+  actionSlider, actionCheckbox,
 } from '../state/actions/MainAction';
 import { expandGroup } from '../state/actions/OptionAction';
 
