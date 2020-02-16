@@ -6,11 +6,13 @@ import styled from 'styled-components';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 // Components
 import TableFormation from '../components/organisms/TableFormation';
+import EditPanel from '../components/organisms/EditPanel';
 // Store
 import { actionCheckbox, addEntity } from '../state/actions/MainAction';
 // Configs
 import Main from '../config/HeaderMainMode.json';
 import Set from '../config/HeaderSetMode.json';
+import editConfig from '../config/HeaderEditTable.json';
 import '../components/style/animation.css';
 
 const modeApp = [
@@ -18,8 +20,9 @@ const modeApp = [
   { value: 'Group', config: Set },
 ];
 
+const formatEdit = (config) => config.map((el) => ({ ...el, components: el.components.map((item) => (item.name === 'slider' ? { ...item, type: 'single' } : item)) }));
 const MainTableContainer = ({
-  entityID, entityGroup, expandGr, mode, addAction, actionCheck,
+  entityID, entityGroup, expandGr, mode, addAction, actionCheck, check,
 }) => (
   <Container>
     <TransitionGroup component={null}>
@@ -37,7 +40,13 @@ const MainTableContainer = ({
               addEntity={addAction}
               actionCheckbox={actionCheck}
             />
-            {mode === 'Group' && <div />}
+            {mode === 'Group' && (
+              <EditPanel
+                headerConfig={check.filter((item) => item.checked).length === 1
+                  ? editConfig
+                  : formatEdit(editConfig)}
+              />
+            )}
           </Div>
         </CSSTransition>
       ))}
@@ -52,17 +61,19 @@ MainTableContainer.propTypes = {
   expandGr: PropTypes.arrayOf(PropTypes.any).isRequired,
   addAction: PropTypes.func.isRequired,
   mode: PropTypes.string.isRequired,
+  check: PropTypes.arrayOf(PropTypes.any).isRequired,
 };
 
 MainTableContainer.defaultProps = {
 };
 
 const mapStateToProps = ({
-  entityID, entityGroup, expandGr, mode,
+  entityID, entityGroup, expandGr, mode, check,
 }) => ({
   entityGroup,
   expandGr,
   entityID,
+  check,
   mode,
 });
 

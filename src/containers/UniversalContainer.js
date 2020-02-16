@@ -87,7 +87,7 @@ class UniversalContainer extends Component {
 UniversalContainer.propTypes = {
   component: PropTypes.arrayOf(PropTypes.any).isRequired,
   entityName: PropTypes.string.isRequired,
-  entityID: PropTypes.number.isRequired,
+  entityID: PropTypes.number,
   entityData: PropTypes.objectOf(PropTypes.any),
   entityDataSlider: PropTypes.objectOf(PropTypes.any),
   expandAction: PropTypes.func,
@@ -100,6 +100,7 @@ UniversalContainer.propTypes = {
 UniversalContainer.defaultProps = {
   entityData: { input: '', select: '' },
   entityDataSlider: { percent: 0 },
+  entityID: 0,
   expandAction: () => {},
   deleteAction: () => {},
   checkbox: () => {},

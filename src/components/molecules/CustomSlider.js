@@ -11,25 +11,27 @@ const CustomSlider = ({
   valuePerc, valueCurr, valueSelect, actionPerc, actionValue, actionSelect, elementType, min, max,
 }) => (
   <Container>
-    {elementType === 'double' && (
     <InputDiv>
       <CustomInput
         elementType="number"
-        value={valueCurr}
-        action={actionValue}
-        width={120}
+        value={valuePerc}
+        action={actionPerc}
+        width={50}
+        min={min}
+        max={max}
       />
-      <CustomSelect elementType="curr" value={valueSelect} action={actionSelect} />
+      {elementType === 'double' && (
+        <Div>
+          <CustomInput
+            elementType="number"
+            value={valueCurr}
+            action={actionValue}
+            width={120}
+          />
+          <CustomSelect elementType="curr" value={valueSelect} action={actionSelect} />
+        </Div>
+      )}
     </InputDiv>
-    )}
-    <CustomInput
-      elementType="number"
-      value={valuePerc}
-      action={actionPerc}
-      width={50}
-      min={min}
-      max={max}
-    />
     <SliderDiv>
       <Slider
         tooltipVisible={false}
@@ -65,15 +67,20 @@ CustomSlider.defaultProps = {
 };
 
 const Container = styled.div`
-display: flex;
-flex-direction: column;
-align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 const SliderDiv = styled.div`
-width: 200px;
+  width: 400px;
 `;
 const InputDiv = styled.div`
-margin: 10px 0;
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+`;
+const Div = styled.div`
+  margin-left: 10px;
 `;
 
 export default CustomSlider;
