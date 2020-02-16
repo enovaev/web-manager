@@ -50,16 +50,24 @@ const calcPlus = (price, arr, type, dispatch, last = false) => {
 };
 
 export const calculateGroup = () => (dispatch, getState) => {
-  const { expandGr, priceOur, priceCust } = getState();
+  const {
+    expandGr, priceOur, priceCust, quotes, priceOurGr, priceCustGr,
+  } = getState();
   expandGr.forEach((el) => {
     let sumPriceOur = 0;
     let sumPriceCust = 0;
     el.ids.forEach((item) => {
       priceOur.forEach((val) => {
-        if (val.id === item && Number(val.text)) sumPriceOur += val.text;
+        if (val.id === item && Number(val.text)) {
+          const curr = priceOurGr.find((a) => a.id === el.id).select;
+          sumPriceOur += convertCurr(val.text, quotes.data.rates, val.select, curr);
+        }
       });
       priceCust.forEach((val) => {
-        if (val.id === item && Number(val.text)) sumPriceCust += val.text;
+        if (val.id === item && Number(val.text)) {
+          const curr = priceCustGr.find((a) => a.id === el.id).select;
+          sumPriceCust += convertCurr(val.text, quotes.data.rates, val.select, curr);
+        }
       });
     });
     dispatch(actionCalc(sumPriceOur, el.id, 'priceOurGr'));

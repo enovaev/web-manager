@@ -12,8 +12,8 @@ export const mainReducer = (root) => (state = initialState[root], action) => {
   if (action.name === root) {
     switch (action.type) {
       case ACTION_CHECKBOX:
-        return state.map((el, i) => ((action.value === el.id)
-          ? { ...el, checked: !state[i].checked }
+        return state.map((el) => ((action.value === el.id)
+          ? { ...el, checked: !el.checked }
           : el));
 
       case ACTION_CHECKBOX_ALL:
@@ -73,6 +73,16 @@ export const groupReducer = (root) => (state = initialState[root], action) => {
       case EXPAND_GROUP:
         return state.map((el) => (el.id === action.id
           ? { ...el, show: !el.show }
+          : el));
+
+      case ACTION_SELECT:
+        return state.map((el) => ((action.id === el.id)
+          ? { ...el, select: action.value }
+          : el));
+
+      case ACTION_CHECKBOX:
+        return state.map((el) => ((action.value === el.id)
+          ? { ...el, checked: !el.checked }
           : el));
 
       case MANAGE_ID:

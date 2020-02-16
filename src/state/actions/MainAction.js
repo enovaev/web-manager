@@ -53,8 +53,17 @@ export const deleteEntity = (id) => (dispatch) => {
   });
 };
 
-export const actionCheckbox = (value, name) => (dispatch) => {
-  if (typeof (value) === 'number') {
+export const actionCheckbox = (value, name) => (dispatch, getState) => {
+  if (name === 'checkGr') {
+    getState().expandGr.forEach((el) => {
+      if (el.id === value) el.ids.forEach((item) => dispatch(actionCheckbox(item, 'check')));
+    });
+    dispatch({
+      type: ACTION_CHECKBOX,
+      value,
+      name,
+    });
+  } else if (typeof (value) === 'number') {
     dispatch({
       type: ACTION_CHECKBOX,
       value,
@@ -80,7 +89,7 @@ export const actionSelect = (value, id, name) => (dispatch) => {
     const changeCurr = ['priceOur', 'priceCust', 'delivery', 'cusHouse', 'nds', 'discount', 'sale', 'delta'];
     changeCurr.forEach((el) => dispatch(actionSelect(value, id, el)));
   }
-  if (name === 'exw' || name === 'priceOur' || name === 'priceCust') dispatch(calculate('percent'));
+  if (name === 'exw' || name === 'priceOur' || name === 'priceCust' || name === 'priceOurGr' || name === 'priceCustGr') dispatch(calculate('percent'));
 };
 
 export const actionSlider = (value, name, prop) => (dispatch, getState) => {
