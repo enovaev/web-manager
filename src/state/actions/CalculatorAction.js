@@ -19,30 +19,37 @@ const convertCurr = (value, rates, start, end) => (rates
   ? (value * rates[end]) / rates[start]
   : value);
 
-const calcPlus = (price, arr, type, dispatch, last = false) => {
+const calcPlus = (price, index, type, currency, customer) => (dispatch, getState) => {
+  const {
+    cusHouse, nds, delivery, discount, sale, quotes,
+  } = getState();
+  const arr = customer
+    ? [cusHouse[index], nds[index], delivery[index], sale[index]]
+    : [cusHouse[index], nds[index], delivery[index], discount[index]];
   let calc = price;
+
   arr.forEach((el, i) => {
     if (type === 'percent') {
       const value = calc * el.percent * 0.01;
-      if (i === arr.length - 1 && last) {
-        calc -= value;
-      } else {
-        calc += value;
-      }
-      if (value !== el.input && last) dispatch(actionCalc(value, el.id, namePriceOur[i], 'input'));
-      if (value !== el.input && i === 3 && !last) {
-        dispatch(actionCalc(value, el.id, namePriceCust[i], 'input'));
+
+      if (el.plus) calc += value;
+      if (!el.plus) calc -= value;
+
+      const curr = convertCurr(value, quotes.data.rates, currency, el.select);
+      if (curr !== el.input) {
+        if (customer) dispatch(actionCalc(curr, el.id, namePriceCust[i], 'input'));
+        if (!customer) dispatch(actionCalc(curr, el.id, namePriceOur[i], 'input'));
       }
     } else {
-      const percent = (el.input * 100) / calc;
-      if (i === arr.length - 1 && last) {
-        calc = calc * (100 - percent) * 0.01;
-      } else {
-        calc = calc * (100 + percent) * 0.01;
-      }
-      if (percent !== el.percent && last) dispatch(actionCalc(percent, el.id, namePriceOur[i], 'percent'));
-      if (percent !== el.percent && i === 3 && !last) {
-        dispatch(actionCalc(percent, el.id, namePriceCust[i], 'percent'));
+      const curr = convertCurr(el.input, quotes.data.rates, el.select, currency);
+      const percent = (curr * 100) / calc;
+
+      if (el.plus) calc = calc * (100 + percent) * 0.01;
+      if (!el.plus) calc = calc * (100 - percent) * 0.01;
+
+      if (percent !== el.percent) {
+        if (customer) dispatch(actionCalc(percent, el.id, namePriceCust[i], 'percent'));
+        if (!customer) dispatch(actionCalc(percent, el.id, namePriceOur[i], 'percent'));
       }
     }
   });
@@ -53,9 +60,11 @@ export const calculateGroup = () => (dispatch, getState) => {
   const {
     expandGr, priceOur, priceCust, quotes, priceOurGr, priceCustGr,
   } = getState();
-  expandGr.forEach((el) => {
+
+  expandGr.forEach((el, i) => {
     let sumPriceOur = 0;
     let sumPriceCust = 0;
+
     el.ids.forEach((item) => {
       priceOur.forEach((val) => {
         if (val.id === item && Number(val.text)) {
@@ -70,23 +79,21 @@ export const calculateGroup = () => (dispatch, getState) => {
         }
       });
     });
-    dispatch(actionCalc(sumPriceOur, el.id, 'priceOurGr'));
-    dispatch(actionCalc(sumPriceCust, el.id, 'priceCustGr'));
+    if (priceOurGr[i].text !== sumPriceOur) dispatch(actionCalc(sumPriceOur, el.id, 'priceOurGr'));
+    if (priceCustGr[i].text !== sumPriceCust) dispatch(actionCalc(sumPriceCust, el.id, 'priceCustGr'));
   });
 };
 
 export const calculate = (type) => (dispatch, getState) => {
   const {
-    exw, quantity, nds, priceOur, priceCust, discount, cusHouse, delivery, sale, quotes,
+    exw, quantity, priceOur, priceCust, quotes,
   } = getState();
   exw.forEach((el, i) => {
     if (el.input && quantity[i].input) {
       const price = Number(el.input) * Number(quantity[i].input);
 
-      // eslint-disable-next-line max-len
-      const calcPriceOur = calcPlus(price, [cusHouse[i], nds[i], delivery[i], discount[i]], type, dispatch, true);
-      // eslint-disable-next-line max-len
-      const calcPriceCust = calcPlus(price, [cusHouse[i], nds[i], delivery[i], sale[i]], type, dispatch);
+      const calcPriceOur = dispatch(calcPlus(price, i, type, el.select));
+      const calcPriceCust = dispatch(calcPlus(price, i, type, el.select, true));
 
       // eslint-disable-next-line max-len
       const convertPriceOur = convertCurr(calcPriceOur, quotes.data.rates, el.select, priceOur[i].select);

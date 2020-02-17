@@ -110,5 +110,9 @@ export const actionSlider = (value, name, prop) => (dispatch, getState) => {
       prop,
     });
   }
-  if (prop !== 'select') dispatch(calculate(prop));
+  if (prop === 'select') {
+    dispatch(calculate('percent'));
+  } else {
+    dispatch(calculate(prop));
+  }
 };
