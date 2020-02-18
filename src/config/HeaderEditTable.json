@@ -39,5 +39,25 @@
         "type": "double"
       }
     ]
+  },
+  {
+    "key": "sale",
+    "label": "Скидка",
+    "components": [
+      {
+        "name": "slider",
+        "type": "double"
+      }
+    ]
+  },
+  {
+    "key": "delta",
+    "label": "Дельта",
+    "components": [
+      {
+        "name": "slider",
+        "type": "double"
+      }
+    ]
   }
 ]

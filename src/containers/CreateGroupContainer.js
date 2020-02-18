@@ -9,6 +9,8 @@ import styled from 'styled-components';
 import CustomInput from '../components/molecules/CustomInput';
 import CustomSelect from '../components/molecules/CustomSelect';
 import { actionCreateGroup } from '../state/actions/OptionAction';
+// Configs
+import colorConfig from '../config/selectConfig/selectColor.json';
 
 
 class CreateGroupContainer extends Component {
@@ -16,7 +18,7 @@ class CreateGroupContainer extends Component {
     super(props);
     this.state = {
       inputText: '',
-      select: 'red',
+      select: '',
       showModal: false,
     };
 
@@ -28,7 +30,11 @@ class CreateGroupContainer extends Component {
   }
 
   openModal() {
-    this.setState({ showModal: true });
+    const { colorCheck } = this.props;
+    this.setState({
+      showModal: true,
+      select: colorConfig.filter((el) => !colorCheck.includes(el))[0],
+    });
   }
 
   closeModal() {
@@ -53,6 +59,7 @@ class CreateGroupContainer extends Component {
 
   render() {
     const { showModal, inputText, select } = this.state;
+    const { colorCheck } = this.props;
     return (
       <Container>
         <Button type="primary" onClick={this.openModal}>Управление группами</Button>
@@ -74,6 +81,7 @@ class CreateGroupContainer extends Component {
               action={this.selectAction}
               elementType="color"
               value={select}
+              color={colorConfig.filter((el) => !colorCheck.includes(el))}
             />
           </Div>
         </Modal>
@@ -84,6 +92,7 @@ class CreateGroupContainer extends Component {
 
 CreateGroupContainer.propTypes = {
   applyModal: PropTypes.func,
+  colorCheck: PropTypes.arrayOf(PropTypes.any).isRequired,
 };
 
 CreateGroupContainer.defaultProps = {
@@ -97,7 +106,8 @@ const Div = styled.div`
   display: flex;
 `;
 
-const mapStateToProps = () => ({
+const mapStateToProps = ({ check }) => ({
+  colorCheck: check.map((el) => el.group),
 });
 
 const mapDispatchToProps = (dispatch) => ({

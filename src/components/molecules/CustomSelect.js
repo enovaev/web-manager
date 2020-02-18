@@ -4,7 +4,6 @@ import { Select } from 'antd';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 // Configs
-import colorConfig from '../../config/selectConfig/selectColor.json';
 import currencyConfig from '../../config/selectConfig/selectCurrency.json';
 import quantityConfig from '../../config/selectConfig/selectQuantity.json';
 
@@ -19,7 +18,9 @@ const renderColorOption = (data) => data.map((item) => (
   </Option>
 ));
 
-const CustomSelect = ({ action, value, elementType }) => (
+const CustomSelect = ({
+  action, value, elementType, color,
+}) => (
   <Select
     onChange={action}
     value={value}
@@ -27,7 +28,7 @@ const CustomSelect = ({ action, value, elementType }) => (
   >
     {elementType === 'quan' && renderOptionSelect(quantityConfig)}
     {elementType === 'curr' && renderOptionSelect(currencyConfig)}
-    {elementType === 'color' && renderColorOption(colorConfig)}
+    {elementType === 'color' && renderColorOption(color)}
   </Select>
 );
 
@@ -35,6 +36,10 @@ CustomSelect.propTypes = {
   elementType: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   action: PropTypes.func.isRequired,
+  color: PropTypes.arrayOf(PropTypes.any),
+};
+CustomSelect.defaultProps = {
+  color: [],
 };
 
 const Color = styled.div`
