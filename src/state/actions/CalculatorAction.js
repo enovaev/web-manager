@@ -95,10 +95,11 @@ export const calculate = (type) => (dispatch, getState) => {
       const calcPriceOur = dispatch(calcPlus(price, i, type, el.select));
       const calcPriceCust = dispatch(calcPlus(price, i, type, el.select, true));
 
-      // eslint-disable-next-line max-len
-      const convertPriceOur = convertCurr(calcPriceOur, quotes.data.rates, el.select, priceOur[i].select);
-      // eslint-disable-next-line max-len
-      const convertPriceCust = convertCurr(calcPriceCust, quotes.data.rates, el.select, priceCust[i].select);
+      const paramsOur = [calcPriceOur, quotes.data.rates, el.select, priceOur[i].select];
+      const paramsCust = [calcPriceCust, quotes.data.rates, el.select, priceCust[i].select];
+
+      const convertPriceOur = convertCurr(...paramsOur);
+      const convertPriceCust = convertCurr(...paramsCust);
 
       if (convertPriceOur !== priceOur[i].text) dispatch(actionCalc(convertPriceOur, el.id, 'priceOur'));
       if (convertPriceCust !== priceCust[i].text) dispatch(actionCalc(convertPriceCust, el.id, 'priceCust'));
