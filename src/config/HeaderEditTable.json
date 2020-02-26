@@ -1,9 +1,9 @@
 [
   {
     "key": "delivery",
-    "label": "Расходы на доставку",
     "components": [
       {
+        "label": "Расходы на доставку",
         "name": "slider",
         "type": "double"
       }
@@ -11,9 +11,9 @@
   },
   {
     "key": "cusHouse",
-    "label": "Таможенные расходы",
     "components": [
       {
+        "label": "Таможенные расходы",
         "name": "slider",
         "type": "double"
       }
@@ -21,9 +21,9 @@
   },
   {
     "key": "nds",
-    "label": "НДС",
     "components": [
       {
+        "label": "НДС",
         "name": "slider",
         "type": "single",
         "max": 100
@@ -32,9 +32,9 @@
   },
   {
     "key": "discount",
-    "label": "Дисконт поставщика",
     "components": [
       {
+        "label": "Дисконт поставщика",
         "name": "slider",
         "type": "double"
       }
@@ -42,9 +42,10 @@
   },
   {
     "key": "sale",
-    "label": "Скидка",
     "components": [
       {
+        "label": "Скидка",
+        "secLabel": "Наценка",
         "name": "slider",
         "type": "double"
       }
@@ -52,9 +53,9 @@
   },
   {
     "key": "delta",
-    "label": "Дельта",
     "components": [
       {
+        "label": "Дельта",
         "name": "slider",
         "type": "double"
       }

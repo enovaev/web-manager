@@ -48,8 +48,8 @@ const calcPlus = (price, index, type, currency, customer) => (dispatch, getState
       if (!el.plus) calc = calc * (100 - percent) * 0.01;
 
       if (percent !== el.percent) {
-        if (customer) dispatch(actionCalc(percent, el.id, namePriceCust[i], 'percent'));
-        if (!customer) dispatch(actionCalc(percent, el.id, namePriceOur[i], 'percent'));
+        if (customer) dispatch(actionCalc(percent.toFixed(), el.id, namePriceCust[i], 'percent'));
+        if (!customer) dispatch(actionCalc(percent.toFixed(), el.id, namePriceOur[i], 'percent'));
       }
     }
   });

@@ -6,6 +6,7 @@ import styled, { css } from 'styled-components';
 // Components
 import Icon from 'antd/es/icon';
 import Badge from 'antd/es/badge';
+import Switch from 'antd/es/switch';
 import CheckBox from '../components/molecules/CheckBox';
 import CustomText from '../components/molecules/CustomText';
 import CustomInput from '../components/molecules/CustomInput';
@@ -21,6 +22,16 @@ import { expandGroup } from '../state/actions/OptionAction';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class UniversalContainer extends Component {
+  shouldComponentUpdate(nextProps) {
+    if (nextProps.entityName === 'priceOur' || nextProps.entityName === 'priceCust') {
+      const { entityData } = this.props;
+      if (entityData.text === nextProps.entityData.text
+        && entityData.select === nextProps.entityData.select) return false;
+      return true;
+    }
+    return true;
+  }
+
   render() {
     const {
       entityData, entityDataSlider, entityName, entityID,
@@ -57,15 +68,25 @@ class UniversalContainer extends Component {
               />
             )}
             {el.name === 'slider' && (
-              <CustomSlider
-                actionPerc={(value) => slider(value, entityName, 'percent')}
-                actionValue={(value) => slider(value, entityName, 'input')}
-                actionSelect={(value) => slider(value, entityName, 'select')}
-                valueSelect={entityDataSlider.select}
-                valuePerc={entityDataSlider.percent}
-                valueCurr={entityDataSlider.input}
-                elementType={el.type}
-              />
+              <SliderContainer>
+                {el.secLabel
+                  ? (
+                    <Switch
+                      checkedChildren="Скидка"
+                      unCheckedChildren="Наценка"
+                    />
+                  )
+                  : <Label>{el.label}</Label>}
+                <CustomSlider
+                  actionPerc={(value) => slider(value, entityName, 'percent')}
+                  actionValue={(value) => slider(value, entityName, 'input')}
+                  actionSelect={(value) => slider(value, entityName, 'select')}
+                  valueSelect={entityDataSlider.select}
+                  valuePerc={entityDataSlider.percent}
+                  valueCurr={entityDataSlider.input}
+                  elementType={el.type}
+                />
+              </SliderContainer>
             )}
             {el.name === 'button' && (
               <Div>
@@ -152,6 +173,14 @@ const Expand = styled.div`
     color: rgba(0, 0, 0, 0.65);
   }
   ${(props) => (props.show && css`transform: rotate(-90deg)`)}
+`;
+const SliderContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+const Label = styled.div`
+  text-align: center;
 `;
 
 export default connect(

@@ -3,15 +3,25 @@
   "part": [{ "id": 123, "input": "" }],
   "option": [{ "id": 123, "input": "" }],
   "posName": [{ "id": 123, "input": "" }],
-  "exw": [{ "id": 123, "input": "", "select": "RUB" }],
-  "quantity": [{ "id": 123, "input": "" }],
+  "exw": [{ "id": 123, "input": 5623123, "select": "RUB" }],
+  "quantity": [{ "id": 123, "input": 78 }],
   "priceOur": [{ "id": 123, "text": "", "select": "RUB" }],
   "priceCust": [{ "id": 123, "text": "", "select": "RUB" }],
-  "delivery": [{ "id": 123, "percent": 0, "input": 0, "select": "RUB", "plus": true }],
-  "cusHouse": [{ "id": 123, "percent": 0, "input": 0, "select": "RUB", "plus": true }],
-  "nds": [{ "id": 123, "percent": 20, "input": 0, "select": "RUB", "plus": true }],
-  "discount": [{ "id": 123, "percent": 0, "input": 0, "select": "RUB", "plus": false }],
-  "sale": [{ "id": 123, "percent": 0, "input": 0, "select": "RUB", "plus": false }],
+  "delivery": [
+    { "id": 123, "percent": 0, "input": 0, "select": "RUB", "plus": true }
+  ],
+  "cusHouse": [
+    { "id": 123, "percent": 0, "input": 0, "select": "RUB", "plus": true }
+  ],
+  "nds": [
+    { "id": 123, "percent": 20, "input": 0, "select": "RUB", "plus": true }
+  ],
+  "discount": [
+    { "id": 123, "percent": 0, "input": 0, "select": "RUB", "plus": false }
+  ],
+  "sale": [
+    { "id": 123, "percent": 0, "input": 0, "select": "RUB", "plus": false }
+  ],
   "delta": [{ "id": 123, "percent": 0, "input": 0, "select": "RUB" }],
   "checkGr": [{ "id": 236, "checked": false, "group": "" }],
   "posNameGr": [{ "id": 236, "input": "others" }],

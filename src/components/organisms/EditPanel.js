@@ -8,7 +8,6 @@ const EditPanel = ({ headerConfig }) => (
   <Container>
     {headerConfig.map((el) => (
       <Cell>
-        <Label>{el.label}</Label>
         {el.components && (
           <UniversalContainer
             entityName={el.key}
@@ -30,11 +29,9 @@ EditPanel.defaultProps = {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  margin-left: 100px;
 `;
 const Cell = styled.div`
-`;
-const Label = styled.div`
-  text-align: center;
 `;
 
 export default EditPanel;

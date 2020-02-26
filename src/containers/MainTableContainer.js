@@ -87,7 +87,8 @@ const Container = styled.div`
 `;
 const Div = styled.div`
   display: flex;
-  align-items: center;
+  align-items: start;
+  margin-top: 30px;
 `;
 
 export default connect(

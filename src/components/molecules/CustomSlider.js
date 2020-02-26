@@ -25,7 +25,7 @@ const CustomSlider = ({
           <CustomInput
             elementType="number"
             value={valueCurr}
-            action={actionValue}
+            action={(value) => ((valuePerc < 100 || value < valueCurr) && actionValue(value))}
             width={120}
           />
           <CustomSelect elementType="curr" value={valueSelect} action={actionSelect} />
