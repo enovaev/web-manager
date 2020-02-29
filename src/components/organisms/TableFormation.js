@@ -1,7 +1,7 @@
 import React from 'react';
 // Utils
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 // Components
 import CheckBox from '../molecules/CheckBox';
@@ -44,7 +44,7 @@ const TableFormation = ({
             classNames="item"
           >
             <>
-              <BodyRow>
+              <BodyRow border={expandGroup}>
                 {headerConfig.map((el) => (
                   <Tb key={el.key}>
                     <Div>
@@ -72,7 +72,7 @@ const TableFormation = ({
                         <UniversalContainer
                           entityName={el.keySub}
                           entityID={elSub}
-                          component={el.components}
+                          component={el.componentsSub}
                         />
                         )}
                       </Div>
@@ -112,6 +112,7 @@ const Container = styled.div`
 `;
 const Text = styled.p`
   text-align: center;
+  font-size: 16px;
   margin: 0;
 `;
 const Th = styled.th`
@@ -121,7 +122,7 @@ const Th = styled.th`
   }
 `;
 const BodyRow = styled.tr`
-  border: none;
+  ${(props) => props.border && css`border-bottom: 1px solid #D9D9D9; border-top: 1px solid #D9D9D9;`};
   &:hover {
     background-color: #E6F7FF;
   }

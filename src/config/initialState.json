@@ -24,7 +24,7 @@
   ],
   "delta": [{ "id": 123, "percent": 0, "input": 0, "select": "RUB" }],
   "checkGr": [{ "id": 236, "checked": false, "group": "" }],
-  "posNameGr": [{ "id": 236, "input": "others" }],
+  "posNameGr": [{ "id": 236, "input": "Others" }],
   "exwGr": [{ "id": 236, "input": "", "select": "RUB" }],
   "priceOurGr": [{ "id": 236, "text": "", "select": "RUB" }],
   "priceCustGr": [{ "id": 236, "text": "", "select": "RUB" }],

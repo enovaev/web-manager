@@ -54,7 +54,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const Container = styled.div`
-  margin: 3px 0 30px;
+  margin-bottom: 30px;
   display: flex;
   align-items: center;
 `;

@@ -17,6 +17,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
+  padding-top: 20px;
 `;
 
 export default PageFormation;

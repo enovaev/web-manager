@@ -119,9 +119,9 @@ export const groupReducer = (root) => (state = initialState[root], action) => {
   } else {
     switch (action.type) {
       case CREATE_GROUP:
-        if (root === 'expandGr') return [...state, { ...initialState[root][0], id: action.id, ids: [] }];
-        if (root === 'posNameGr') return [...state, { ...initialState[root][0], id: action.id, input: action.name }];
-        return [...state, { ...initialState[root][0], id: action.id }];
+        if (root === 'expandGr') return [{ ...initialState[root][0], id: action.id, ids: [] }, ...state];
+        if (root === 'posNameGr') return [{ ...initialState[root][0], id: action.id, input: action.name }, ...state];
+        return [{ ...initialState[root][0], id: action.id }, ...state];
 
       case ADD_ENTITY:
         if (root === 'expandGr') {

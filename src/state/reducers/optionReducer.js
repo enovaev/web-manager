@@ -29,7 +29,7 @@ export function entityID(state = initialState, action) {
 export function entityGroup(state = initialStateGroup, action) {
   switch (action.type) {
     case CREATE_GROUP:
-      return [...state, action.id];
+      return [action.id, ...state];
 
     case DOWNLOAD:
       return action.payload.entityGroup;

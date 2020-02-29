@@ -60,6 +60,7 @@ class UniversalContainer extends Component {
               />
             )}
             {el.name === 'text' && (<CustomText value={entityData.text} />)}
+            {el.name === 'cellLabel' && (<CellLabel width={el.width}>{entityData.input}</CellLabel>)}
             {el.name === 'select' && (
               <CustomSelect
                 action={(value) => select(value, entityID, entityName)}
@@ -185,6 +186,13 @@ const SliderContainer = styled.div`
 `;
 const Label = styled.div`
   text-align: center;
+`;
+const CellLabel = styled.p`
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
+  width: ${(props) => `${props.width}px`};
 `;
 
 export default connect(
