@@ -40,19 +40,15 @@ export const actionInput = (value, id, name, paste = false) => (dispatch) => {
   if (name === 'exw' || name === 'quantity') dispatch(calculate('percent'));
 };
 
-export const addEntity = () => (dispatch) => {
-  dispatch({
-    type: ADD_ENTITY,
-    payload: Math.random(),
-  });
-};
+export const addEntity = () => ({
+  type: ADD_ENTITY,
+  payload: Math.random(),
+});
 
-export const deleteEntity = (id) => (dispatch) => {
-  dispatch({
-    type: DELETE_ENTITY,
-    payload: id,
-  });
-};
+export const deleteEntity = (id) => ({
+  type: DELETE_ENTITY,
+  payload: id,
+});
 
 export const actionCheckbox = (id, name, value) => (dispatch, getState) => {
   if (typeof (id) === 'number') {

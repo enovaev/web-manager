@@ -91,6 +91,11 @@ export const groupReducer = (root) => (state = initialState[root], action) => {
       case ACTION_CHECKBOX_ALL:
         return state.map((el) => ({ ...el, checked: action.value }));
 
+      case SET_COLOR_GROUP:
+        return state.map((el) => (action.ids.includes(el.id)
+          ? { ...el, group: action.color }
+          : el));
+
       case MANAGE_ID:
         return state.map((el) => {
           if (el.id === action.inId) return { ...el, ids: [...el.ids, ...action.ids] };

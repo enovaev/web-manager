@@ -5,15 +5,13 @@ import {
 const namePriceOur = ['cusHouse', 'nds', 'delivery', 'discount'];
 const namePriceCust = ['cusHouse', 'nds', 'delivery', 'sale'];
 
-export const actionCalc = (value, id, name, prop = 'text') => (dispatch) => {
-  dispatch({
-    type: RESULT_CALC,
-    id,
-    value,
-    name,
-    prop,
-  });
-};
+export const actionCalc = (value, id, name, prop = 'text') => ({
+  type: RESULT_CALC,
+  id,
+  value,
+  name,
+  prop,
+});
 
 const convertCurr = (value, rates, start, end) => (rates
   ? (value * rates[end]) / rates[start]

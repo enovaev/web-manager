@@ -18,22 +18,25 @@ export const actionSaveDown = (type, value) => (dispatch, getState) => {
   }
 };
 
-export const actionMode = (mode) => (dispatch) => {
-  dispatch({
-    type: CHANGE_MODE,
-    payload: mode,
-  });
-};
+export const actionMode = (mode) => ({
+  type: CHANGE_MODE,
+  payload: mode,
+});
 
-export const idManager = (inId, ids, outId) => (dispatch) => {
-  dispatch({
-    type: MANAGE_ID,
-    name: 'expandGr',
-    outId,
-    inId,
-    ids,
-  });
-};
+export const setColorGroup = (name, ids, color) => ({
+  type: SET_COLOR_GROUP,
+  name,
+  ids,
+  color,
+});
+
+export const idManager = (inId, ids, outId) => ({
+  type: MANAGE_ID,
+  name: 'expandGr',
+  outId,
+  inId,
+  ids,
+});
 
 export const idDirection = (inId, ids) => (dispatch, getState) => {
   const arrDiff = getState().expandGr.map((item) => ({
@@ -52,19 +55,13 @@ export const actionCreateGroup = (name, color) => (dispatch, getState) => {
     id,
     name,
   });
-  dispatch({
-    type: SET_COLOR_GROUP,
-    name: 'check',
-    ids: check,
-    color,
-  });
+  dispatch(setColorGroup('check', check, color));
+  dispatch(setColorGroup('checkGr', [id], color));
   dispatch(idDirection(id, check));
 };
 
-export const expandGroup = (id, name) => (dispatch) => {
-  dispatch({
-    type: EXPAND_GROUP,
-    name,
-    id,
-  });
-};
+export const expandGroup = (id, name) => ({
+  type: EXPAND_GROUP,
+  name,
+  id,
+});
