@@ -15,7 +15,7 @@ import CustomSlider from '../components/molecules/CustomSlider';
 // Store
 import {
   actionInput, deleteEntity, actionSelect,
-  actionSlider, actionCheckbox,
+  actionSlider, actionCheckbox, actionSwitch,
 } from '../state/actions/MainAction';
 import { expandGroup } from '../state/actions/OptionAction';
 
@@ -36,7 +36,7 @@ class UniversalContainer extends Component {
     const {
       entityData, entityDataSlider, entityName, entityID,
       component, deleteAction, checkbox, select, slider,
-      input, expandAction,
+      input, expandAction, switched,
     } = this.props;
     return (
       <Container>
@@ -72,8 +72,9 @@ class UniversalContainer extends Component {
                 {el.secLabel
                   ? (
                     <Switch
-                      checkedChildren="Скидка"
-                      unCheckedChildren="Наценка"
+                      checkedChildren={el.secLabel}
+                      unCheckedChildren={el.label}
+                      onChange={(value) => switched(entityName, value)}
                     />
                   )
                   : <Label>{el.label}</Label>}
@@ -116,6 +117,7 @@ UniversalContainer.propTypes = {
   checkbox: PropTypes.func,
   select: PropTypes.func,
   slider: PropTypes.func,
+  switched: PropTypes.func,
   input: PropTypes.func,
 };
 UniversalContainer.defaultProps = {
@@ -127,6 +129,7 @@ UniversalContainer.defaultProps = {
   checkbox: () => {},
   select: () => {},
   slider: () => {},
+  switched: () => {},
   input: () => {},
 };
 
@@ -148,6 +151,7 @@ const mapDispatchToProps = (dispatch) => ({
   checkbox: (id, name, value) => dispatch(actionCheckbox(id, name, value)),
   select: (value, id, name) => dispatch(actionSelect(value, id, name)),
   slider: (value, name, prop) => dispatch(actionSlider(value, name, prop)),
+  switched: (name, value) => dispatch(actionSwitch(name, value)),
   expandAction: (id, name) => dispatch(expandGroup(id, name)),
 });
 

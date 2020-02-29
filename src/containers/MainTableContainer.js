@@ -21,6 +21,7 @@ const modeApp = [
 ];
 
 const formatEdit = (config) => config.map((el) => ({ ...el, components: el.components.map((item) => (item.name === 'slider' ? { ...item, type: 'single' } : item)) }));
+
 const MainTableContainer = ({
   entityID, entityGroup, expandGr, mode, addAction, actionCheck, check,
 }) => (

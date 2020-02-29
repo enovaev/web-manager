@@ -4,7 +4,7 @@ import {
   ACTION_INPUT, ADD_ENTITY, DELETE_ENTITY,
   ACTION_SELECT, ACTION_SLIDER_ALL, CREATE_GROUP,
   ACTION_SLIDER, RESULT_CALC, DOWNLOAD, EXPAND_GROUP, MANAGE_ID,
-  SET_COLOR_GROUP,
+  SET_COLOR_GROUP, ACTION_SWITCH,
 } from '../constants';
 
 
@@ -23,6 +23,9 @@ export const mainReducer = (root) => (state = initialState[root], action) => {
         return state.map((el) => ((action.id === el.id)
           ? { ...el, input: action.value }
           : el));
+
+      case ACTION_SWITCH:
+        return state.map((el) => ({ ...el, plus: action.value }));
 
       case ACTION_SELECT:
         return state.map((el) => ((action.id === el.id)

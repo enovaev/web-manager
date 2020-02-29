@@ -7,6 +7,7 @@ import {
   ACTION_INPUT,
   ACTION_SLIDER,
   ACTION_SLIDER_ALL,
+  ACTION_SWITCH,
 } from '../constants';
 import { calculate } from './CalculatorAction';
 
@@ -114,4 +115,13 @@ export const actionSlider = (value, name, prop) => (dispatch, getState) => {
   } else {
     dispatch(calculate(prop));
   }
+};
+
+export const actionSwitch = (name, value) => (dispatch) => {
+  dispatch({
+    type: ACTION_SWITCH,
+    name,
+    value,
+  });
+  dispatch(calculate('percent'));
 };
