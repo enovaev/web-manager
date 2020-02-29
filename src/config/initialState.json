@@ -3,10 +3,10 @@
   "part": [{ "id": 123, "input": "" }],
   "option": [{ "id": 123, "input": "" }],
   "posName": [{ "id": 123, "input": "" }],
-  "exw": [{ "id": 123, "input": 5623123, "select": "RUB" }],
-  "quantity": [{ "id": 123, "input": 78 }],
-  "priceOur": [{ "id": 123, "text": "", "select": "RUB" }],
-  "priceCust": [{ "id": 123, "text": "", "select": "RUB" }],
+  "exw": [{ "id": 123, "input": 0, "select": "RUB" }],
+  "quantity": [{ "id": 123, "input": 1 }],
+  "priceOur": [{ "id": 123, "text": "not data", "select": "RUB" }],
+  "priceCust": [{ "id": 123, "text": "not data", "select": "RUB" }],
   "delivery": [
     { "id": 123, "percent": 0, "input": 0, "select": "RUB", "plus": true }
   ],

@@ -1,8 +1,9 @@
+import { notification } from 'antd';
 import {
   DOWNLOAD, SAVE_NAME, CHANGE_MODE, CREATE_GROUP, EXPAND_GROUP, MANAGE_ID, SET_COLOR_GROUP,
 } from '../constants';
 import { actionCheckbox } from './MainAction';
-
+import { groupNoChecked } from '../../config/textConfigs/text';
 
 export const actionSaveDown = (type, value) => (dispatch, getState) => {
   if (type === 'save') {
@@ -53,15 +54,20 @@ export const idDirection = (inId, ids) => (dispatch, getState) => {
 
 export const actionCreateGroup = (name, color) => (dispatch, getState) => {
   const check = getState().check.filter((el) => el.checked).map((el) => el.id);
-  const id = Math.random();
-  dispatch({
-    type: CREATE_GROUP,
-    id,
-    name,
-  });
-  dispatch(setColorGroup('check', check, color));
-  dispatch(setColorGroup('checkGr', [id], color));
-  dispatch(idDirection(id, check));
+  if (!check.length) {
+    notification.error(groupNoChecked());
+  } else {
+    const id = Math.random();
+    dispatch({
+      type: CREATE_GROUP,
+      id,
+      name,
+    });
+    dispatch(setColorGroup('check', check, color));
+    dispatch(setColorGroup('checkGr', [id], color));
+    dispatch(idDirection(id, check));
+    dispatch(actionCheckbox(false, null, false));
+  }
 };
 
 export const expandGroup = (id, name) => ({

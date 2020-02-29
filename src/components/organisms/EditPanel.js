@@ -7,7 +7,7 @@ import UniversalContainer from '../../containers/UniversalContainer';
 const EditPanel = ({ headerConfig }) => (
   <Container>
     {headerConfig.map((el) => (
-      <Cell>
+      <Cell key={el.key}>
         {el.components && (
           <UniversalContainer
             entityName={el.key}

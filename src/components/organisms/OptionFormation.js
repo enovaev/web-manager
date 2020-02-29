@@ -2,6 +2,7 @@ import React from 'react';
 // Utils
 import styled from 'styled-components';
 // Components
+import { Divider } from 'antd';
 import SaveContainer from '../../containers/SaveContainer';
 import ModeAppContainer from '../../containers/ModeAppContainer';
 import CurrencyContainer from '../../containers/CurrencyContainer';
@@ -15,6 +16,7 @@ const OptionFormation = () => (
       <ModeAppContainer />
       <SaveContainer />
     </Container>
+    <Divider />
   </Div>
 );
 const Div = styled.div`

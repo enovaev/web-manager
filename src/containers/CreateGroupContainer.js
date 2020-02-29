@@ -38,7 +38,7 @@ class CreateGroupContainer extends Component {
   }
 
   closeModal() {
-    this.setState({ showModal: false });
+    this.setState({ showModal: false, inputText: '' });
   }
 
   applyModal() {
@@ -68,6 +68,7 @@ class CreateGroupContainer extends Component {
           okText="Create"
           visible={showModal}
           onOk={this.applyModal}
+          okButtonProps={{ disabled: !inputText }}
           onCancel={this.closeModal}
         >
           <span>Название группы:</span>
