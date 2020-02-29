@@ -50,15 +50,5 @@
         "type": "double"
       }
     ]
-  },
-  {
-    "key": "delta",
-    "components": [
-      {
-        "label": "Дельта",
-        "name": "slider",
-        "type": "double"
-      }
-    ]
   }
 ]

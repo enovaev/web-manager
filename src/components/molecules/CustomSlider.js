@@ -77,7 +77,7 @@ const SliderDiv = styled.div`
 const InputDiv = styled.div`
   display: flex;
   justify-content: center;
-  margin: 10px 0;
+  margin: 10px 0 5px;
 `;
 const Div = styled.div`
   margin-left: 10px;

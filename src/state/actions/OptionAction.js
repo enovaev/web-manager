@@ -3,6 +3,7 @@ import {
   DOWNLOAD, SAVE_NAME, CHANGE_MODE, CREATE_GROUP, EXPAND_GROUP, MANAGE_ID, SET_COLOR_GROUP,
 } from '../constants';
 import { actionCheckbox } from './MainAction';
+import { calculate } from './CalculatorAction';
 import { groupNoChecked } from '../../config/textConfigs/text';
 
 export const actionSaveDown = (type, value) => (dispatch, getState) => {
@@ -67,6 +68,7 @@ export const actionCreateGroup = (name, color) => (dispatch, getState) => {
     dispatch(setColorGroup('checkGr', [id], color));
     dispatch(idDirection(id, check));
     dispatch(actionCheckbox(false, null, false));
+    dispatch(calculate('percent'));
   }
 };
 

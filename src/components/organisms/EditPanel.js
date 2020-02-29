@@ -32,6 +32,7 @@ const Container = styled.div`
   margin-left: 100px;
 `;
 const Cell = styled.div`
+margin-bottom: 10px;
 `;
 
 export default EditPanel;

@@ -8,6 +8,7 @@ import {
   ACTION_SLIDER,
   ACTION_SLIDER_ALL,
   ACTION_SWITCH,
+  ACTION_SWITCH_ALL,
 } from '../constants';
 import { calculate } from './CalculatorAction';
 
@@ -92,12 +93,12 @@ export const actionSelect = (value, id, name) => (dispatch) => {
 };
 
 export const actionSlider = (value, name, prop) => (dispatch, getState) => {
-  const filter = getState().check.filter((item) => item.checked === true);
-  if (filter.length) {
+  const checked = getState().check.filter((item) => item.checked === true);
+  if (checked.length) {
     dispatch({
       type: ACTION_SLIDER,
       value,
-      id: filter,
+      ids: checked.map((el) => el.id),
       name,
       prop,
     });
@@ -116,11 +117,22 @@ export const actionSlider = (value, name, prop) => (dispatch, getState) => {
   }
 };
 
-export const actionSwitch = (name, value) => (dispatch) => {
-  dispatch({
-    type: ACTION_SWITCH,
-    name,
-    value,
-  });
+export const actionSwitch = (name, value) => (dispatch, getState) => {
+  const checked = getState().check.filter((item) => item.checked === true);
+
+  if (checked.length) {
+    dispatch({
+      type: ACTION_SWITCH,
+      ids: checked.map((el) => el.id),
+      name,
+      value,
+    });
+  } else {
+    dispatch({
+      type: ACTION_SWITCH_ALL,
+      name,
+      value,
+    });
+  }
   dispatch(calculate('percent'));
 };
