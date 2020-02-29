@@ -1,6 +1,7 @@
 import {
   DOWNLOAD, SAVE_NAME, CHANGE_MODE, CREATE_GROUP, EXPAND_GROUP, MANAGE_ID, SET_COLOR_GROUP,
 } from '../constants';
+import { actionCheckbox } from './MainAction';
 
 
 export const actionSaveDown = (type, value) => (dispatch, getState) => {
@@ -18,10 +19,13 @@ export const actionSaveDown = (type, value) => (dispatch, getState) => {
   }
 };
 
-export const actionMode = (mode) => ({
-  type: CHANGE_MODE,
-  payload: mode,
-});
+export const actionMode = (mode) => (dispatch) => {
+  dispatch({
+    type: CHANGE_MODE,
+    payload: mode,
+  });
+  dispatch(actionCheckbox(false, null, false));
+};
 
 export const setColorGroup = (name, ids, color) => ({
   type: SET_COLOR_GROUP,
