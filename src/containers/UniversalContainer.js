@@ -47,7 +47,7 @@ class UniversalContainer extends Component {
             )}
             {el.name === 'checkbox' && (
               <CheckBox
-                action={() => checkbox(entityID, entityName)}
+                action={(value) => checkbox(entityID, entityName, value)}
                 value={entityData.checked}
               />
             )}
@@ -145,7 +145,7 @@ const mapStateToProps = (store, { entityName, entityID }) => ({
 const mapDispatchToProps = (dispatch) => ({
   deleteAction: (id) => dispatch(deleteEntity(id)),
   input: (value, id, name, paste) => dispatch(actionInput(value, id, name, paste)),
-  checkbox: (id, name) => dispatch(actionCheckbox(id, name)),
+  checkbox: (id, name, value) => dispatch(actionCheckbox(id, name, value)),
   select: (value, id, name) => dispatch(actionSelect(value, id, name)),
   slider: (value, name, prop) => dispatch(actionSlider(value, name, prop)),
   expandAction: (id, name) => dispatch(expandGroup(id, name)),

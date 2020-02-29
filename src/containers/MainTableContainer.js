@@ -79,7 +79,7 @@ const mapStateToProps = ({
 
 const mapDispatchToProps = (dispatch) => ({
   addAction: () => dispatch(addEntity()),
-  actionCheck: (value) => dispatch(actionCheckbox(value, 'check')),
+  actionCheck: (value) => dispatch(actionCheckbox(false, 'check', value)),
 });
 
 const Container = styled.div`

@@ -14,15 +14,14 @@ class CheckBox extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange() {
-    const { checked } = this.state;
+  handleChange({ target }) {
     const { header, action } = this.props;
 
     if (header) {
-      action(!checked);
-      this.setState({ checked: !checked });
+      action(target.checked);
+      this.setState({ checked: target.checked });
     } else {
-      action();
+      action(target.checked);
     }
   }
 

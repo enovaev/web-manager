@@ -53,27 +53,26 @@ export const deleteEntity = (id) => (dispatch) => {
   });
 };
 
-export const actionCheckbox = (value, name) => (dispatch, getState) => {
-  if (name === 'checkGr') {
-    getState().expandGr.forEach((el) => {
-      if (el.id === value) el.ids.forEach((item) => dispatch(actionCheckbox(item, 'check')));
-    });
+export const actionCheckbox = (id, name, value) => (dispatch, getState) => {
+  if (typeof (id) === 'number') {
+    if (name === 'checkGr') {
+      getState().expandGr.forEach((el) => {
+        if (el.id === id) el.ids.forEach((item) => dispatch(actionCheckbox(item, 'check', value)));
+      });
+    }
     dispatch({
       type: ACTION_CHECKBOX,
-      value,
+      id,
       name,
-    });
-  } else if (typeof (value) === 'number') {
-    dispatch({
-      type: ACTION_CHECKBOX,
       value,
-      name,
     });
   } else {
-    dispatch({
-      type: ACTION_CHECKBOX_ALL,
-      value,
-      name,
+    ['check', 'checkGr'].forEach((el) => {
+      dispatch({
+        type: ACTION_CHECKBOX_ALL,
+        value,
+        name: el,
+      });
     });
   }
 };
