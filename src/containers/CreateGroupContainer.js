@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 // Utils
 import Modal from 'antd/es/modal';
 import PropTypes from 'prop-types';
@@ -13,83 +13,55 @@ import { actionCreateGroup } from '../state/actions/OptionAction';
 import colorConfig from '../config/selectConfig/selectColor.json';
 
 
-class CreateGroupContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      inputText: '',
-      select: '',
-      showModal: false,
-    };
+const CreateGroupContainer = ({ applyModal, colorCheck }) => {
+  const [inputText, setInputText] = useState('');
+  const [select, setSelect] = useState('');
+  const [showModal, setShowModal] = useState(false);
 
-    this.openModal = this.openModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
-    this.inputAction = this.inputAction.bind(this);
-    this.selectAction = this.selectAction.bind(this);
-    this.applyModal = this.applyModal.bind(this);
-  }
+  const openModal = () => {
+    setShowModal(true);
+    setSelect(colorConfig.filter((el) => !colorCheck.includes(el))[0]);
+  };
 
-  openModal() {
-    const { colorCheck } = this.props;
-    this.setState({
-      showModal: true,
-      select: colorConfig.filter((el) => !colorCheck.includes(el))[0],
-    });
-  }
+  const closeModal = () => {
+    setShowModal(false);
+    setInputText('');
+  };
 
-  closeModal() {
-    this.setState({ showModal: false, inputText: '' });
-  }
-
-  applyModal() {
-    const { inputText, select } = this.state;
-    const { applyModal } = this.props;
-
+  const createGroup = () => {
     applyModal(inputText, select);
-    this.closeModal();
-  }
+    closeModal();
+  };
 
-  inputAction(inputText) {
-    this.setState({ inputText });
-  }
-
-  selectAction(select) {
-    this.setState({ select });
-  }
-
-  render() {
-    const { showModal, inputText, select } = this.state;
-    const { colorCheck } = this.props;
-    return (
-      <Container>
-        <Button type="primary" onClick={this.openModal}>Управление группами</Button>
-        <Modal
-          title="Управление группами"
-          okText="Create"
-          visible={showModal}
-          onOk={this.applyModal}
-          okButtonProps={{ disabled: !inputText }}
-          onCancel={this.closeModal}
-        >
-          <span>Название группы:</span>
-          <Div>
-            <CustomInput
-              action={this.inputAction}
-              value={inputText}
-              elementType="string"
-            />
-            <CustomSelect
-              action={this.selectAction}
-              elementType="color"
-              value={select}
-              color={colorConfig.filter((el) => !colorCheck.includes(el))}
-            />
-          </Div>
-        </Modal>
-      </Container>
-    );
-  }
-}
+  return (
+    <Container>
+      <Button type="primary" onClick={openModal}>Управление группами</Button>
+      <Modal
+        title="Управление группами"
+        okText="Create"
+        visible={showModal}
+        onOk={createGroup}
+        okButtonProps={{ disabled: !inputText }}
+        onCancel={closeModal}
+      >
+        <span>Название группы:</span>
+        <Div>
+          <CustomInput
+            action={(value) => setInputText(value)}
+            value={inputText}
+            elementType="string"
+          />
+          <CustomSelect
+            action={(value) => setSelect(value)}
+            elementType="color"
+            value={select}
+            color={colorConfig.filter((el) => !colorCheck.includes(el))}
+          />
+        </Div>
+      </Modal>
+    </Container>
+  );
+};
 
 CreateGroupContainer.propTypes = {
   applyModal: PropTypes.func,

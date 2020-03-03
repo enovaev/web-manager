@@ -1,43 +1,29 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 // Utils
 import Checkbox from 'antd/lib/checkbox';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-class CheckBox extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      checked: false,
-    };
+const CheckBox = ({ header, action, value }) => {
+  const [checked, setChecked] = useState(false);
 
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange({ target }) {
-    const { header, action } = this.props;
-
+  const handleChange = ({ target }) => {
     if (header) {
       action(target.checked);
-      this.setState({ checked: target.checked });
+      setChecked(target.checked);
     } else {
       action(target.checked);
     }
-  }
-
-  render() {
-    const { checked } = this.state;
-    const { header, value } = this.props;
-    return (
-      <Container>
-        <Checkbox
-          checked={header ? checked : value}
-          onChange={this.handleChange}
-        />
-      </Container>
-    );
-  }
-}
+  };
+  return (
+    <Container>
+      <Checkbox
+        checked={header ? checked : value}
+        onChange={handleChange}
+      />
+    </Container>
+  );
+};
 
 CheckBox.propTypes = {
   header: PropTypes.bool,

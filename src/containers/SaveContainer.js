@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 // Utils
 import Modal from 'antd/es/modal';
 import PropTypes from 'prop-types';
@@ -14,106 +14,78 @@ import { actionSaveDown } from '../state/actions/OptionAction';
 
 const convert = (a) => JSON.parse(localStorage.getItem(a)).time;
 
-class SaveContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      inputText: '',
-      saveData: [],
-      select: null,
-      showModal: false,
-      type: '',
-    };
+const SaveContainer = ({ apply, saveName }) => {
+  const [inputText, setInputText] = useState('');
+  const [saveData, setSaveData] = useState([]);
+  const [select, setSelect] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const [type, setType] = useState('');
 
-    this.openModal = this.openModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
-    this.inputAction = this.inputAction.bind(this);
-    this.applyModal = this.applyModal.bind(this);
-    this.deleteSaves = this.deleteSaves.bind(this);
-  }
+  const openModal = ({ target }) => {
+    setShowModal(true);
+    setInputText(saveName);
+    setSaveData(Object.keys(localStorage));
+    setType(target.value);
+  };
 
-  openModal({ target }) {
-    const { saveName } = this.props;
-    this.setState({
-      showModal: true, type: target.value, inputText: saveName, saveData: Object.keys(localStorage),
-    });
-  }
+  const closeModal = () => {
+    setShowModal(false);
+    setSelect(null);
+  };
 
-  closeModal() {
-    this.setState({ showModal: false, select: null });
-  }
 
-  inputAction(value) {
-    this.setState({ inputText: value });
-  }
-
-  applyModal() {
-    const { apply } = this.props;
-    const { inputText, select, type } = this.state;
+  const applyModal = () => {
     if (type === 'save') {
       apply(type, inputText);
-      this.closeModal();
     } else if (select) {
       apply(type, select);
-      this.closeModal();
     }
-  }
+    closeModal();
+  };
 
-  deleteSaves(el) {
-    const { select } = this.state;
+  const deleteSaves = (el) => {
     localStorage.removeItem(el);
-    this.setState({
-      saveData: Object.keys(localStorage),
-      select: select === el ? null : select,
-    });
-  }
+    setSaveData(Object.keys(localStorage));
+    setSelect(select === el ? null : select);
+  };
 
-  selectEntity(el) {
-    this.setState({ select: el });
-  }
-
-  render() {
-    const {
-      inputText, saveData, select, type, showModal,
-    } = this.state;
-    return (
-      <Container>
-        <Div>
-          <Button type="primary" value="save" onClick={this.openModal}>Сохранить</Button>
-        </Div>
-        <Button type="primary" value="down" onClick={this.openModal}>Загрузить</Button>
-        <Modal
-          title={type === 'save' ? 'Сохранить проект' : 'Загрузить проект'}
-          okText={type === 'save' ? 'Save' : 'Download'}
-          visible={showModal}
-          onOk={this.applyModal}
-          okButtonProps={{ disabled: !select && type === 'down' }}
-          onCancel={this.closeModal}
-        >
-          {type === 'save' && (
+  return (
+    <Container>
+      <Div>
+        <Button type="primary" value="save" onClick={openModal}>Сохранить</Button>
+      </Div>
+      <Button type="primary" value="down" onClick={openModal}>Загрузить</Button>
+      <Modal
+        title={type === 'save' ? 'Сохранить проект' : 'Загрузить проект'}
+        okText={type === 'save' ? 'Save' : 'Download'}
+        visible={showModal}
+        onOk={applyModal}
+        okButtonProps={{ disabled: !select && type === 'down' }}
+        onCancel={closeModal}
+      >
+        {type === 'save' && (
           <div>
             <span>Сохранить как:</span>
             <CustomInput
-              action={this.inputAction}
+              action={(value) => setInputText(value)}
               value={inputText}
               elementType="string"
             />
           </div>
-          )}
-          {type === 'down' && saveData.sort((a, b) => convert(b) - convert(a)).map((el) => (
-            <RosterElement
-              key={el}
-              name={el}
-              select={el === select}
-              deleteSave={() => this.deleteSaves(el)}
-              action={() => this.selectEntity(el)}
-            />
-          ))}
-        </Modal>
-      </Container>
-    );
-  }
-}
+        )}
+        {type === 'down' && saveData.sort((a, b) => convert(b) - convert(a)).map((el) => (
+          <RosterElement
+            key={el}
+            name={el}
+            select={el === select}
+            deleteSave={() => deleteSaves(el)}
+            action={() => setSelect(el)}
+          />
+        ))}
+      </Modal>
+    </Container>
+  );
+};
 
 SaveContainer.propTypes = {
   apply: PropTypes.func,
