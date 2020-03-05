@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 // Utils
 import Modal from 'antd/es/modal';
-import PropTypes from 'prop-types';
 import Button from 'antd/es/button';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 // Components
 import CustomInput from '../components/molecules/CustomInput';
@@ -14,12 +13,15 @@ import { actionSaveDown } from '../state/actions/OptionAction';
 
 const convert = (a) => JSON.parse(localStorage.getItem(a)).time;
 
-const SaveContainer = ({ apply, saveName }) => {
+const SaveContainer = () => {
   const [inputText, setInputText] = useState('');
   const [saveData, setSaveData] = useState([]);
   const [select, setSelect] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [type, setType] = useState('');
+  // Store
+  const saveName = useSelector((state) => state.saveName);
+  const dispatch = useDispatch();
 
   const openModal = ({ target }) => {
     setShowModal(true);
@@ -36,9 +38,9 @@ const SaveContainer = ({ apply, saveName }) => {
 
   const applyModal = () => {
     if (type === 'save') {
-      apply(type, inputText);
+      dispatch(actionSaveDown(type, inputText));
     } else if (select) {
-      apply(type, select);
+      dispatch(actionSaveDown(type, select));
     }
     closeModal();
   };
@@ -86,23 +88,6 @@ const SaveContainer = ({ apply, saveName }) => {
     </Container>
   );
 };
-
-SaveContainer.propTypes = {
-  apply: PropTypes.func,
-  saveName: PropTypes.string.isRequired,
-};
-SaveContainer.defaultProps = {
-  apply: () => {},
-};
-
-const mapStateToProps = ({ saveName }) => ({
-  saveName,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  apply: (type, value) => dispatch(actionSaveDown(type, value)),
-});
-
 const Div = styled.div`
   margin-right: 15px;
 `;
@@ -111,7 +96,4 @@ const Container = styled.div`
   display: flex;
 `;
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(SaveContainer);
+export default SaveContainer;
