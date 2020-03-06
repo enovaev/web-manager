@@ -9,7 +9,7 @@ const App = () => (
   </Div>
 );
 const Div = styled.div`
-display: flex;
-justify-content: center;
+  display: flex;
+  justify-content: center;
 `;
 export default App;

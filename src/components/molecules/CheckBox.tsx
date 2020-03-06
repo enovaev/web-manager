@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
 // Utils
 import Checkbox from 'antd/lib/checkbox';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const CheckBox = ({ header, action, value }) => {
-  const [checked, setChecked] = useState(false);
+interface ICheckBox {
+  header: boolean,
+  value: boolean,
+  action: (value: boolean) => void,
+}
 
-  const handleChange = ({ target }) => {
+const CheckBox: React.FC<ICheckBox> = ({ header, value, action }) => {
+  const [checked, setChecked] = useState<boolean>(false);
+
+  const handleChange = ({ target }: any) => {
     if (header) {
       action(target.checked);
       setChecked(target.checked);
@@ -23,17 +28,6 @@ const CheckBox = ({ header, action, value }) => {
       />
     </Container>
   );
-};
-
-CheckBox.propTypes = {
-  header: PropTypes.bool,
-  value: PropTypes.bool,
-  action: PropTypes.func.isRequired,
-};
-
-CheckBox.defaultProps = {
-  header: false,
-  value: false,
 };
 
 const Container = styled.div`

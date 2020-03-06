@@ -1,24 +1,33 @@
 import React from 'react';
 // Utils
 import { Select } from 'antd';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 // Configs
 import currencyConfig from '../../config/selectConfig/selectCurrency.json';
 import quantityConfig from '../../config/selectConfig/selectQuantity.json';
 
+interface IConfig {
+  name: string,
+  value: string,
+}
+interface ICustomSelect {
+  action: (val: string) => void,
+  value: string,
+  elementType: string,
+  color: string[],
+}
 
 const { Option } = Select;
-const renderOptionSelect = (data) => data.map(
+const renderOptionSelect = (data: IConfig[]) => data.map(
   (item) => <Option key={item.value} value={item.value}>{item.name}</Option>,
 );
-const renderColorOption = (data) => data.map((item) => (
+const renderColorOption = (data: string[]) => data.map((item) => (
   <Option key={item} value={item}>
     <Color style={{ backgroundColor: item }} />
   </Option>
 ));
 
-const CustomSelect = ({
+const CustomSelect: React.FC<ICustomSelect> = ({
   action, value, elementType, color,
 }) => (
   <Select
@@ -31,16 +40,6 @@ const CustomSelect = ({
     {elementType === 'color' && renderColorOption(color)}
   </Select>
 );
-
-CustomSelect.propTypes = {
-  elementType: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
-  action: PropTypes.func.isRequired,
-  color: PropTypes.arrayOf(PropTypes.any),
-};
-CustomSelect.defaultProps = {
-  color: [],
-};
 
 const Color = styled.div`
   width: 46px;
