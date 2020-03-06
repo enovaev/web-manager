@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 // Utils
 import Modal from 'antd/es/modal';
-import PropTypes from 'prop-types';
 import Button from 'antd/es/button';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 // Components
 import CustomInput from '../components/molecules/CustomInput';
@@ -13,10 +12,13 @@ import { actionCreateGroup } from '../state/actions/OptionAction';
 import colorConfig from '../config/selectConfig/selectColor.json';
 
 
-const CreateGroupContainer = ({ applyModal, colorCheck }) => {
+const CreateGroupContainer = () => {
   const [inputText, setInputText] = useState('');
   const [select, setSelect] = useState('');
   const [showModal, setShowModal] = useState(false);
+
+  const colorCheck = useSelector(({ check }) => check.map((el) => el.group));
+  const dispatch = useDispatch();
 
   const openModal = () => {
     setShowModal(true);
@@ -29,7 +31,7 @@ const CreateGroupContainer = ({ applyModal, colorCheck }) => {
   };
 
   const createGroup = () => {
-    applyModal(inputText, select);
+    dispatch(actionCreateGroup(inputText, select));
     closeModal();
   };
 
@@ -63,15 +65,6 @@ const CreateGroupContainer = ({ applyModal, colorCheck }) => {
   );
 };
 
-CreateGroupContainer.propTypes = {
-  applyModal: PropTypes.func,
-  colorCheck: PropTypes.arrayOf(PropTypes.any).isRequired,
-};
-
-CreateGroupContainer.defaultProps = {
-  applyModal: () => {},
-};
-
 const Container = styled.div`
 `;
 
@@ -79,15 +72,4 @@ const Div = styled.div`
   display: flex;
 `;
 
-const mapStateToProps = ({ check }) => ({
-  colorCheck: check.map((el) => el.group),
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  applyModal: (name, color) => dispatch(actionCreateGroup(name, color)),
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(CreateGroupContainer);
+export default CreateGroupContainer;

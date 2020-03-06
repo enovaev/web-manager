@@ -1,7 +1,6 @@
 import React from 'react';
 // Utils
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 // Components
@@ -22,66 +21,45 @@ const modeApp = [
 
 const formatEdit = (config) => config.map((el) => ({ ...el, components: el.components.map((item) => (item.name === 'slider' ? { ...item, type: 'single' } : item)) }));
 
-const MainTableContainer = ({
-  entityID, entityGroup, expandGr, mode, addAction, actionCheck, check,
-}) => (
-  <Container>
-    <TransitionGroup component={null}>
-      {modeApp.map((el) => el.value === mode && (
-        <CSSTransition
-          key={el.value}
-          timeout={200}
-          classNames="mode"
-        >
-          <Div>
-            <TableFormation
-              headerConfig={el.config}
-              expandGroup={mode === 'Group' ? expandGr : null}
-              entityID={mode === 'Group' ? entityGroup : entityID}
-              addEntity={addAction}
-              actionCheckbox={actionCheck}
-            />
-            {mode === 'Group' && (
-              <EditPanel
-                headerConfig={check.filter((item) => item.checked).length === 1
-                  ? editConfig
-                  : formatEdit(editConfig)}
+const MainTableContainer = () => {
+  const entityID = useSelector((state) => state.entityID);
+  const entityGroup = useSelector((state) => state.entityGroup);
+  const expandGr = useSelector((state) => state.expandGr);
+  const mode = useSelector((state) => state.mode);
+  const check = useSelector((state) => state.check);
+  const dispatch = useDispatch();
+
+  return (
+    <Container>
+      <TransitionGroup component={null}>
+        {modeApp.map((el) => el.value === mode && (
+          <CSSTransition
+            key={el.value}
+            timeout={200}
+            classNames="mode"
+          >
+            <Div>
+              <TableFormation
+                headerConfig={el.config}
+                expandGroup={mode === 'Group' ? expandGr : null}
+                entityID={mode === 'Group' ? entityGroup : entityID}
+                addEntity={() => dispatch(addEntity())}
+                actionCheckbox={(value) => dispatch(actionCheckbox(false, 'check', value))}
               />
-            )}
-          </Div>
-        </CSSTransition>
-      ))}
-    </TransitionGroup>
-  </Container>
-);
-
-MainTableContainer.propTypes = {
-  entityID: PropTypes.arrayOf(PropTypes.any).isRequired,
-  entityGroup: PropTypes.arrayOf(PropTypes.any).isRequired,
-  actionCheck: PropTypes.func.isRequired,
-  expandGr: PropTypes.arrayOf(PropTypes.any).isRequired,
-  addAction: PropTypes.func.isRequired,
-  mode: PropTypes.string.isRequired,
-  check: PropTypes.arrayOf(PropTypes.any).isRequired,
+              {mode === 'Group' && (
+                <EditPanel
+                  headerConfig={check.filter((item) => item.checked).length === 1
+                    ? editConfig
+                    : formatEdit(editConfig)}
+                />
+              )}
+            </Div>
+          </CSSTransition>
+        ))}
+      </TransitionGroup>
+    </Container>
+  );
 };
-
-MainTableContainer.defaultProps = {
-};
-
-const mapStateToProps = ({
-  entityID, entityGroup, expandGr, mode, check,
-}) => ({
-  entityGroup,
-  expandGr,
-  entityID,
-  check,
-  mode,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  addAction: () => dispatch(addEntity()),
-  actionCheck: (value) => dispatch(actionCheckbox(false, 'check', value)),
-});
 
 const Container = styled.div`
   position: relative;
@@ -91,7 +69,4 @@ const Div = styled.div`
   align-items: start;
 `;
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(MainTableContainer);
+export default MainTableContainer;

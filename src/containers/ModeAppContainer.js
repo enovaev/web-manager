@@ -1,7 +1,6 @@
 import React from 'react';
 // Utils
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 // Components
 import CustomTabs from '../components/molecules/CustomTabs';
 // Store
@@ -9,30 +8,17 @@ import { actionMode } from '../state/actions/OptionAction';
 
 const modeApp = ['Main', 'Group'];
 
-const ModeAppContainer = ({ mode, changeMode }) => (
-  <CustomTabs
-    data={modeApp}
-    action={changeMode}
-    select={mode}
-  />
-);
+const ModeAppContainer = () => {
+  const mode = useSelector((state) => state.mode);
+  const dispatch = useDispatch();
 
-ModeAppContainer.propTypes = {
-  changeMode: PropTypes.func,
-  mode: PropTypes.string.isRequired,
-};
-ModeAppContainer.defaultProps = {
-  changeMode: () => {},
+  return (
+    <CustomTabs
+      data={modeApp}
+      action={(value) => dispatch(actionMode(value))}
+      select={mode}
+    />
+  );
 };
 
-const mapStateToProps = ({ mode }) => ({
-  mode,
-});
-const mapDispatchToProps = (dispatch) => ({
-  changeMode: (mode) => dispatch(actionMode(mode)),
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(ModeAppContainer);
+export default ModeAppContainer;

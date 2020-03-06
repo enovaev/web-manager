@@ -3,8 +3,7 @@ import React from 'react';
 import moment from 'moment';
 import { Tooltip } from 'antd';
 import Icon from 'antd/es/icon';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 // Store
 import { queryCurr } from '../state/actions/QueryAction';
@@ -18,40 +17,28 @@ const currTooltip = (rates) => (
     : 'Нажмите для загрузки котировок'
 );
 
-const CurrencyContainer = ({ query, data, loading }) => (
-  <Container>
-    <Div>
-      <Tooltip title={currTooltip(data.rates)} placement="bottomLeft" overlayStyle={{ fontSize: 12 }}>
-        {loading
-          ? <Icon type="loading" />
-          : <Icon type="reload" onClick={query} />}
-      </Tooltip>
-    </Div>
-    <Text>
-      {data.rates
-        ? `обновлено: ${moment(data.date).format('HH:mm DD.MM.YY')}`
-        : 'нет данных'}
-    </Text>
-  </Container>
-);
+const CurrencyContainer = () => {
+  const data = useSelector(({ quotes }) => quotes.data);
+  const loading = useSelector(({ quotes }) => quotes.loading);
+  const dispatch = useDispatch();
 
-CurrencyContainer.propTypes = {
-  query: PropTypes.func.isRequired,
-  data: PropTypes.objectOf(PropTypes.any).isRequired,
-  loading: PropTypes.bool.isRequired,
+  return (
+    <Container>
+      <Div>
+        <Tooltip title={currTooltip(data.rates)} placement="bottomLeft" overlayStyle={{ fontSize: 12 }}>
+          {loading
+            ? <Icon type="loading" />
+            : <Icon type="reload" onClick={() => dispatch(queryCurr())} />}
+        </Tooltip>
+      </Div>
+      <Text>
+        {data.rates
+          ? `обновлено: ${moment(data.date).format('HH:mm DD.MM.YY')}`
+          : 'нет данных'}
+      </Text>
+    </Container>
+  );
 };
-
-CurrencyContainer.defaultProps = {
-};
-
-const mapStateToProps = ({ quotes }) => ({
-  data: quotes.data,
-  loading: quotes.loading,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  query: () => dispatch(queryCurr()),
-});
 
 const Container = styled.div`
   margin-bottom: 30px;
@@ -66,7 +53,4 @@ const Text = styled.p`
   line-height: 14px;
 `;
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(CurrencyContainer);
+export default CurrencyContainer;
