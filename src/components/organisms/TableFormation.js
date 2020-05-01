@@ -48,7 +48,7 @@ const TableFormation = ({
                 {headerConfig.map((el) => (
                   <Tb key={el.key}>
                     <Div>
-                      {el.key === 'number' && <Container>{index + 1}</Container>}
+                      {el.key === 'number' && <EntityNumber>{index + 1}</EntityNumber>}
                       {el.components && (
                       <UniversalContainer
                         entityName={el.key}
@@ -67,7 +67,7 @@ const TableFormation = ({
                   {headerConfig.map((el) => (
                     <Tb key={el.key}>
                       <Div>
-                        {el.key === 'number' && <Container>{iSub + 1}</Container>}
+                        {el.key === 'number' && <EntityNumber>{iSub + 1}</EntityNumber>}
                         {el.componentsSub && (
                         <UniversalContainer
                           entityName={el.keySub}
@@ -104,8 +104,19 @@ TableFormation.defaultProps = {
 const Table = styled.table`
   border-collapse: collapse;
   margin: 20px 0;
+  position: relative;
 `;
 const Container = styled.div`
+  display: flex;
+  padding: 0 10px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  border-bottom: 3px solid black;
+  border-left: 1px solid black;
+`;
+const EntityNumber = styled.div`
   display: flex;
   margin: 3px 10px;
   justify-content: center;
@@ -116,9 +127,15 @@ const Text = styled.p`
   margin: 0;
 `;
 const Th = styled.th`
-  border-left: 1px solid black;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 0;
+  background-color: #fff;
   &:first-child {
-    border-left: none;
+    & div {
+       border-left: none;
+    }
   }
 `;
 const BodyRow = styled.tr`
@@ -134,7 +151,6 @@ const Tb = styled.td`
   }
 `;
 const Tbody = styled.tbody`
-  border-top: 3px solid black;
   border-bottom: 3px solid black;
 `;
 const Thead = styled.thead`
