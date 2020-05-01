@@ -1,3 +1,4 @@
+import numeral from 'numeral';
 import {
   ADD_ENTITY,
   DELETE_ENTITY,
@@ -12,33 +13,45 @@ import {
 } from '../constants';
 import { calculate } from './CalculatorAction';
 
-export const actionInput = (value, id, name, paste = false) => (dispatch) => {
-  const inputName = ['part', 'option', 'posName', 'exw', 'quantity'];
-  const row = value.toString().split('\t');
-
-  if (row.length > 1 && paste) {
-    inputName.slice(inputName.indexOf(name)).forEach((el, i) => {
-      if (row[i]) {
-        dispatch({
-          type: ACTION_INPUT,
-          // eslint-disable-next-line no-nested-ternary
-          value: (el === 'part' || el === 'posName')
-            ? row[i]
-            : ((Number(row[i]) ? Number(row[i]) : 0)),
-          id,
-          name: el,
-        });
-      }
-    });
-  } else {
-    dispatch({
-      type: ACTION_INPUT,
-      value,
-      id,
-      name,
-    });
-  }
+export const actionInput = (value, id, name) => (dispatch) => {
+  dispatch({
+    type: ACTION_INPUT,
+    value,
+    id,
+    name,
+  });
   if (name === 'exw' || name === 'quantity') dispatch(calculate('percent'));
+};
+
+export const pasteInput = (value, id, name) => (dispatch, getState) => {
+  const fields = [
+    { name: 'part', type: 'string' },
+    { name: 'option', type: 'number' },
+    { name: 'posName', type: 'string' },
+    { name: 'exw', type: 'number' },
+    { name: 'quantity', type: 'number' },
+  ];
+  const state = getState();
+  const matrix = value.split('\n').map((item) => item.split('\t'));
+  let columnIndex = state[name].reduce((acc, val, index) => ((val.id === id) ? index : acc), 0) - 1;
+
+  matrix.forEach((item) => {
+    columnIndex += 1;
+    const rowId = state[name].find((a, index) => index === columnIndex);
+    if (rowId !== undefined) {
+      let rowIndex = fields.reduce((acc, val, index) => ((val.name === name) ? index : acc), 0);
+      item.forEach((el) => {
+        if (fields[rowIndex] && el.length) {
+          if (fields[rowIndex].type === 'number') {
+            const toNumber = numeral(el.replace(/,/g, '.')).value();
+
+            if (toNumber !== null) dispatch(actionInput(toNumber, rowId.id, fields[rowIndex].name));
+          } else dispatch(actionInput(el, rowId.id, fields[rowIndex].name));
+          rowIndex += 1;
+        }
+      });
+    }
+  });
 };
 
 export const addEntity = () => (dispatch) => {

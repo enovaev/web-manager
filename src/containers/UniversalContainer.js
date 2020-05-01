@@ -15,7 +15,7 @@ import CustomSlider from '../components/molecules/CustomSlider';
 // Store
 import {
   actionInput, deleteEntity, actionSelect,
-  actionSlider, actionCheckbox, actionSwitch,
+  actionSlider, actionCheckbox, actionSwitch, pasteInput,
 } from '../state/actions/MainAction';
 import { expandGroup } from '../state/actions/OptionAction';
 
@@ -36,7 +36,7 @@ class UniversalContainer extends Component {
     const {
       entityData, entityDataSlider, entityName, entityID,
       component, deleteAction, checkbox, select, slider,
-      input, expandAction, switched,
+      input, expandAction, switched, paste,
     } = this.props;
     return (
       <Container>
@@ -53,7 +53,8 @@ class UniversalContainer extends Component {
             )}
             {el.name === 'input' && (
               <CustomInput
-                action={(value) => input(value, entityID, entityName, true)}
+                action={(value) => input(value, entityID, entityName)}
+                paste={(value) => paste(value, entityID, entityName)}
                 width={el.width}
                 value={entityData.input}
                 elementType={el.type}
@@ -120,6 +121,7 @@ UniversalContainer.propTypes = {
   slider: PropTypes.func,
   switched: PropTypes.func,
   input: PropTypes.func,
+  paste: PropTypes.func,
 };
 UniversalContainer.defaultProps = {
   entityData: { input: '', select: '' },
@@ -132,6 +134,7 @@ UniversalContainer.defaultProps = {
   slider: () => {},
   switched: () => {},
   input: () => {},
+  paste: () => {},
 };
 
 const mapStateToProps = (store, { entityName, entityID }) => ({
@@ -148,7 +151,8 @@ const mapStateToProps = (store, { entityName, entityID }) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   deleteAction: (id) => dispatch(deleteEntity(id)),
-  input: (value, id, name, paste) => dispatch(actionInput(value, id, name, paste)),
+  input: (value, id, name) => dispatch(actionInput(value, id, name)),
+  paste: (value, id, name) => dispatch(pasteInput(value, id, name)),
   checkbox: (id, name, value) => dispatch(actionCheckbox(id, name, value)),
   select: (value, id, name) => dispatch(actionSelect(value, id, name)),
   slider: (value, name, prop) => dispatch(actionSlider(value, name, prop)),
