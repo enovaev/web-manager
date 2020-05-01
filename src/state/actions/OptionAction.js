@@ -12,10 +12,12 @@ export const actionSaveDown = (type, value) => (dispatch, getState) => {
       type: SAVE_NAME,
       payload: value,
     });
+    // eslint-disable-next-line no-undef
     localStorage.setItem(value, JSON.stringify({ ...getState(), time: Number(new Date()) }));
   } else {
     dispatch({
       type: DOWNLOAD,
+      // eslint-disable-next-line no-undef
       payload: JSON.parse(localStorage.getItem(value)),
     });
   }
