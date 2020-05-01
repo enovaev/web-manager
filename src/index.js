@@ -13,6 +13,7 @@ ReactDOM.render(
     <Normalize />
     <App />
   </Provider>,
+  // eslint-disable-next-line no-undef
   document.getElementById('root'),
 );
 serviceWorker.unregister();

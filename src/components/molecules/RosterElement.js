@@ -18,6 +18,7 @@ const RosterElement = ({
     <Text>{name}</Text>
     <Tools>
       <Date>
+        {/* eslint-disable-next-line no-undef */}
         {moment(JSON.parse(localStorage.getItem(name)).time).format('HH:mm:ss DD.MM.YY')}
       </Date>
       <Div>

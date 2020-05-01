@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 // Utils
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
@@ -28,6 +28,21 @@ const MainTableContainer = () => {
   const mode = useSelector((state) => state.mode);
   const check = useSelector((state) => state.check);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const enterHandler = ({ key }) => {
+      if (key === 'Enter' && mode === 'Main') dispatch(addEntity());
+      console.log(mode);
+    };
+
+
+    // eslint-disable-next-line no-undef
+    document.addEventListener('keydown', enterHandler);
+    return () => {
+      // eslint-disable-next-line no-undef
+      document.removeEventListener('keydown', enterHandler);
+    };
+  }, [mode]);
 
   return (
     <Container>

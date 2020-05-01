@@ -23,6 +23,14 @@ export const actionInput = (value, id, name) => (dispatch) => {
   if (name === 'exw' || name === 'quantity') dispatch(calculate('percent'));
 };
 
+export const addEntity = () => (dispatch) => {
+  dispatch({
+    type: ADD_ENTITY,
+    payload: Math.random(),
+  });
+  dispatch(calculate('percent'));
+};
+
 export const pasteInput = (value, id, name) => (dispatch, getState) => {
   const fields = [
     { name: 'part', type: 'string' },
@@ -31,35 +39,29 @@ export const pasteInput = (value, id, name) => (dispatch, getState) => {
     { name: 'exw', type: 'number' },
     { name: 'quantity', type: 'number' },
   ];
-  const state = getState();
-  const matrix = value.split('\n').map((item) => item.split('\t'));
-  let columnIndex = state[name].reduce((acc, val, index) => ((val.id === id) ? index : acc), 0) - 1;
+  const matrix = value.split('\n').filter((el) => el.length).map((item) => item.split('\t'));
+  let columnIndex = getState()[name]
+    .reduce((acc, val, index) => ((val.id === id) ? index : acc), 0) - 1;
 
   matrix.forEach((item) => {
     columnIndex += 1;
-    const rowId = state[name].find((a, index) => index === columnIndex);
-    if (rowId !== undefined) {
-      let rowIndex = fields.reduce((acc, val, index) => ((val.name === name) ? index : acc), 0);
-      item.forEach((el) => {
-        if (fields[rowIndex] && el.length) {
-          if (fields[rowIndex].type === 'number') {
-            const toNumber = numeral(el.replace(/,/g, '.')).value();
-
-            if (toNumber !== null) dispatch(actionInput(toNumber, rowId.id, fields[rowIndex].name));
-          } else dispatch(actionInput(el, rowId.id, fields[rowIndex].name));
-          rowIndex += 1;
-        }
-      });
+    let rowId = getState()[name].find((a, index) => index === columnIndex);
+    if (rowId === undefined) {
+      dispatch(addEntity());
+      rowId = getState()[name].find((a, index) => index === columnIndex);
     }
-  });
-};
+    let rowIndex = fields.reduce((acc, val, index) => ((val.name === name) ? index : acc), 0);
+    item.forEach((el) => {
+      if (fields[rowIndex] && el.length) {
+        if (fields[rowIndex].type === 'number') {
+          const toNumber = numeral(el.replace(/,/g, '.')).value();
 
-export const addEntity = () => (dispatch) => {
-  dispatch({
-    type: ADD_ENTITY,
-    payload: Math.random(),
+          if (toNumber !== null) dispatch(actionInput(toNumber, rowId.id, fields[rowIndex].name));
+        } else dispatch(actionInput(el, rowId.id, fields[rowIndex].name));
+      }
+      rowIndex += 1;
+    });
   });
-  dispatch(calculate('percent'));
 };
 
 export const deleteEntity = (id) => ({

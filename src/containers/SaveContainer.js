@@ -9,7 +9,7 @@ import CustomInput from '../components/molecules/CustomInput';
 import RosterElement from '../components/molecules/RosterElement';
 // Store
 import { actionSaveDown } from '../state/actions/OptionAction';
-
+/*eslint-disable*/
 
 const convert = (a) => JSON.parse(localStorage.getItem(a)).time;
 
