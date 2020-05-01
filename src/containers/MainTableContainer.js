@@ -32,9 +32,7 @@ const MainTableContainer = () => {
   useEffect(() => {
     const enterHandler = ({ key }) => {
       if (key === 'Enter' && mode === 'Main') dispatch(addEntity());
-      console.log(mode);
     };
-
 
     // eslint-disable-next-line no-undef
     document.addEventListener('keydown', enterHandler);
