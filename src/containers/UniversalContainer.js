@@ -92,7 +92,7 @@ UniversalContainer.defaultProps = {
 };
 
 const mapStateToProps = (store, { entityName, entityID }) => ({
-  entityData: store[entityName] && store[entityName].filter((el) => el.id === entityID)[0],
+  entityData: store[entityName] && store[entityName].find((el) => el.id === entityID),
 });
 
 const mapDispatchToProps = (dispatch) => ({
