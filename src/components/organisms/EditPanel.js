@@ -2,14 +2,14 @@ import React from 'react';
 // Utils
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import UniversalContainer from '../../containers/UniversalContainer';
+import SliderContainer from '../../containers/SliderContainer';
 
 const EditPanel = ({ headerConfig }) => (
   <Container>
     {headerConfig.map((el) => (
       <Cell key={el.key}>
         {el.components && (
-          <UniversalContainer
+          <SliderContainer
             entityName={el.key}
             component={el.components}
           />
