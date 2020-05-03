@@ -56,7 +56,7 @@ const mapStateToProps = (store, { entityName }) => ({
       && (
         store.check.filter((item) => item.checked === true).length
           ? store[entityName].find(
-            (item) => item.id === store.check.filter((el) => el.checked === true)[0].id,
+            (item) => item.id === store.check.find((el) => el.checked === true).id,
           )
           : store[entityName][0]
       ),

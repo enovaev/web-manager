@@ -76,37 +76,10 @@ UniversalContainer.propTypes = {
   component: PropTypes.arrayOf(PropTypes.any).isRequired,
   entityName: PropTypes.string.isRequired,
   entityID: PropTypes.number,
-  // entityData: PropTypes.objectOf(PropTypes.any),
-  // expandAction: PropTypes.func,
-  // deleteAction: PropTypes.func,
-  // checkbox: PropTypes.func,
-  // select: PropTypes.func,
-  // input: PropTypes.func,
-  // paste: PropTypes.func,
 };
 UniversalContainer.defaultProps = {
-  // entityData: { input: '', select: '' },
   entityID: 0,
-  // expandAction: () => {},
-  // deleteAction: () => {},
-  // checkbox: () => {},
-  // select: () => {},
-  // input: () => {},
-  // paste: () => {},
 };
-
-// const mapStateToProps = (store, { entityName, entityID }) => ({
-//   entityData: store[entityName] && store[entityName].filter((el) => el.id === entityID)[0],
-// });
-//
-// const mapDispatchToProps = (dispatch) => ({
-//   deleteAction: (id) => dispatch(deleteEntity(id)),
-//   input: (value, id, name) => dispatch(actionInput(value, id, name)),
-//   paste: (value, id, name) => dispatch(pasteInput(value, id, name)),
-//   checkbox: (id, name, value) => dispatch(actionCheckbox(id, name, value)),
-//   select: (value, id, name) => dispatch(actionSelect(value, id, name)),
-//   expandAction: (id, name) => dispatch(expandGroup(id, name)),
-// });
 
 const Container = styled.div`
   display: flex;
