@@ -1,7 +1,7 @@
 import React from 'react';
 // Utils
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import styled, { css } from 'styled-components';
 // Components
 import Icon from 'antd/es/icon';
@@ -19,90 +19,94 @@ import { expandGroup } from '../state/actions/OptionAction';
 
 
 const UniversalContainer = React.memo(({
-  entityData, entityName, entityID,
-  component, deleteAction, checkbox, select,
-  input, expandAction, paste,
-}) => (
-  <Container>
-    {component.map((el) => (
-      <div key={el.name}>
-        {el.name === 'badge' && (
+  entityName, entityID, component,
+}) => {
+  const entityData = useSelector((state) => state[entityName]
+    && state[entityName].find((el) => el.id === entityID));
+  const dispatch = useDispatch();
+
+  return (
+    <Container>
+      {component.map((el) => (
+        <div key={el.name}>
+          {el.name === 'badge' && (
           <Badge color={entityData.group || '#D9D9D9'} />
-        )}
-        {el.name === 'checkbox' && (
+          )}
+          {el.name === 'checkbox' && (
           <CheckBox
-            action={(value) => checkbox(entityID, entityName, value)}
+            action={(value) => dispatch(actionCheckbox(entityID, entityName, value))}
             value={entityData.checked}
           />
-        )}
-        {el.name === 'input' && (
+          )}
+          {el.name === 'input' && (
           <CustomInput
-            action={(value) => input(value, entityID, entityName)}
-            paste={(value) => paste(value, entityID, entityName)}
+            action={(value) => dispatch(actionInput(value, entityID, entityName))}
+            paste={(value) => dispatch(pasteInput(value, entityID, entityName))}
             width={el.width}
             value={entityData.input}
             elementType={el.type}
           />
-        )}
-        {el.name === 'text' && (<CustomText value={entityData.text} />)}
-        {el.name === 'cellLabel' && (<CellLabel width={el.width}>{entityData.input}</CellLabel>)}
-        {el.name === 'select' && (
+          )}
+          {el.name === 'text' && (<CustomText value={entityData.text} />)}
+          {el.name === 'cellLabel' && (<CellLabel width={el.width}>{entityData.input}</CellLabel>)}
+          {el.name === 'select' && (
           <CustomSelect
-            action={(value) => select(value, entityID, entityName)}
+            action={(value) => dispatch(actionSelect(value, entityID, entityName))}
             value={entityData.select}
             elementType={el.type}
           />
-        )}
-        {el.name === 'button' && (
+          )}
+          {el.name === 'button' && (
           <Div>
-            <Icon type="delete" onClick={() => deleteAction(entityID)} />
+            <Icon type="delete" onClick={() => dispatch(deleteEntity(entityID))} />
           </Div>
-        )}
-        {el.name === 'expand' && (
+          )}
+          {el.name === 'expand' && (
           <Expand show={entityData.show}>
-            <Icon type="left" onClick={() => expandAction(entityID, entityName)} />
+            <Icon type="left" onClick={() => dispatch(expandGroup(entityID, entityName))} />
           </Expand>
-        )}
-      </div>
-    ))}
-  </Container>
-));
+          )}
+        </div>
+      ))}
+    </Container>
+  );
+});
 
 UniversalContainer.propTypes = {
   component: PropTypes.arrayOf(PropTypes.any).isRequired,
   entityName: PropTypes.string.isRequired,
   entityID: PropTypes.number,
-  entityData: PropTypes.objectOf(PropTypes.any),
-  expandAction: PropTypes.func,
-  deleteAction: PropTypes.func,
-  checkbox: PropTypes.func,
-  select: PropTypes.func,
-  input: PropTypes.func,
-  paste: PropTypes.func,
+  // entityData: PropTypes.objectOf(PropTypes.any),
+  // expandAction: PropTypes.func,
+  // deleteAction: PropTypes.func,
+  // checkbox: PropTypes.func,
+  // select: PropTypes.func,
+  // input: PropTypes.func,
+  // paste: PropTypes.func,
 };
 UniversalContainer.defaultProps = {
-  entityData: { input: '', select: '' },
+  // entityData: { input: '', select: '' },
   entityID: 0,
-  expandAction: () => {},
-  deleteAction: () => {},
-  checkbox: () => {},
-  select: () => {},
-  input: () => {},
-  paste: () => {},
+  // expandAction: () => {},
+  // deleteAction: () => {},
+  // checkbox: () => {},
+  // select: () => {},
+  // input: () => {},
+  // paste: () => {},
 };
 
-const mapStateToProps = (store, { entityName, entityID }) => ({
-  entityData: store[entityName] && store[entityName].filter((el) => el.id === entityID)[0],
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  deleteAction: (id) => dispatch(deleteEntity(id)),
-  input: (value, id, name) => dispatch(actionInput(value, id, name)),
-  paste: (value, id, name) => dispatch(pasteInput(value, id, name)),
-  checkbox: (id, name, value) => dispatch(actionCheckbox(id, name, value)),
-  select: (value, id, name) => dispatch(actionSelect(value, id, name)),
-  expandAction: (id, name) => dispatch(expandGroup(id, name)),
-});
+// const mapStateToProps = (store, { entityName, entityID }) => ({
+//   entityData: store[entityName] && store[entityName].filter((el) => el.id === entityID)[0],
+// });
+//
+// const mapDispatchToProps = (dispatch) => ({
+//   deleteAction: (id) => dispatch(deleteEntity(id)),
+//   input: (value, id, name) => dispatch(actionInput(value, id, name)),
+//   paste: (value, id, name) => dispatch(pasteInput(value, id, name)),
+//   checkbox: (id, name, value) => dispatch(actionCheckbox(id, name, value)),
+//   select: (value, id, name) => dispatch(actionSelect(value, id, name)),
+//   expandAction: (id, name) => dispatch(expandGroup(id, name)),
+// });
 
 const Container = styled.div`
   display: flex;
@@ -135,7 +139,4 @@ const CellLabel = styled.p`
   width: ${(props) => `${props.width}px`};
 `;
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(UniversalContainer);
+export default UniversalContainer;

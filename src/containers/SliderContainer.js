@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Switch from 'antd/es/switch';
 import { connect } from 'react-redux';
@@ -7,40 +7,35 @@ import CustomSlider from '../components/molecules/CustomSlider';
 import { actionSlider, actionSwitch } from '../state/actions/MainAction';
 
 
-// eslint-disable-next-line react/prefer-stateless-function
-class SliderContainer extends Component {
-  render() {
-    const {
-      component, slider, switched, entityDataSlider, entityName,
-    } = this.props;
-    return (
-      <Container>
-        {component.map((el) => el.name === 'slider' && (
-          <SliderContent key={el.name}>
-            {el.secLabel
-              ? (
-                <Switch
-                  checkedChildren={el.secLabel}
-                  unCheckedChildren={el.label}
-                  onChange={(value) => switched(entityName, value)}
-                />
-              )
-              : <Label>{el.label}</Label>}
-            <CustomSlider
-              actionPerc={(value) => slider(value, entityName, 'percent')}
-              actionValue={(value) => slider(value, entityName, 'input')}
-              actionSelect={(value) => slider(value, entityName, 'select')}
-              valueSelect={entityDataSlider.select}
-              valuePerc={entityDataSlider.percent}
-              valueCurr={entityDataSlider.input}
-              elementType={el.type}
-            />
-          </SliderContent>
-        ))}
-      </Container>
-    );
-  }
-}
+const SliderContainer = ({
+  component, slider, switched, entityDataSlider, entityName,
+}) => (
+  <Container>
+    {component.map((el) => el.name === 'slider' && (
+    <SliderContent key={el.name}>
+      {el.secLabel
+        ? (
+          <Switch
+            checkedChildren={el.secLabel}
+            unCheckedChildren={el.label}
+            onChange={(value) => switched(entityName, value)}
+          />
+        )
+        : <Label>{el.label}</Label>}
+      <CustomSlider
+        actionPerc={(value) => slider(value, entityName, 'percent')}
+        actionValue={(value) => slider(value, entityName, 'input')}
+        actionSelect={(value) => slider(value, entityName, 'select')}
+        valueSelect={entityDataSlider.select}
+        valuePerc={entityDataSlider.percent}
+        valueCurr={entityDataSlider.input}
+        elementType={el.type}
+      />
+    </SliderContent>
+    ))}
+  </Container>
+);
+
 
 SliderContainer.propTypes = {
   component: PropTypes.arrayOf(PropTypes.any),
