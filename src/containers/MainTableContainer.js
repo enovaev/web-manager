@@ -51,7 +51,7 @@ const MainTableContainer = () => {
             timeout={200}
             classNames="mode"
           >
-            <Div>
+            <Div mode={mode}>
               <TableFormation
                 headerConfig={el.config}
                 expandGroup={mode === 'Group' ? expandGr : null}
@@ -76,10 +76,12 @@ const MainTableContainer = () => {
 
 const Container = styled.div`
   position: relative;
+  width: 100%;
 `;
 const Div = styled.div`
   display: flex;
   align-items: start;
+  justify-content: ${(props) => (props.mode === 'Main' ? 'center' : 'space-between')};
 `;
 
 export default MainTableContainer;
