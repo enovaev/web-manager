@@ -47,7 +47,7 @@ const UniversalContainer = React.memo(({
             elementType={el.type}
           />
           )}
-          {el.name === 'text' && (<CustomText value={entityData.text} />)}
+          {(el.name === 'text' || el.name === 'percent') && (<CustomText value={entityData[el.name]} />)}
           {el.name === 'cellLabel' && (<CellLabel width={el.width}>{entityData.input}</CellLabel>)}
           {el.name === 'select' && (
           <CustomSelect

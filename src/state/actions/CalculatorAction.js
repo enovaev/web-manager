@@ -56,29 +56,38 @@ const calcPlus = (price, index, type, currency, customer) => (dispatch, getState
 
 export const calculateGroup = () => (dispatch, getState) => {
   const {
-    expandGr, priceOur, priceCust, quotes, priceOurGr, priceCustGr,
+    expandGr, priceOur, priceCust, quotes, priceOurGr, priceCustGr, profitGr,
   } = getState();
 
   expandGr.forEach((el, i) => {
     let sumPriceOur = 0;
     let sumPriceCust = 0;
 
+    const currOur = priceOurGr.find((a) => a.id === el.id).select;
+    const currCust = priceCustGr.find((a) => a.id === el.id).select;
     el.ids.forEach((item) => {
       priceOur.forEach((val) => {
         if (val.id === item && Number(val.text)) {
-          const curr = priceOurGr.find((a) => a.id === el.id).select;
-          sumPriceOur += convertCurr(val.text, quotes.data.rates, val.select, curr);
+          sumPriceOur += convertCurr(val.text, quotes.data.rates, val.select, currOur);
         }
       });
       priceCust.forEach((val) => {
         if (val.id === item && Number(val.text)) {
-          const curr = priceCustGr.find((a) => a.id === el.id).select;
-          sumPriceCust += convertCurr(val.text, quotes.data.rates, val.select, curr);
+          sumPriceCust += convertCurr(val.text, quotes.data.rates, val.select, currCust);
         }
       });
     });
     if (priceOurGr[i].text !== sumPriceOur) dispatch(actionCalc(sumPriceOur, el.id, 'priceOurGr'));
     if (priceCustGr[i].text !== sumPriceCust) dispatch(actionCalc(sumPriceCust, el.id, 'priceCustGr'));
+
+    // рассчет прибыли
+    const priceOurCon = convertCurr(sumPriceOur, quotes.data.rates, currOur, profitGr[i].select);
+    const priceCustCon = convertCurr(sumPriceCust, quotes.data.rates, currCust, profitGr[i].select);
+    const profitValue = priceCustCon - priceOurCon;
+    const profitPercent = (profitValue / priceOurCon) * 100;
+
+    if (profitGr[i].text !== profitValue) dispatch(actionCalc(profitValue, el.id, 'profitGr'));
+    if (profitGr[i].percent !== profitPercent) dispatch(actionCalc(profitPercent, el.id, 'profitGr', 'percent'));
   });
 };
 

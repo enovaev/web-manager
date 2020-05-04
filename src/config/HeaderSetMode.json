@@ -92,6 +92,22 @@
     ]
   },
   {
+    "key": "profitGr",
+    "label": "Profit",
+    "components": [
+      {
+        "name": "percent"
+      },
+      {
+        "name": "text"
+      },
+      {
+        "name": "select",
+        "type": "curr"
+      }
+    ]
+  },
+  {
     "key": "expandGr",
     "components": [
       {

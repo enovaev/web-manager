@@ -21,15 +21,14 @@ export const rootReducer = combineReducers({
   exwGr: groupReducer('exwGr'),
   priceOurGr: groupReducer('priceOurGr'),
   priceCustGr: groupReducer('priceCustGr'),
+  profitGr: groupReducer('profitGr'),
   expandGr: groupReducer('expandGr'),
   // Edit
   delivery: mainReducer('delivery'),
   cusHouse: mainReducer('cusHouse'),
   nds: mainReducer('nds'),
   discount: mainReducer('discount'),
-  // Set
   sale: mainReducer('sale'),
-  delta: mainReducer('delta'),
   // Id
   entityID,
   entityGroup,
