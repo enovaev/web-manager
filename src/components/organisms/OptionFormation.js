@@ -21,7 +21,7 @@ const OptionFormation = () => (
 );
 const Div = styled.div`
   align-self: flex-start;
-  width: 90vw;
+  width: 100%;
 `;
 const Container = styled.div`
   display: flex;

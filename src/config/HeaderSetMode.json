@@ -34,14 +34,14 @@
       {
         "name": "cellLabel",
         "type": "string",
-        "width": 300
+        "width": 200
       }
     ],
     "componentsSub": [
       {
         "name": "input",
         "type": "string",
-        "width": 300
+        "width": 200
       }
     ]
   },

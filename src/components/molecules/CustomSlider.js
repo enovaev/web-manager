@@ -72,7 +72,7 @@ const Container = styled.div`
   align-items: center;
 `;
 const SliderDiv = styled.div`
-  width: 400px;
+  width: 300px;
 `;
 const InputDiv = styled.div`
   display: flex;

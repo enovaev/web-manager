@@ -81,7 +81,7 @@ const Container = styled.div`
 const Div = styled.div`
   display: flex;
   align-items: start;
-  justify-content: ${(props) => (props.mode === 'Main' ? 'center' : 'space-between')};
+  justify-content: ${(props) => (props.mode === 'Main' ? 'center' : 'space-around')};
 `;
 
 export default MainTableContainer;
