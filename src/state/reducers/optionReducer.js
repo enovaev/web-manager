@@ -1,6 +1,6 @@
 import {
   ADD_ENTITY, CHANGE_MODE, DELETE_ENTITY, DOWNLOAD,
-  SAVE_NAME, QUERY_CURR, LOADING_CURR, CREATE_GROUP,
+  SAVE_NAME, QUERY_CURR, LOADING_CURR, CREATE_GROUP, ACTION_DRAG,
 } from '../constants';
 
 
@@ -17,6 +17,9 @@ export function entityID(state = initialState, action) {
 
     case DELETE_ENTITY:
       return state.filter((el) => el !== action.payload);
+
+    case ACTION_DRAG:
+      return action.payload;
 
     case DOWNLOAD:
       return action.payload.entityID;

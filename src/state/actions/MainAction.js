@@ -10,6 +10,7 @@ import {
   ACTION_SLIDER_ALL,
   ACTION_SWITCH,
   ACTION_SWITCH_ALL,
+  ACTION_DRAG,
 } from '../constants';
 import { calculate } from './CalculatorAction';
 
@@ -152,4 +153,16 @@ export const actionSwitch = (name, value) => (dispatch, getState) => {
     });
   }
   dispatch(calculate('percent'));
+};
+
+export const actionDrag = (indexStart, indexEnd) => (dispatch, getState) => {
+  const arr = getState().entityID;
+
+  // eslint-disable-next-line prefer-destructuring
+  arr[indexStart] = arr.splice(indexEnd, 1, arr[indexStart])[0];
+
+  dispatch({
+    type: ACTION_DRAG,
+    payload: arr,
+  });
 };

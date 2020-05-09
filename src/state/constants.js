@@ -18,3 +18,4 @@ export const MANAGE_ID = 'MANAGE_ID';
 export const SET_COLOR_GROUP = 'SET_COLOR_GROUP';
 export const ACTION_SWITCH = 'ACTION_SWITCH';
 export const ACTION_SWITCH_ALL = 'ACTION_SWITCH_ALL';
+export const ACTION_DRAG = 'ACTION_DRAG';

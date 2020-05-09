@@ -7,7 +7,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import TableFormation from '../components/organisms/TableFormation';
 import EditPanel from '../components/organisms/EditPanel';
 // Store
-import { actionCheckbox, addEntity } from '../state/actions/MainAction';
+import { actionCheckbox, addEntity, actionDrag } from '../state/actions/MainAction';
 // Configs
 import Main from '../config/HeaderMainMode.json';
 import Set from '../config/HeaderSetMode.json';
@@ -56,6 +56,7 @@ const MainTableContainer = () => {
                 headerConfig={el.config}
                 expandGroup={mode === 'Group' ? expandGr : null}
                 entityID={mode === 'Group' ? entityGroup : entityID}
+                actionDrag={(start, end) => dispatch(actionDrag(start, end))}
                 addEntity={() => dispatch(addEntity())}
                 actionCheckbox={(value) => dispatch(actionCheckbox(false, 'check', value))}
               />
