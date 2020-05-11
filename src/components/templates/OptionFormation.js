@@ -7,10 +7,14 @@ import SaveContainer from '../../containers/SaveContainer';
 import ModeAppContainer from '../../containers/ModeAppContainer';
 import CurrencyContainer from '../../containers/CurrencyContainer';
 import CreateGroupContainer from '../../containers/CreateGroupContainer';
+import UploadContainer from '../../containers/UploadContainer';
 
 const OptionFormation = () => (
   <Div>
-    <CurrencyContainer />
+    <Container>
+      <CurrencyContainer />
+      <UploadContainer />
+    </Container>
     <Container>
       <CreateGroupContainer />
       <ModeAppContainer />

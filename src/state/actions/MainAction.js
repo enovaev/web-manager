@@ -24,10 +24,10 @@ export const actionInput = (value, id, name) => (dispatch) => {
   if (name === 'exw' || name === 'quantity') dispatch(calculate('percent'));
 };
 
-export const addEntity = () => (dispatch) => {
+export const addEntity = (id = Math.random()) => (dispatch) => {
   dispatch({
     type: ADD_ENTITY,
-    payload: Math.random(),
+    payload: id,
   });
   dispatch(calculate('percent'));
 };

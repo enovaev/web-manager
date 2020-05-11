@@ -2,7 +2,7 @@ import React from 'react';
 // Utils
 import styled from 'styled-components';
 // Components
-import OptionFormation from '../organisms/OptionFormation';
+import OptionFormation from './OptionFormation';
 import MainTableContainer from '../../containers/MainTableContainer';
 
 const PageFormation = () => (
