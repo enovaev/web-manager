@@ -89,7 +89,11 @@ const TableFormation = ({
                         {(el.key === 'number' && dragIndex !== index) && <EntityNumber>{index + 1}</EntityNumber>}
                         {(el.key === 'delete' && dragIndex !== index) && (
                           <StyleIcon>
-                            <Icon type="drag" onMouseDown={() => setDraggable(true)} />
+                            <Icon
+                              type="drag"
+                              onMouseDown={() => setDraggable(true)}
+                              onMouseUp={() => setDraggable(false)}
+                            />
                           </StyleIcon>
                         )}
                         {(el.components && dragIndex !== index) && (
