@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 // Utils
 import PropTypes from 'prop-types';
+import Icon from 'antd/es/icon';
 import styled, { css } from 'styled-components';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 // Components
@@ -14,26 +15,32 @@ const TableFormation = ({
   addEntity, entityID, headerConfig, actionCheckbox, expandGroup, actionDrag,
 }) => {
   const [dragIndex, setDragIndex] = useState(null);
+  const [draggable, setDraggable] = useState(false);
 
   const dragStart = (e) => {
-    setDragIndex(Number(e.currentTarget.getAttribute('value')));
-    e.dataTransfer.effectAllowed = 'move';
+    if (draggable) {
+      setDragIndex(Number(e.currentTarget.getAttribute('value')));
+      e.dataTransfer.effectAllowed = 'move';
+    }
   };
   const dragEnd = () => {
     setDragIndex(null);
+    setDraggable(false);
   };
   const dragOver = (e) => {
-    let el;
-    let { target } = e;
-    while (!el) {
-      if (target.tagName === 'TR') el = target;
-      else target = target.parentNode;
-    }
-    const endIndex = target.getAttribute('value');
+    if (draggable) {
+      let el;
+      let { target } = e;
+      while (!el) {
+        if (target.tagName === 'TR') el = target;
+        else target = target.parentNode;
+      }
+      const endIndex = target.getAttribute('value');
 
-    if (endIndex === dragIndex) return;
-    actionDrag(dragIndex, endIndex);
-    setDragIndex(Number(endIndex));
+      if (endIndex === dragIndex) return;
+      actionDrag(dragIndex, endIndex);
+      setDragIndex(Number(endIndex));
+    }
   };
 
   return (
@@ -70,7 +77,7 @@ const TableFormation = ({
               <>
                 <BodyRow
                   border={expandGroup}
-                  draggable={!expandGroup}
+                  draggable={!expandGroup && draggable}
                   value={index}
                   onDragStart={(e) => !expandGroup && dragStart(e)}
                   onDragEnd={(e) => !expandGroup && dragEnd(e)}
@@ -80,6 +87,11 @@ const TableFormation = ({
                       <Div>
                         {dragIndex === index && <Empty />}
                         {(el.key === 'number' && dragIndex !== index) && <EntityNumber>{index + 1}</EntityNumber>}
+                        {(el.key === 'delete' && dragIndex !== index) && (
+                          <StyleIcon>
+                            <Icon type="drag" onMouseDown={() => setDraggable(true)} />
+                          </StyleIcon>
+                        )}
                         {(el.components && dragIndex !== index) && (
                           <UniversalContainer
                             entityName={el.key}
@@ -190,10 +202,24 @@ const Tbody = styled.tbody`
 const Thead = styled.thead`
 `;
 const Div = styled.div`
+  display: flex;
+  justify-content:center;
+  align-items: center;
 `;
 const Empty = styled.div`
   height: 46px;
   width: 100%;
 `;
-
+const StyleIcon = styled.div`
+  margin: 3px 10px;
+  color: #D9D9D9;
+  font-size: 20px;
+  &:hover {
+    cursor: grab;
+    color: rgba(0, 0, 0, 0.65);
+  }
+  &:active {
+    cursor: grabbing !important;
+  }
+`;
 export default TableFormation;

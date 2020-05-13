@@ -124,7 +124,6 @@ const Div = styled.div`
   font-size: 20px;
   &:hover {
     color: rgba(0, 0, 0, 0.65);
-    font-size: 22px;
   }
 `;
 const Expand = styled.div`
