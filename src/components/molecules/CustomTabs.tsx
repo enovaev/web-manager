@@ -1,7 +1,12 @@
 import React from 'react';
 // Utils
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
+
+interface ICustomTabs {
+  data: Array<string>,
+  action: (val: string) => void,
+  select: string,
+}
 
 const styleSelect = {
   backgroundColor: '#1890FF',
@@ -9,7 +14,7 @@ const styleSelect = {
   color: '#FFF',
 };
 
-const CustomTabs = ({ data, action, select }) => (
+const CustomTabs: React.FC<ICustomTabs> = ({ data, action, select }) => (
   <Container>
     {data.map((item) => (
       <Button
@@ -22,17 +27,6 @@ const CustomTabs = ({ data, action, select }) => (
     ))}
   </Container>
 );
-
-CustomTabs.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.any),
-  action: PropTypes.func,
-  select: PropTypes.string,
-};
-CustomTabs.defaultProps = {
-  data: ['Main', 'Set'],
-  action: () => {},
-  select: 'Main',
-};
 
 const Container = styled.div`
   display: flex;

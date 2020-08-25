@@ -1,14 +1,26 @@
 import React from 'react';
 // Utils
-import Slider from 'antd/es/slider';
-import PropTypes from 'prop-types';
+import Slider, { SliderValue } from 'antd/es/slider';
 import styled from 'styled-components';
 // Components
 import CustomInput from './CustomInput';
 import CustomSelect from './CustomSelect';
 
-const CustomSlider = ({
-  valuePerc, valueCurr, valueSelect, actionPerc, actionValue, actionSelect, elementType, min, max,
+interface ICustomSlider {
+  valuePerc: number,
+  valueCurr: number | string,
+  valueSelect: string,
+  actionPerc: (val: SliderValue | string) => void | undefined,
+  actionValue: (val: string | number) => void,
+  actionSelect: (val: string) => void,
+  elementType: string,
+  min?: number,
+  max?: number,
+}
+
+const CustomSlider: React.FC<ICustomSlider> = ({
+  valuePerc, valueCurr, valueSelect, actionPerc,
+  actionValue, actionSelect, elementType, min = 0, max = 100,
 }) => (
   <Container>
     <InputDiv>
@@ -44,27 +56,6 @@ const CustomSlider = ({
     </SliderDiv>
   </Container>
 );
-
-CustomSlider.propTypes = {
-  elementType: PropTypes.string.isRequired,
-  valuePerc: PropTypes.number.isRequired,
-  valueCurr: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-  ]).isRequired,
-  actionPerc: PropTypes.func.isRequired,
-  actionValue: PropTypes.func.isRequired,
-  actionSelect: PropTypes.func,
-  valueSelect: PropTypes.string,
-  min: PropTypes.number,
-  max: PropTypes.number,
-};
-CustomSlider.defaultProps = {
-  actionSelect: () => {},
-  valueSelect: 'rub',
-  min: 0,
-  max: 100,
-};
 
 const Container = styled.div`
   display: flex;

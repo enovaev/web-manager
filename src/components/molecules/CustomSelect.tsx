@@ -14,7 +14,7 @@ interface ICustomSelect {
   action: (val: string) => void,
   value: string,
   elementType: string,
-  color: string[],
+  color?: string[],
 }
 
 const { Option } = Select;
@@ -37,7 +37,7 @@ const CustomSelect: React.FC<ICustomSelect> = ({
   >
     {elementType === 'quan' && renderOptionSelect(quantityConfig)}
     {elementType === 'curr' && renderOptionSelect(currencyConfig)}
-    {elementType === 'color' && renderColorOption(color)}
+    {elementType === 'color' && color && renderColorOption(color)}
   </Select>
 );
 
