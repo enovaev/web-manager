@@ -6,7 +6,7 @@ import { QUERY_CURR, LOADING_CURR } from '../constants';
 import { messages } from '../../config/textConfigs/text';
 import { calculate } from './CalculatorAction';
 
-const accessKey = 'c02f99dfb405783c393d94049b9e952b';
+const accessKey = 'b6a4e23864a80132ca980006cb083b2f';
 
 // eslint-disable-next-line import/prefer-default-export
 export const queryCurr = () => async (dispatch, getState) => {

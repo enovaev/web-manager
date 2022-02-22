@@ -72,15 +72,6 @@ UniversalContainer.propTypes = {
   component: PropTypes.arrayOf(PropTypes.any).isRequired,
   entityName: PropTypes.string.isRequired,
   entityID: PropTypes.number,
-};
-UniversalContainer.defaultProps = {
-  entityID: 0,
-};
-
-UniversalContainer.propTypes = {
-  component: PropTypes.arrayOf(PropTypes.any).isRequired,
-  entityName: PropTypes.string.isRequired,
-  entityID: PropTypes.number,
   entityData: PropTypes.objectOf(PropTypes.any),
   expandAction: PropTypes.func,
   deleteAction: PropTypes.func,

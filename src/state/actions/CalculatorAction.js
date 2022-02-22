@@ -85,7 +85,7 @@ export const calculateGroup = () => (dispatch, getState) => {
     const priceOurCon = convertCurr(sumPriceOur, quotes.data.rates, currOur, profitGr[i].select);
     const priceCustCon = convertCurr(sumPriceCust, quotes.data.rates, currCust, profitGr[i].select);
     const profitValue = priceCustCon - priceOurCon || 0;
-    const profitPercent = (profitValue / priceOurCon) * 100 || 0;
+    const profitPercent = (profitValue / priceCustCon) * 100 || 0;
 
     if (profitGr[i].text !== profitValue) dispatch(actionCalc(profitValue, el.id, 'profitGr'));
     if (profitGr[i].percent !== profitPercent) dispatch(actionCalc(profitPercent, el.id, 'profitGr', 'percent'));

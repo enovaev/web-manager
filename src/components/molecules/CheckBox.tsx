@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 // Utils
-import Checkbox from 'antd/lib/checkbox';
+import Checkbox, { CheckboxChangeEvent } from 'antd/lib/checkbox';
 import styled from 'styled-components';
 
 interface ICheckBox {
@@ -12,7 +12,7 @@ interface ICheckBox {
 const CheckBox: React.FC<ICheckBox> = ({ header, value, action }) => {
   const [checked, setChecked] = useState<boolean>(false);
 
-  const handleChange = ({ target }: any) => {
+  const handleChange = ({ target }: CheckboxChangeEvent): void => {
     if (header) {
       action(target.checked);
       setChecked(target.checked);
